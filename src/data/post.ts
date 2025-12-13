@@ -71,4 +71,3 @@ export const trendingProducts = [
     sales: 128,
   },
 ];
-export const username = params.username as string;
