@@ -60,7 +60,7 @@ export const trendingProducts = [
     rating: 4.8,
     sales: 42,
   },
-  {
+  { 
     id: 2,
     name: "T-shirt wax premium",
     price: "15.000 FCFA",
