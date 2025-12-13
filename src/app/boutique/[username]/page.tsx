@@ -183,7 +183,7 @@ export default function ShopPage() {
       <div className="flex flex-col md:flex-row gap-6 mt-6">
         {/* Categories Sidebar */}
         <div className="md:w-64">
-          <div className="card">
+          <div className="card"> 
             <h3 className="font-semibold text-gray-900 mb-4">Catégories</h3>
             <div className="space-y-2">
               {shopData.categories.map((category) => (
