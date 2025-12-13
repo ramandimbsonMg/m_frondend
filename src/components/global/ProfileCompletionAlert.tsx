@@ -170,7 +170,7 @@ export default function ProfileCompletionAlert({
   // Si l'alerte n'est pas visible et qu'il reste du temps, afficher un message
   if (!isVisible && timeUntilNextShow > 0) {
     return (
-      <div className="rounded-lg border px-4 py-3 mb-4 bg-gray-50 border-gray-200 text-gray-600">
+      <div className="card text-gray-600">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Clock className="w-4 h-4" />
@@ -181,7 +181,7 @@ export default function ProfileCompletionAlert({
           </div>
           <button
             onClick={handleShowNow}
-            className="text-sm text-primary-600 hover:text-primary-800 font-medium"
+            className="text-sm text-primary-600 hover:text-primary-800 font-medium cursor-pointer"
           >
             Afficher maintenant
           </button>
@@ -194,35 +194,35 @@ export default function ProfileCompletionAlert({
 
   return (
     <>
-      <div className={`rounded-lg border px-4 py-3 mb-4 ${getColorClasses()}`}>
+      <div className={`card ${getColorClasses()}`}>
         <div className="flex items-start justify-between">
           <div className="flex items-start gap-3 flex-1">
             <div className="mt-0.5">
-              <AlertCircle className="w-5 h-5" />
+              <AlertCircle className="w-5 h-5 text-primary" />
             </div>
 
             <div className="flex-1">
-              <div className="flex items-center gap-2 mb-1">
+              <div className="flex items-center gap-2">
                 <h4 className="font-semibold">Profil à compléter</h4>
-                <span className="text-xs font-bold px-2 py-0.5 bg-white/50 rounded-full">
+                <span className="text-xs font-bold px-2 py-0.5 bg-white/50 rounded-full text-primary">
                   {completion}%
                 </span>
               </div>
 
-              <p className="text-sm mb-3">{getMessage()}</p>
+              <p className="text-sm mb-2">{getMessage()}</p>
 
               <div className="flex items-center gap-4">
                 {/* Barre de progression */}
                 <div className="flex-1">
-                  <div className="w-full bg-white/50 rounded-full h-2 mb-1">
+                  <div className="w-full bg-gray-400/50 rounded-full h-1.5 mb-1">
                     <div
-                      className="h-2 rounded-full bg-gradient-to-r from-primary-500 to-primary-600"
+                      className="h-1.5 rounded-full bg-primary"
                       style={{ width: `${completion}%` }}
                     ></div>
                   </div>
                   <div className="flex justify-between text-xs">
-                    <span>Profil basique</span>
-                    <span className="font-medium">Profil complet</span>
+                    {/* <span>Profil basique</span>
+                    <span className="font-medium">Profil complet</span> */}
                   </div>
                 </div>
 
@@ -230,13 +230,13 @@ export default function ProfileCompletionAlert({
                 <div className="flex items-center gap-2">
                   <button
                     onClick={handleClose}
-                    className="text-sm px-3 py-1.5 hover:bg-white/30 bg-gray-50 cursor-pointer rounded-lg font-medium"
+                    className="text-sm px-3 py-1.5 hover:bg-white/30 bg-gray-50 cursor-pointer rounded-full font-medium"
                   >
                     Plus tard
                   </button>
                   <button
                     onClick={handleOpenDialog}
-                    className="text-sm px-4 py-1.5 bg-white text-gray-900 rounded-lg hover:bg-white/90 font-medium shadow-sm flex items-center gap-1 cursor-pointer"
+                    className="text-sm px-4 py-1.5 rounded-full hover:bg-white/90 font-medium shadow-sm flex items-center gap-1 cursor-pointer"
                   >
                     Compléter
                     <ChevronRight className="w-4 h-4" />
@@ -248,24 +248,24 @@ export default function ProfileCompletionAlert({
 
           <button
             onClick={handleClose}
-            className="p-1 hover:bg-white/30 rounded-lg ml-2"
+            className="p-1 hover:bg-white/30 rounded-full ml-2"
           >
             <X className="w-4 h-4 cursor-pointer" />
           </button>
         </div>
 
         {/* Avantages */}
-        <div className="mt-4 pt-3 border-t border-white/30 grid grid-cols-1 md:grid-cols-3 gap-3">
+        <div className="pt-2 border-t border-white/30 grid grid-cols-1 md:grid-cols-3 gap-3">
           <div className="flex items-center gap-2 text-xs">
-            <User className="w-3 h-3" />
+            <User className="w-3 h-3 text-accent" />
             <span>+40% de visibilité</span>
           </div>
           <div className="flex items-center gap-2 text-xs">
-            <TrendingUp className="w-3 h-3" />
+            <TrendingUp className="w-3 h-3 text-accent" />
             <span>3x plus de contacts</span>
           </div>
           <div className="flex items-center gap-2 text-xs">
-            <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+            <svg className="w-3 h-3 text-accent" fill="currentColor" viewBox="0 0 20 20">
               <path
                 fillRule="evenodd"
                 d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"

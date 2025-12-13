@@ -110,7 +110,7 @@ export default function MessagesPage() {
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden h-full">
         <div className="grid grid-cols-12 h-full">
           {/* Conversations List */}
-          <div className="border-r border-gray-200 col-span-5">
+          <div className="border-r border-gray-200 col-span-4">
             {/* Header */}
             <div className="p-4 border-b border-gray-200">
               <h2 className="text-xl font-bold text-gray-900">Messages</h2>
@@ -180,14 +180,14 @@ export default function MessagesPage() {
 
             {/* New Conversation */}
             <div className="p-4 border-t border-gray-200">
-              <button className="w-full py-3 bg-primary text-white rounded-lg font-medium hover:bg-[#006097] cursor-pointer">
+              <button className="w-full py-2 bg-primary text-white rounded-full font-medium hover:bg-[#006097] cursor-pointer">
                 Nouvelle conversation
               </button>
             </div>
           </div>
 
           {/* Chat Area */}
-          <div className="col-span-7">
+          <div className="col-span-8">
             {/* Chat Header */}
             <div className="p-4 border-b border-gray-200 flex items-center justify-between">
               <div className="flex items-center space-x-3">
@@ -198,7 +198,7 @@ export default function MessagesPage() {
                     </span>
                   </div>
                   {selectedConversation?.user.status === "online" && (
-                    <div className="absolute bottom-0 right-0 w-2 h-2 bg-green-500 rounded-full border border-white"></div>
+                    <div className="absolute bottom-1 right-0 w-2 h-2 bg-accent rounded-full border border-white"></div>
                   )}
                 </div>
                 <div>

@@ -125,10 +125,10 @@ const PostCard = ({ post }: PostCardProps) => {
         <div className="flex items-center justify-around">
           <button
             onClick={handleLike}
-            className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors ${
+            className={`flex items-center space-x-2 py-2 rounded-full cursor-pointer transition-colors ${
               isLiked
-                ? "text-primary bg-cyan-50"
-                : "text-gray-600 hover:bg-gray-100"
+                ? "text-primary"
+                : "text-gray-600"
             }`}
           >
             <ThumbsUp className="w-5 h-5" />
@@ -137,20 +137,20 @@ const PostCard = ({ post }: PostCardProps) => {
 
           <button
             onClick={() => setShowComments(!showComments)}
-            className="flex items-center space-x-2 px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors"
+            className="flex items-center space-x-2 px-4 py-2 rounded-full cursor-pointer text-gray-600 hover:bg-gray-100 transition-colors"
           >
             <MessageCircle className="w-5 h-5" />
             <span className="font-medium">Commenter</span>
           </button>
 
-          <button className="flex items-center space-x-2 px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors">
+          <button className="flex items-center space-x-2 px-4 py-2 rounded-full cursor-pointer text-gray-600 hover:bg-gray-100 transition-colors">
             <Share2 className="w-5 h-5" />
             <span className="font-medium">Partager</span>
           </button>
         </div>
 
         {/* Quick Actions */}
-        <div className="flex items-center justify-around mt-3">
+        <div className="flex items-center justify-around mt-2">
           <button className="text-xs text-gray-500 hover:text-gray-700">
             Envoyer
           </button>
@@ -168,7 +168,7 @@ const PostCard = ({ post }: PostCardProps) => {
 
       {/* Comments Section */}
       {showComments && (
-        <div className="mt-4 pt-4 border-t">
+        <div className="mt-4 pt-4 border-t border-gray-200">
           {/* Comment Input */}
           <div className="flex items-start space-x-3">
             <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
@@ -180,15 +180,15 @@ const PostCard = ({ post }: PostCardProps) => {
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
                 placeholder="Ajouter un commentaire..."
-                className="w-full p-2 border-b border-gray-300 focus:outline-none focus:border-primary"
+                className="w-full p-2 border-b border-gray-200 focus:outline-none focus:border-primary"
               />
               <div className="flex justify-end mt-2">
-                <button className="text-sm text-gray-500 hover:text-gray-700 mr-4">
+                <button className="text-sm text-gray-500 hover:text-gray-700 mr-4 cursor-pointer">
                   Annuler
                 </button>
                 <button
                   disabled={!comment.trim()}
-                  className="text-sm text-primary font-medium disabled:opacity-50"
+                  className="text-sm text-primary font-medium disabled:opacity-50 cursor-pointer"
                 >
                   Commenter
                 </button>

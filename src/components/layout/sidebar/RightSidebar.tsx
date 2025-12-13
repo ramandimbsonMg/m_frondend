@@ -47,10 +47,10 @@ const RightSidebar = () => {
   ];
 
   return (
-    <aside className="hidden xl:block w-80 border-l border-gray-200 bg-white min-h-[calc(100vh-4rem)] pt-6">
+    <aside className="hidden xl:block w-80 min-h-[calc(100vh-4rem)] pt-6">
       <div className="sticky top-20">
         {/* Trending Products */}
-        <div className="px-4 mb-6">
+        <div className="mb-4 card-1">
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-semibold text-gray-900 flex items-center">
               <TrendingUp className="w-5 h-5 mr-2 text-accent" />
@@ -98,7 +98,7 @@ const RightSidebar = () => {
         </div>
 
         {/* Live Events */}
-        <div className="px-4 mb-6">
+        <div className="mb-4 card-1">
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-semibold text-gray-900 flex items-center">
               <Zap className="w-5 h-5 mr-2 text-red-500" />
@@ -130,7 +130,7 @@ const RightSidebar = () => {
                     </div>
                   </div>
                 </div>
-                <button className="w-full mt-3 py-2 bg-red-50 text-red-600 rounded-lg text-sm font-medium hover:bg-red-100 transition-colors">
+                <button className="w-full mt-3 py-2 bg-red-50 text-red-600 rounded-full text-sm font-medium hover:bg-red-100 transition-colors">
                   Rejoindre le live
                 </button>
               </div>
@@ -139,8 +139,8 @@ const RightSidebar = () => {
         </div>
 
         {/* Contests & Challenges */}
-        <div className="px-4 mb-6">
-          <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-4 border border-purple-100">
+        <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-[10px] mb-4 border border-purple-100">
+          <div className="">
             <div className="flex items-center justify-between mb-3">
               <h3 className="font-semibold text-gray-900 flex items-center">
                 <Award className="w-5 h-5 mr-2 text-purple-600" />
@@ -168,14 +168,14 @@ const RightSidebar = () => {
                 <div className="text-gray-500">1er prix</div>
               </div>
             </div>
-            <button className="w-full py-2 bg-pink-600 text-white rounded-lg font-medium hover:opacity-90 transition-opacity">
+            <button className="w-full py-2 bg-pink-600 text-white rounded-full font-medium hover:opacity-90 transition-opacity">
               Participer maintenant
             </button>
           </div>
         </div>
 
         {/* Suggested People */}
-        <div className="px-4 mb-6  sticky top-20">
+        <div className="card-1 mb-4 sticky top-20">
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-semibold text-gray-900 flex items-center">
               <Users className="w-5 h-5 mr-2 text-blue-500" />
@@ -216,8 +216,8 @@ const RightSidebar = () => {
         </div>
 
         {/* AI Assistant */}
-        <div className="px-4 mb-6">
-          <div className="bg-cyan-50/50 rounded-lg p-4 border border-cyan-100">
+        <div className="bg-cyan-50/50 rounded-lg p-[10px] border border-cyan-100 mb-4">
+          <div className="">
             <div className="flex items-center justify-between mb-3">
               <h3 className="font-semibold text-gray-900">Assistant IA</h3>
               <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
@@ -228,13 +228,13 @@ const RightSidebar = () => {
               Optimisez vos ventes avec nos conseils IA personnalisés
             </p>
             <div className="space-y-2">
-              <button className="w-full text-left p-2 bg-white rounded-lg text-sm hover:bg-cyan-100 transition-colors">
+              <button className="w-full text-left py-2 px-3 bg-white rounded-full text-sm hover:bg-cyan-100 transition-colors cursor-pointer">
                 📝 Améliorer mes descriptions
               </button>
-              <button className="w-full text-left p-2 bg-white rounded-lg text-sm hover:bg-cyan-100 transition-colors">
+              <button className="w-full text-left py-2 px-3 bg-white rounded-full text-sm hover:bg-cyan-100 transition-colors cursor-pointer">
                 📈 Analyser mes performances
               </button>
-              <button className="w-full text-left p-2 bg-white rounded-lg text-sm hover:bg-cyan-100 transition-colors">
+              <button className="w-full text-left py-2 px-3 bg-white rounded-full text-sm hover:bg-cyan-100 transition-colors cursor-pointer">
                 💡 Idées de produits tendance
               </button>
             </div>

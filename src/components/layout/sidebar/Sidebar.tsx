@@ -34,21 +34,23 @@ const Sidebar = () => {
   ];
 
   return (
-    <aside className="hidden lg:block w-64 border-r border-gray-200 bg-white min-h-[calc(100vh-4rem)] pt-6">
+    <aside className="hidden lg:block w-64 min-h-[calc(100vh-4rem)] pt-6">
       <div className="sticky top-20">
         {/* Profile Card */}
-        <div className="px-4 mb-6">
-          <div className="relative bg-cyan-50/20 rounded-lg p-4 border border-cyan-100">
-            <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-              <div className="w-18 h-18 rounded-full border-4 border-white bg-primary flex items-center justify-center">
-                <span className="text-white font-bold text-xl">JD</span>
+        <div className="mb-4">
+          <div className="relative card-1">
+            <div className="bg-gray-300 h-20 rounded-tl">
+              <div className="absolute top-0 left-10 transform -translate-x-1/2">
+                <div className="w-18 h-18 rounded-full border-4 border-white bg-primary flex items-center justify-center">
+                  <span className="text-white font-bold text-xl">JD</span>
+                </div>
               </div>
             </div>
             <div className="pt-8 text-center">
               <h3 className="font-semibold text-gray-900 mt-2">John Doe</h3>
               <p className="text-sm text-gray-600 mt-1 flex items-center gap-2">
-                Vendeur Pro{" "}
-                <hr className="h-6 w-1 border-l border-t-0 border-gray-200" />{" "}
+                Vendeur Pro
+                <hr className="h-6 w-1 border-l border-t-0 border-gray-200" />
                 Madagascar
               </p>
               <div className="flex items-center justify-center space-x-4 mt-3">
@@ -70,7 +72,7 @@ const Sidebar = () => {
         </div>
 
         {/* Navigation */}
-        <nav className="px-4">
+        <nav className="card-1">
           <div className="space-y-1">
             {menuItems.map((item) => (
               <Link
@@ -93,13 +95,13 @@ const Sidebar = () => {
         </nav>
 
         {/* Stats & Analytics */}
-        <div className="px-4 mt-8">
-          <div className="bg-cyan-50/20 rounded-lg p-4 border border-green-100">
+        <div className="card-1 mt-4">
+          <div className="space-y-2">
             <div className="flex items-center justify-between mb-3">
               <h4 className="font-semibold text-gray-900">Statistiques</h4>
               <TrendingUp className="w-5 h-5 text-accent" />
             </div>
-            <div className="space-y-3">
+            <div className="space-y-4">
               <div>
                 <div className="flex justify-between text-sm mb-1">
                   <span className="text-gray-600">Visites boutique</span>
@@ -119,21 +121,22 @@ const Sidebar = () => {
                 </div>
               </div>
             </div>
-            <button className="w-full mt-4 text-sm font-medium text-accent/50 hover:text-accent cursor-pointer">
+            <hr className="border-gray-200" />
+            <button className="w-full mt-4 text-sm font-medium text-accent hover:text-accent cursor-pointer">
               Voir détails →
             </button>
           </div>
         </div>
 
         {/* Quick Actions */}
-        <div className="px-4 mt-6">
+        <div className="card-1 mt-4">
           <h4 className="font-semibold text-gray-900 mb-3">Actions rapides</h4>
           <div className="space-y-2">
-            <button className="w-full flex items-center justify-center space-x-2 bg-primary text-white py-2 px-4 rounded-lg hover:bg-[#006097] transition-colors cursor-pointer">
+            <button className="w-full flex items-center justify-center space-x-2 bg-primary text-white py-2 px-4 rounded-full hover:bg-[#006097] transition-colors cursor-pointer">
               <Zap className="w-4 h-4" />
               <span className="text-sm">Publier un produit</span>
             </button>
-            <button className="w-full flex items-center justify-center space-x-2 border border-primary text-primary py-2 px-4 rounded-lg hover:bg-cyan-50 transition-colors cursor-pointer">
+            <button className="w-full flex items-center justify-center space-x-2 border border-primary text-primary py-2 px-4 rounded-full hover:bg-cyan-50 transition-colors cursor-pointer">
               <DollarSign className="w-4 h-4" />
               <span className="text-sm">Créer une promo</span>
             </button>
@@ -141,7 +144,7 @@ const Sidebar = () => {
         </div>
 
         {/* Shortcuts */}
-        <div className="px-4 mt-8">
+        <div className="card-1 mt-4">
           <div className="flex justify-between items-center mb-3">
             <h4 className="font-semibold text-gray-900">Vos raccourcis</h4>
             <button className="text-sm text-primary hover:underline cursor-pointer">
@@ -155,7 +158,7 @@ const Sidebar = () => {
                 className="flex items-center justify-between p-2 hover:bg-gray-50 rounded-lg cursor-pointer"
               >
                 <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-primary rounded flex items-center justify-center">
+                  <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
                     <span className="text-white text-xs font-bold">
                       {shortcut.name.charAt(0)}
                     </span>

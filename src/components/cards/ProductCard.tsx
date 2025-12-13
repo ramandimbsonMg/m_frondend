@@ -115,11 +115,11 @@ const ProductCard = ({ product }: ProductCardProps) => {
 
         {/* Action Buttons */}
         <div className="grid grid-cols-2 gap-2 mt-4">
-          <button className="flex items-center justify-center space-x-2 bg-gray-100 text-gray-700 py-2 rounded-lg hover:bg-gray-200 transition-colors cursor-pointer">
+          <button className="flex items-center justify-center space-x-2 bg-gray-100 text-gray-700 py-2 rounded-full hover:bg-gray-200 transition-colors cursor-pointer">
             <ShoppingBag className="w-4 h-4" />
             <span className="text-sm font-medium">Voir</span>
           </button>
-          <button className="flex items-center justify-center space-x-2 bg-primary text-white py-2 rounded-lg hover:bg-[#006097] transition-colors cursor-pointer">
+          <button className="flex items-center justify-center space-x-2 bg-primary text-white py-2 rounded-full hover:bg-[#006097] transition-colors cursor-pointer">
             <ShoppingCart className="w-4 h-4" />
             <span className="text-sm font-medium">Acheter</span>
           </button>

@@ -9,7 +9,14 @@ export default function ConditionalMainWrapper({
 }) {
   const pathname = usePathname();
 
-  const specialRoutes = ["/notifications", "/emplois", "/reseau"];
+  const specialRoutes = [
+    "/notifications",
+    "/emplois",
+    "/reseau",
+    "/profile",
+    "/messages",
+    "/boutique",
+  ];
   const isSpecialRoute = specialRoutes.some((route) =>
     pathname.startsWith(route)
   );
@@ -34,7 +41,13 @@ export const ConditionalMainWrapperNoRight = ({
 }) => {
   const pathname = usePathname();
 
-  const specialRoutes = ["/notifications", "/emplois", "/reseau"];
+  const specialRoutes = [
+    "/notifications",
+    "/emplois",
+    "/reseau",
+    "/messages",
+    "/boutique",
+  ];
   const isSpecialRoute = specialRoutes.some((route) =>
     pathname.startsWith(route)
   );

@@ -19,103 +19,24 @@ import {
 } from "lucide-react";
 import { useParams } from "next/navigation";
 import ProductCard from "@/components/cards/ProductCard";
+import { shopData } from "@/data/shop";
 
 export default function ShopPage() {
   const params = useParams();
   const username = params.username as string;
-
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [sortBy, setSortBy] = useState("popular");
   const [priceRange, setPriceRange] = useState([0, 100000]);
 
-  const shopData = {
-    name: "AfroChic Collection",
-    owner: "Fatou Diop",
-    rating: 4.8,
-    reviews: 156,
-    joined: "Mars 2023",
-    location: "Dakar, Sénégal",
-    description:
-      "Boutique spécialisée dans la mode africaine contemporaine. Créations uniques à partir de tissus traditionnels réinventés.",
-    stats: {
-      totalSales: 1245,
-      activeProducts: 24,
-      repeatCustomers: "68%",
-      responseRate: "98%",
-    },
-    policies: [
-      { icon: Truck, title: "Livraison rapide", desc: "2-5 jours ouvrés" },
-      { icon: Shield, title: "Garantie satisfaction", desc: "30 jours retour" },
-      {
-        icon: Headphones,
-        title: "Support 7j/7",
-        desc: "Via chat et téléphone",
-      },
-    ],
-    products: [
-      {
-        id: 1,
-        name: "Robe wax premium édition limitée",
-        price: "45.000 FCFA",
-        image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8",
-        seller: "AfroChic",
-        rating: 4.9,
-        sales: 128,
-        category: "Femme",
-        tags: ["limited", "premium"],
-      },
-      {
-        id: 2,
-        name: "Chemise homme en bazin",
-        price: "25.000 FCFA",
-        image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c",
-        seller: "AfroChic",
-        rating: 4.7,
-        sales: 89,
-        category: "Homme",
-        tags: ["new"],
-      },
-      {
-        id: 3,
-        name: "Sac à main bogolan artisanal",
-        price: "28.500 FCFA",
-        image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3",
-        seller: "AfroChic",
-        rating: 4.8,
-        sales: 156,
-        category: "Accessoires",
-        tags: ["best-seller"],
-      },
-      {
-        id: 4,
-        name: "Boucles d oreilles argent",
-        price: "15.000 FCFA",
-        image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908",
-        seller: "AfroChic",
-        rating: 4.9,
-        sales: 234,
-        category: "Bijoux",
-        tags: ["popular"],
-      },
-    ],
-    categories: [
-      { name: "Tous les produits", count: 24 },
-      { name: "Vêtements Femme", count: 8 },
-      { name: "Vêtements Homme", count: 6 },
-      { name: "Accessoires", count: 5 },
-      { name: "Bijoux", count: 5 },
-    ],
-  };
-
   return (
     <div className="max-w-7xl mx-auto">
       {/* Shop Header */}
-      <div className="bg-gradient-to-r from-cyan-500 to-blue-600 rounded-t-xl overflow-hidden">
+      <div className="bg-primary rounded-t-xl overflow-hidden">
         <div className="p-8 text-white">
           <div className="flex flex-col md:flex-row md:items-start md:justify-between">
             <div className="flex items-start space-x-6">
-              <div className="w-24 h-24 rounded-full border-4 border-white bg-gradient-to-r from-cyan-400 to-blue-500 flex items-center justify-center">
-                <span className="text-white text-2xl font-bold">AC</span>
+              <div className="w-20 h-20 rounded-full border-4 border-white bg-primary flex items-center justify-center">
+                <span className="text-white text-2xl font-bold w-20 h-20 text-center flex justify-center items-center">AC</span>
               </div>
               <div>
                 <h1 className="text-3xl font-bold">{shopData.name}</h1>
@@ -143,11 +64,11 @@ export default function ShopPage() {
               </div>
             </div>
             <div className="mt-4 md:mt-0 flex space-x-2">
-              <button className="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-lg hover:bg-white/30">
+              <button className="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30">
                 <Heart className="w-5 h-5 inline mr-2" />
                 Suivre
               </button>
-              <button className="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-lg hover:bg-white/30">
+              <button className="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30">
                 <Share2 className="w-5 h-5 inline mr-2" />
                 Partager
               </button>
@@ -157,7 +78,7 @@ export default function ShopPage() {
       </div>
 
       {/* Shop Stats */}
-      <div className="bg-white border border-gray-200 p-6">
+      <div className="card-1">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {Object.entries(shopData.stats).map(([key, value]) => (
             <div key={key} className="text-center">
@@ -171,7 +92,7 @@ export default function ShopPage() {
       </div>
 
       {/* Policies */}
-      <div className="bg-white border border-gray-200 p-6 mt-6 rounded-lg">
+      <div className="card-1 mt-6">
         <div className="grid md:grid-cols-3 gap-6">
           {shopData.policies.map((policy, index) => (
             <div key={index} className="flex items-center space-x-4">
@@ -188,7 +109,7 @@ export default function ShopPage() {
       </div>
 
       {/* Filters & Controls */}
-      <div className="bg-white border border-gray-200 p-4 mt-6 rounded-lg">
+      <div className="card-1 mt-6 sticky top-16 z-20">
         <div className="flex flex-col md:flex-row md:items-center justify-between space-y-4 md:space-y-0">
           <div className="flex items-center space-x-4">
             <button className="flex items-center space-x-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">
@@ -199,7 +120,7 @@ export default function ShopPage() {
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="pl-4 pr-10 py-2 border border-gray-300 rounded-lg appearance-none bg-white focus:outline-none focus:ring-2 focus:ring-[#0073b1]"
+                className="pl-4 pr-10 py-2 border border-gray-300 rounded-lg appearance-none bg-white focus:outline-none focus:ring-2 focus:ring-[#4b6fc9]"
               >
                 <option value="popular">Plus populaires</option>
                 <option value="newest">Plus récents</option>
@@ -237,7 +158,7 @@ export default function ShopPage() {
           <div className="flex items-center space-x-2">
             <button
               onClick={() => setViewMode("grid")}
-              className={`p-2 rounded ${
+              className={`p-2 rounded-full cursor-pointer ${
                 viewMode === "grid"
                   ? "bg-gray-100 text-gray-900"
                   : "text-gray-600 hover:bg-gray-100"
@@ -247,7 +168,7 @@ export default function ShopPage() {
             </button>
             <button
               onClick={() => setViewMode("list")}
-              className={`p-2 rounded ${
+              className={`p-2 rounded-full cursor-pointer ${
                 viewMode === "list"
                   ? "bg-gray-100 text-gray-900"
                   : "text-gray-600 hover:bg-gray-100"
@@ -262,7 +183,7 @@ export default function ShopPage() {
       <div className="flex flex-col md:flex-row gap-6 mt-6">
         {/* Categories Sidebar */}
         <div className="md:w-64">
-          <div className="bg-white border border-gray-200 rounded-lg p-6">
+          <div className="card">
             <h3 className="font-semibold text-gray-900 mb-4">Catégories</h3>
             <div className="space-y-2">
               {shopData.categories.map((category) => (
@@ -329,12 +250,12 @@ export default function ShopPage() {
           </div>
 
           {/* Shop Owner */}
-          <div className="bg-white border border-gray-200 rounded-lg p-6 mt-6">
+          <div className="card mt-4">
             <h3 className="font-semibold text-gray-900 mb-4">
               À propos du vendeur
             </h3>
             <div className="flex items-center space-x-3 mb-4">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
                 <span className="text-white font-bold">FD</span>
               </div>
               <div>
@@ -342,7 +263,7 @@ export default function ShopPage() {
                 <p className="text-sm text-gray-600">Propriétaire</p>
               </div>
             </div>
-            <button className="w-full py-2 border border-[#0073b1] text-[#0073b1] rounded-lg hover:bg-blue-50">
+            <button className="w-full py-1.5 border border-primary text-primary rounded-full hover:bg-blue-50">
               Voir le profil
             </button>
           </div>
@@ -351,7 +272,7 @@ export default function ShopPage() {
         {/* Products Grid */}
         <div className="flex-1">
           {viewMode === "grid" ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
               {shopData.products.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}
@@ -404,7 +325,7 @@ export default function ShopPage() {
                           <button className="mb-2 p-2 text-gray-600 hover:bg-gray-100 rounded-full">
                             <Heart className="w-5 h-5" />
                           </button>
-                          <button className="px-4 py-2 bg-[#0073b1] text-white rounded-lg hover:bg-[#006097]">
+                          <button className="px-4 py-2 bg-[#4b6fc9] text-white rounded-lg hover:bg-[#006097]">
                             Acheter
                           </button>
                         </div>
@@ -418,20 +339,20 @@ export default function ShopPage() {
 
           {/* Pagination */}
           <div className="flex justify-center items-center space-x-2 mt-8">
-            <button className="px-3 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">
+            <button className="px-3 py-2 border border-gray-300 rounded-full hover:bg-gray-50">
               Précédent
             </button>
             {[1, 2, 3, 4, 5].map((num) => (
               <button
                 key={num}
-                className={`px-3 py-2 rounded-lg ${
-                  num === 1 ? "bg-[#0073b1] text-white" : "hover:bg-gray-100"
+                className={`px-3 py-1 rounded-full ${
+                  num === 1 ? "bg-primary text-white" : "hover:bg-gray-100"
                 }`}
               >
                 {num}
               </button>
             ))}
-            <button className="px-3 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">
+            <button className="px-3 py-2 border border-gray-300 rounded-full hover:bg-gray-50">
               Suivant
             </button>
           </div>
@@ -440,10 +361,3 @@ export default function ShopPage() {
     </div>
   );
 }
-export default function ContestsPage() {
-    return(
-        <>
-        concours
-        </>
-    )
-} 

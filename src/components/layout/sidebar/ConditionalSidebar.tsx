@@ -10,7 +10,13 @@ import RightSidebar from "./RightSidebar";
 export default function ConditionalSidebar() {
   const pathname = usePathname();
 
-  const hiddenRoutes = ["/notifications", "/emplois", "/reseau"];
+  const hiddenRoutes = [
+    "/notifications",
+    "/emplois",
+    "/reseau",
+    "/profile",
+    "/boutique",
+  ];
 
   const hide = hiddenRoutes.some((r) => pathname.startsWith(r));
 
@@ -24,7 +30,12 @@ export default function ConditionalSidebar() {
 export function ConditionalSidebarRight() {
   const pathname = usePathname();
 
-  const hiddenRoutes = ["/emplois", "/reseau"];
+  const hiddenRoutes = [
+    "/emplois",
+    "/reseau",
+    "/messages",
+    "/notifications",
+  ];
 
   const hide = hiddenRoutes.some((r) => pathname.startsWith(r));
 
@@ -39,7 +50,13 @@ export function useRightSidebarVisible() {
   const pathname = usePathname();
 
   // même règle que ConditionalSidebarRight
-  const hiddenRoutes = ["/emplois", "/reseau"];
+  const hiddenRoutes = [
+    "/emplois",
+    "/reseau",
+    "/messages",
+    "/notifications",
+    "/boutique",
+  ];
 
   return !hiddenRoutes.some((r) => pathname.startsWith(r));
 }

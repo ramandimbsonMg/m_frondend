@@ -8,25 +8,17 @@ import {
   Mail,
   Phone,
   Globe,
-  Users,
-  Award,
-  ShoppingBag,
   Star,
   Share2,
   MoreVertical,
-  Edit,
   MessageCircle,
   Plus,
-  Grid,
-  List,
   Image as ImageIcon,
-  Video,
-  FileText,
-  Link,
+
 } from "lucide-react";
 import { useParams } from "next/navigation";
 import PostCard from "@/components/cards/PostCard";
-import ProductCard from "@/components/cards/ProductCard";
+import Link from "next/link";
 
 export default function PublicProfilePage() {
   const params = useParams();
@@ -38,11 +30,11 @@ export default function PublicProfilePage() {
   const profileData = {
     name: "Fatou Diop",
     username: username,
-    role: "Designer Mode & Entrepreneure",
-    location: "Madagascar, Sénégal",
-    company: "AfroChic Collection",
+    role: "Developer Informatique & Entrepreneure",
+    location: "Madagascar, Ihosy",
+    company: "Missera Collection",
     joinDate: "Membre depuis mars 2023",
-    bio: "Créatrice de mode africaine contemporaine. Passionnée par la réinvention des tissus traditionnels. Vendeuse certifiée sur Missera Market.",
+    bio: "Créateur de mode africaine contemporaine. Passionnée par la réinvention des tissus traditionnels. Vendeur certifiée sur Missera Market.",
     stats: {
       sales: 156,
       followers: 1245,
@@ -108,70 +100,69 @@ export default function PublicProfilePage() {
   return (
     <div className="max-w-4xl mx-auto">
       {/* Cover Photo */}
-      <div className="relative h-64 rounded-t-xl overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-600"></div>
+      <div className="relative h-48 rounded-t-lg overflow-hidden">
+        <div className="absolute inset-0 bg-gray-300"></div>
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1519751138087-5bf79df62d5b')] bg-cover bg-center opacity-20"></div>
-
         {/* Action Buttons */}
         <div className="absolute bottom-4 right-4 flex space-x-2">
-          <button className="p-2 bg-white/90 backdrop-blur-sm rounded-lg hover:bg-white">
-            <MoreVertical className="w-5 h-5 text-gray-700" />
+          <button className="p-2 bg-white/90 backdrop-blur-sm rounded-full w-10 h-10 text-center flex items-center justify-center hover:bg-white cursor-pointer">
+            <MoreVertical className="w-4 h-4 text-gray-700" />
           </button>
-          <button className="p-2 bg-white/90 backdrop-blur-sm rounded-lg hover:bg-white">
-            <Share2 className="w-5 h-5 text-gray-700" />
+          <button className="p-2 bg-white/90 backdrop-blur-sm rounded-full w-10 h-10 text-center flex items-center justify-center hover:bg-white cursor-pointer">
+            <Share2 className="w-4 h-4 text-gray-700" />
           </button>
           {isFollowing ? (
             <button
               onClick={() => setIsFollowing(false)}
-              className="px-4 py-2 bg-white text-gray-700 font-medium rounded-lg hover:bg-gray-50"
+              className="px-4 py-1.5 h-10 bg-white text-gray-700 font-medium rounded-full hover:bg-gray-50 cursor-pointer"
             >
               Abonné
             </button>
           ) : (
             <button
               onClick={() => setIsFollowing(true)}
-              className="px-4 py-2 bg-primary text-white font-medium rounded-lg hover:bg-[#006097]"
+              className="px-4 py-1.5 h-10 bg-primary text-white font-medium rounded-full hover:bg-[#006097] cursor-pointer text-sm"
             >
               <Plus className="w-4 h-4 inline mr-2" />
               Suivre
             </button>
           )}
-          <button className="px-4 py-2 bg-white text-primary font-medium rounded-lg border border-primary hover:bg-blue-50">
+          <Link href="/messages" className="px-4 py-1.5 h-10 bg-white text-primary font-medium rounded-full border border-primary hover:bg-blue-50 cursor-pointer text-sm">
             <MessageCircle className="w-4 h-4 inline mr-2" />
             Message
-          </button>
+          </Link>
         </div>
       </div>
 
       {/* Profile Header */}
-      <div className="bg-white rounded-b-xl shadow-sm border border-t-0 border-gray-200 p-6">
+      <div className="bg-white rounded-b-lg border border-t-0 border-gray-200 p-6">
         <div className="flex flex-col md:flex-row md:items-start md:justify-between">
           {/* Avatar & Basic Info */}
           <div className="flex items-start space-x-6">
-            <div className="relative -mt-20">
-              <div className="w-40 h-40 rounded-full border-4 border-white bg-gradient-to-r from-cyan-400 to-blue-500 flex items-center justify-center shadow-lg">
-                <span className="text-white text-4xl font-bold">FD</span>
+            <div className="relative -mt-28">
+              <div className="w-40 h-40 rounded-full border-4 border-white bg-primary flex items-center justify-center shadow-lg">
+                <span className="text-white text-4xl font-bold">JD</span>
               </div>
-              <div className="absolute bottom-2 right-2 w-8 h-8 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
+              <div className="absolute bottom-2 right-3 w-8 h-8 bg-accent rounded-full border-2 border-white flex items-center justify-center">
                 <div className="w-2 h-2 bg-white rounded-full"></div>
               </div>
             </div>
 
-            <div className="mt-4">
+            <div className="mt-2">
               <h1 className="text-3xl font-bold text-gray-900">
                 {profileData.name}
-              </h1>
+              </h1> 
               <p className="text-lg text-gray-700 mt-1">{profileData.role}</p>
 
-              <div className="flex flex-wrap items-center gap-3 mt-3 text-gray-600">
+              <div className="flex flex-wrap items-center gap-3 mt-3 text-gray-600 text-sm">
                 <span className="flex items-center">
                   <MapPin className="w-4 h-4 mr-1" />
                   {profileData.location}
-                </span>
+                </span> -
                 <span className="flex items-center">
                   <Briefcase className="w-4 h-4 mr-1" />
                   {profileData.company}
-                </span>
+                </span> -
                 <span className="flex items-center">
                   <Calendar className="w-4 h-4 mr-1" />
                   {profileData.joinDate}
@@ -181,27 +172,27 @@ export default function PublicProfilePage() {
               {/* Stats */}
               <div className="flex items-center space-x-6 mt-4">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-gray-900">
+                  <div className="text-xl font-bold text-gray-900">
                     {profileData.stats.sales}
                   </div>
                   <div className="text-sm text-gray-600">Ventes</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-gray-900">
+                  <div className="text-xl font-bold text-gray-900">
                     {profileData.stats.followers}
                   </div>
                   <div className="text-sm text-gray-600">Abonnés</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-gray-900">
+                  <div className="text-xl font-bold text-gray-900">
                     {profileData.stats.following}
                   </div>
                   <div className="text-sm text-gray-600">Abonnements</div>
                 </div>
                 <div className="text-center">
                   <div className="flex items-center">
-                    <Star className="w-5 h-5 text-yellow-400 fill-yellow-400 mr-1" />
-                    <span className="text-2xl font-bold text-gray-900">
+                    <Star className="w-4 h-4 text-yellow-400 fill-yellow-400 mr-1" />
+                    <span className="text-xl font-bold text-gray-900">
                       {profileData.stats.rating}
                     </span>
                   </div>
@@ -228,13 +219,13 @@ export default function PublicProfilePage() {
       </div>
 
       {/* Tabs Navigation */}
-      <div className="mt-6 bg-white rounded-lg shadow-sm border border-gray-200">
+      <div className="mt-6 bg-white rounded-lg border border-gray-200">
         <div className="flex overflow-x-auto">
           {["about", "products", "posts", "reviews", "network"].map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`flex-1 min-w-0 px-6 py-4 font-medium border-b-2 whitespace-nowrap ${
+              className={`flex-1 min-w-0 px-6 py-4 font-medium border-b-2 whitespace-nowrap cursor-pointer ${
                 activeTab === tab
                   ? "border-primary text-primary"
                   : "border-transparent text-gray-600 hover:text-gray-900"
@@ -265,15 +256,15 @@ export default function PublicProfilePage() {
                   <div className="space-y-2">
                     <div className="flex items-center text-gray-600">
                       <Mail className="w-4 h-4 mr-3" />
-                      fatou.diop@example.com
+                      missera@company.com
                     </div>
                     <div className="flex items-center text-gray-600">
                       <Phone className="w-4 h-4 mr-3" />
-                      +221 77 123 45 67
+                      +261 38 90 524 67
                     </div>
                     <div className="flex items-center text-gray-600">
                       <Globe className="w-4 h-4 mr-3" />
-                      www.afrochic.sn
+                      www.missera.com
                     </div>
                   </div>
                 </div>
@@ -319,7 +310,7 @@ export default function PublicProfilePage() {
                   </div>
                   <div>
                     <div className="flex justify-between text-sm mb-1">
-                      <span>Wolof</span>
+                      <span>Malagasy</span>
                       <span>Langue maternelle</span>
                     </div>
                     <div className="w-full bg-gray-200 rounded-full h-2">

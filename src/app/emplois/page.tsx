@@ -150,7 +150,7 @@ export default function JobsPage() {
       </div>
 
       {/* Search Bar */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-8">
+      <div className="card mb-6 sticky top-16">
         <div className="relative mb-4">
           <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
           <input
@@ -158,23 +158,23 @@ export default function JobsPage() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Rechercher un poste, une compétence ou une entreprise..."
-            className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0073b1]"
+            className="w-full pl-12 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary"
           />
         </div>
         <div className="grid md:grid-cols-4 gap-4">
           <div className="relative">
             <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-            <select className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0073b1]">
+            <select className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary">
               <option>Localisation</option>
-              <option>Dakar</option>
-              <option>Abidjan</option>
-              <option>Lomé</option>
+              <option>Madagascar</option>
+              <option>France</option>
+              <option>Chine</option>
               <option>Remote</option>
             </select>
           </div>
           <div className="relative">
             <Briefcase className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-            <select className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0073b1]">
+            <select className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary">
               <option>Type d'emploi</option>
               <option>Temps plein</option>
               <option>Contrat</option>
@@ -184,14 +184,14 @@ export default function JobsPage() {
           </div>
           <div className="relative">
             <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-            <select className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0073b1]">
+            <select className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary">
               <option>Salaire</option>
-              <option>200K - 400K FCFA</option>
-              <option>400K - 600K FCFA</option>
-              <option>600K+ FCFA</option>
+              <option>200K - 400K Ar</option>
+              <option>400K - 600K Ar</option>
+              <option>600K+ Ar</option>
             </select>
           </div>
-          <button className="px-6 py-2 bg-[#0073b1] text-white rounded-lg font-medium hover:bg-[#006097]">
+          <button className="bg-primary text-white cursor-pointer rounded-full">
             <Search className="w-4 h-4 inline mr-2" />
             Rechercher
           </button>
@@ -217,11 +217,11 @@ export default function JobsPage() {
                 <span className="text-gray-600">Profil complet</span>
                 <span className="font-medium">85%</span>
               </div>
-              <div className="w-full bg-gray-200 rounded-full h-2">
-                <div className="bg-accent h-2 rounded-full w-4/5"></div>
+              <div className="w-full bg-gray-200 rounded-full h-1.5">
+                <div className="bg-accent h-1.5 rounded-full w-4/5"></div>
               </div>
             </div>
-            <button className="w-full py-2 bg-primary text-white rounded-lg font-medium hover:bg-primary cursor-pointer">
+            <button className="w-full py-2 bg-primary text-white rounded-full font-medium hover:bg-primary cursor-pointer">
               Compléter mon profil
             </button>
           </div>
@@ -247,13 +247,13 @@ export default function JobsPage() {
                 </div>
               ))}
             </div>
-            <button className="w-full mt-4 py-2 text-sm text-[#0073b1] hover:underline">
+            <button className="w-full mt-4 py-2 text-sm text-primary hover:underline">
               + Ajouter une alerte
             </button>
           </div>
 
           {/* Top Companies */}
-          <div className="card">
+          <div className="card sticky top-52 ">
             <h3 className="font-semibold text-gray-900 mb-4">
               Entreprises phares
             </h3>
@@ -267,7 +267,7 @@ export default function JobsPage() {
                   key={index}
                   className="flex items-center space-x-3 px-3 py-1 hover:bg-gray-50 rounded-lg"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-cyan-400 to-blue-500 flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
                     <Building className="w-5 h-5 text-white" />
                   </div>
                   <div className="flex-1">
@@ -295,15 +295,15 @@ export default function JobsPage() {
         {/* Main Content */}
         <div className="flex-1">
           {/* Tabs */}
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 mb-6">
+          <div className="bg-white rounded-lg border border-gray-200 mb-6">
             <div className="flex border-b border-gray-200">
               {["recommended", "recent", "remote", "saved"].map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`flex-1 px-6 py-4 font-medium border-b-2 ${
+                  className={`flex-1 px-4 py-2 font-medium border-b-2 ${
                     activeTab === tab
-                      ? "border-[#0073b1] text-[#0073b1]"
+                      ? "border-primary text-primary"
                       : "border-transparent text-gray-600 hover:text-gray-900"
                   }`}
                 >
@@ -321,7 +321,7 @@ export default function JobsPage() {
                 {jobListings.map((job) => (
                   <div
                     key={job.id}
-                    className="border border-gray-200 rounded-xl p-6 hover:border-[#0073b1] transition-colors"
+                    className="card hover:border-primary transition-colors"
                   >
                     <div className="flex flex-col md:flex-row md:items-start justify-between">
                       <div className="flex-1">
@@ -329,16 +329,16 @@ export default function JobsPage() {
                         <div className="flex items-start justify-between">
                           <div>
                             <div className="flex items-center space-x-2 mb-2">
-                              <h3 className="text-xl font-bold text-gray-900">
+                              <h3 className="text-lg font-bold text-gray-900">
                                 {job.title}
                               </h3>
                               {job.urgent && (
-                                <span className="px-2 py-1 bg-red-100 text-red-800 text-xs font-bold rounded-full">
+                                <span className="px-2 py-0.5 bg-red-100 text-red-800 text-xs font-bold rounded-full">
                                   URGENT
                                 </span>
                               )}
                             </div>
-                            <div className="flex items-center space-x-4 text-gray-600">
+                            <div className="flex items-center space-x-4 text-gray-600 text-sm">
                               <span className="flex items-center">
                                 <Building className="w-4 h-4 mr-1" />
                                 {job.company}
@@ -409,10 +409,10 @@ export default function JobsPage() {
                               <span className="font-bold">{job.match}%</span>
                             </div>
                             <div className="flex items-center space-x-3">
-                              <button className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">
+                              <button className="px-4 py-2 border border-gray-300 rounded-full text-gray-700 hover:bg-gray-50 cursor-pointer">
                                 Voir détails
                               </button>
-                              <button className="px-4 py-2 bg-[#0073b1] text-white rounded-lg hover:bg-[#006097]">
+                              <button className="px-4 py-2 bg-primary text-white rounded-full hover:bg-primary cursor-pointer">
                                 Postuler maintenant
                               </button>
                             </div>
@@ -427,12 +427,12 @@ export default function JobsPage() {
           </div>
 
           {/* Recommended Jobs Quick View */}
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-6">
+          <div className="card mb-6">
             <div className="flex justify-between items-center mb-6">
               <h3 className="text-lg font-semibold text-gray-900">
                 Autres offres recommandées
               </h3>
-              <button className="text-sm text-[#0073b1] hover:underline">
+              <button className="text-sm text-primary hover:underline cursor-pointer">
                 Voir tout
               </button>
             </div>
@@ -440,7 +440,7 @@ export default function JobsPage() {
               {recommendedJobs.map((job) => (
                 <div
                   key={job.id}
-                  className="border border-gray-200 rounded-lg p-4 hover:border-[#0073b1]"
+                  className="border border-gray-200 rounded-lg p-4 hover:border-primary"
                 >
                   <div className="flex justify-between items-start">
                     <div>
@@ -459,7 +459,7 @@ export default function JobsPage() {
                           {job.match}%
                         </span>
                       </div>
-                      <button className="mt-2 text-sm text-[#0073b1] hover:underline">
+                      <button className="mt-2 text-sm text-primary hover:underline">
                         Postuler
                       </button>
                     </div>
@@ -480,19 +480,19 @@ export default function JobsPage() {
                   Ressources pour améliorer votre employabilité
                 </p>
                 <div className="flex flex-wrap gap-3">
-                  <button className="px-4 py-2 bg-white text-gray-700 rounded-lg border hover:border-purple-300">
+                  <button className="px-4 py-2 bg-white text-gray-700 rounded-full cursor-pointer border hover:border-purple-300">
                     CV Builder
                   </button>
-                  <button className="px-4 py-2 bg-white text-gray-700 rounded-lg border hover:border-purple-300">
+                  <button className="px-4 py-2 bg-white text-gray-700 rounded-full cursor-pointer border hover:border-purple-300">
                     Interview Prep
                   </button>
-                  <button className="px-4 py-2 bg-white text-gray-700 rounded-lg border hover:border-purple-300">
+                  <button className="px-4 py-2 bg-white text-gray-700 rounded-full cursor-pointer border hover:border-purple-300">
                     Salary Insights
                   </button>
                 </div>
               </div>
               <div className="mt-4 md:mt-0">
-                <button className="flex items-center space-x-2 px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700">
+                <button className="flex items-center space-x-2 px-6 py-3 bg-purple-600 text-white rounded-lg cursor-pointer hover:bg-purple-700">
                   <span>Explorer les ressources</span>
                   <ChevronRight className="w-4 h-4" />
                 </button>
@@ -531,7 +531,7 @@ export default function JobsPage() {
                 </div>
               ))}
             </div>
-            <button className="w-full mt-4 py-2 text-sm text-[#0073b1] hover:underline">
+            <button className="w-full mt-4 py-2 text-sm text-primary hover:underline">
               Voir le détail
             </button>
           </div>
@@ -572,8 +572,8 @@ export default function JobsPage() {
                   <span className="text-gray-600">E-commerce Manager</span>
                   <span className="font-medium">450K FCFA</span>
                 </div>
-                <div className="w-full bg-gray-200 rounded-full h-2">
-                  <div className="bg-green-500 h-2 rounded-full w-3/4"></div>
+                <div className="w-full bg-gray-200 rounded-full h-1.5">
+                  <div className="bg-green-500 h-1.5 rounded-full w-3/4"></div>
                 </div>
               </div>
               <div>
@@ -581,8 +581,8 @@ export default function JobsPage() {
                   <span className="text-gray-600">Fullstack Developer</span>
                   <span className="font-medium">420K FCFA</span>
                 </div>
-                <div className="w-full bg-gray-200 rounded-full h-2">
-                  <div className="bg-blue-500 h-2 rounded-full w-2/3"></div>
+                <div className="w-full bg-gray-200 rounded-full h-1.5">
+                  <div className="bg-blue-500 h-1.5 rounded-full w-2/3"></div>
                 </div>
               </div>
               <div>
@@ -590,12 +590,12 @@ export default function JobsPage() {
                   <span className="text-gray-600">Product Designer</span>
                   <span className="font-medium">380K FCFA</span>
                 </div>
-                <div className="w-full bg-gray-200 rounded-full h-2">
-                  <div className="bg-purple-500 h-2 rounded-full w-1/2"></div>
+                <div className="w-full bg-gray-200 rounded-full h-1.5">
+                  <div className="bg-purple-500 h-1.5 rounded-full w-1/2"></div>
                 </div>
               </div>
             </div>
-            <button className="w-full mt-4 py-2 text-sm text-[#0073b1] hover:underline">
+            <button className="w-full mt-4 py-2 text-sm text-primary hover:underline">
               Explorer les salaires
             </button>
           </div>

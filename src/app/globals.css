@@ -11,7 +11,7 @@
 :root {
   --background: #f6fbff; /* Blanc légèrement bleuté (propre, premium) */
   --foreground: #0b0f12; /* Texte noir bleu nuit */
-  --primary: #40aadf;
+  --primary: #4b6fc9;
   --primary-10: #5bb2dd; /* Cyan principal (vif, moderne) */
   --primary-dark: #0a5e70; /* Cyan foncé (élégant, sérieux) */
   --secondary: #0891b2; /* Bleu-cyan profond */
@@ -88,7 +88,25 @@
     border: 1px solid #e5e7eb; /* gray-200 */
     padding: 1.25rem; /* 20px */
   }
-
+  .card-1 {
+    background-color: white;
+    border-radius: 0.5rem; /* 8px */
+    border: 1px solid #e5e7eb; /* gray-200 */
+    padding: 10px; /* 20px */
+  }
+  .card-2 {
+    background-color: white;
+    border-radius: 0.5rem; /* 8px */
+    border: 1px solid #e5e7eb; /* gray-200 */
+    padding-left: 10px; /* 20px */
+    padding-bottom: 10px; /* 20px */
+    padding-top: 5px; /* 20px */
+    padding-right: 5px; /* 20px */
+  }
+  .card-3 {
+    border-radius: 0.5rem; /* 8px */
+    padding: 5px; /* 20px */
+  }
   .btn-primary {
     background-color: var(--primary);
     color: white;

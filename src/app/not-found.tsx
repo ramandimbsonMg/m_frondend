@@ -67,27 +67,31 @@ export default function NotFoundPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      <div className="max-w-7xl mx-auto px-4 py-12">
+    <div className="min-h-screen rounded-lg bg-gradient-to-b from-gray-50 to-white">
+      <div className="max-w-7xl mx-auto px-4 py-4">
         {/* Header */}
         <div className="flex justify-between items-center mb-12">
-          <Link href="/" className="flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 flex items-center justify-center">
-              <span className="text-white font-bold text-xl">MM</span>
-            </div>
-            <span className="text-2xl font-bold text-gray-900">
-              Missera Market
-            </span>
-          </Link>
+          <div className="lg:block hidden">
+            <Link href="/" className="flex items-center w-full h-14">
+              <img
+                src="/logo-mis.png"
+                alt="logo-missera.com"
+                className="w-full h-full object-cover"
+              />
+              {/* <span className="text-xl font-bold text-gray-900 hidden md:block">
+                Missera Market
+              </span> */}
+            </Link>
+          </div>
           <div className="flex items-center space-x-4">
             <Link
               href="/"
-              className="flex items-center space-x-2 px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg"
+              className="flex items-center space-x-2 px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-full cursor-pointer"
             >
               <Home className="w-4 h-4" />
               <span>Accueil</span>
             </Link>
-            <button className="flex items-center space-x-2 px-4 py-2 bg-[#0073b1] text-white rounded-lg hover:bg-[#006097]">
+            <button className="flex items-center space-x-2 px-4 py-2 bg-primary text-white rounded-full hover:bg-primary cursor-pointer">
               <Zap className="w-4 h-4" />
               <span>Aide</span>
             </button>
@@ -95,10 +99,10 @@ export default function NotFoundPage() {
         </div>
 
         {/* Main Content */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-6 items-center">
           {/* Left Column - Animated 404 */}
           <div className="text-center lg:text-left">
-            <div className="relative inline-block mb-8">
+            <div className="relative inline-block mb-20">
               <div className="relative">
                 <div className="text-9xl font-bold text-gray-900 opacity-10">
                   404
@@ -123,7 +127,7 @@ export default function NotFoundPage() {
             <h1 className="text-5xl font-bold text-gray-900 mb-4">
               Oups ! Page introuvable
             </h1>
-            <p className="text-xl text-gray-600 mb-8">
+            <p className="text-lg text-gray-600 mb-8">
               La page que vous recherchez semble s'être égarée dans le vaste
               réseau de Missera Market.
             </p>
@@ -135,9 +139,9 @@ export default function NotFoundPage() {
                 <input
                   type="text"
                   placeholder="Rechercher sur Missera Market..."
-                  className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0073b1]"
+                  className="w-full pl-12 pr-4 py-2.5 placeholder:text-sm border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary"
                 />
-                <button className="absolute right-2 top-1/2 transform -translate-y-1/2 px-4 py-1.5 bg-[#0073b1] text-white rounded-md hover:bg-[#006097]">
+                <button className="absolute right-2 top-1/2 transform -translate-y-1/2 px-4 py-1.5 bg-primary text-white rounded-full hover:bg-primary">
                   Rechercher
                 </button>
               </div>
@@ -147,14 +151,14 @@ export default function NotFoundPage() {
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/"
-                className="flex items-center space-x-2 px-6 py-3 bg-[#0073b1] text-white rounded-lg hover:bg-[#006097]"
+                className="flex items-center space-x-2 px-6 py-2 bg-primary text-white rounded-full hover:bg-primary"
               >
                 <ArrowLeft className="w-4 h-4" />
                 <span>Retour à l'accueil</span>
               </Link>
               <button
                 onClick={() => window.history.back()}
-                className="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50"
+                className="px-6 py-2 border border-gray-300 text-gray-700 rounded-full hover:bg-gray-50"
               >
                 Page précédente
               </button>
@@ -167,12 +171,12 @@ export default function NotFoundPage() {
             <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-6 mb-8">
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center space-x-3">
-                  <Globe className="w-6 h-6 text-cyan-600" />
+                  <Globe className="w-6 h-6 text-primary" />
                   <h3 className="text-lg font-semibold text-gray-900">
                     Pages tendances
                   </h3>
                 </div>
-                <Sparkles className="w-5 h-5 text-yellow-500" />
+                <Sparkles className="w-5 h-5 text-accent" />
               </div>
               <div className="space-y-4">
                 {trendingPages.map((page, index) => (
@@ -182,14 +186,14 @@ export default function NotFoundPage() {
                     className="flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 group"
                   >
                     <div>
-                      <div className="font-medium text-gray-900 group-hover:text-[#0073b1]">
+                      <div className="font-medium text-gray-900 group-hover:text-primary">
                         {page.name}
                       </div>
                       <div className="text-sm text-gray-600">
                         {page.views} vues cette semaine
                       </div>
                     </div>
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 flex items-center justify-center">
+                    <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
                       <span className="text-white text-xs font-bold">
                         {index + 1}
                       </span>
@@ -200,20 +204,20 @@ export default function NotFoundPage() {
             </div>
 
             {/* Quick Links */}
-            <div className="bg-gradient-to-r from-cyan-50 to-blue-50 rounded-xl border border-cyan-100 p-6">
+            <div className="bg-gradient-to-r from-cyan-50 to-blue-50 rounded-xl border border-cyan-100 px-3 py-2">
               <h3 className="font-semibold text-gray-900 mb-6">
                 Vous cherchez peut-être :
               </h3>
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid md:grid-cols- gap-4">
                 {suggestions.map((item, index) => (
                   <Link key={index} href={item.href} className="group">
-                    <div className="p-4 bg-white rounded-lg border border-gray-200 hover:border-[#0073b1] hover:shadow-md transition-all">
+                    <div className="p-4 bg-white rounded-lg border border-gray-200 hover:border-primary hover:shadow-sm transition-all">
                       <div className="flex items-start space-x-3">
-                        <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-cyan-400 to-blue-500 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center group-hover:scale-110 transition-transform">
                           <item.icon className="w-5 h-5 text-white" />
                         </div>
                         <div>
-                          <div className="font-semibold text-gray-900 group-hover:text-[#0073b1]">
+                          <div className="font-semibold text-gray-900 group-hover:text-primary">
                             {item.title}
                           </div>
                           <div className="text-sm text-gray-600 mt-1">
@@ -240,13 +244,13 @@ export default function NotFoundPage() {
               retrouver votre chemin sur Missera Market.
             </p>
             <div className="flex flex-wrap justify-center gap-6">
-              <button className="px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-lg hover:opacity-90">
+              <button className="px-6 py-1.5 bg-accent text-white rounded-full hover:opacity-90 cursor-pointer">
                 Contacter le support
               </button>
-              <button className="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50">
+              <button className="px-6 py-1.5 border border-gray-300 text-gray-700 rounded-full hover:bg-gray-50 cursor-pointer">
                 Centre d'aide
               </button>
-              <button className="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50">
+              <button className="px-6 py-1.5 border border-gray-300 text-gray-700 rounded-full hover:bg-gray-50 cursor-pointer">
                 Signaler un problème
               </button>
             </div>
@@ -256,18 +260,18 @@ export default function NotFoundPage() {
         {/* Fun Facts */}
         <div className="mt-16 grid md:grid-cols-3 gap-6">
           <div className="text-center p-6 bg-gradient-to-br from-cyan-50 to-blue-50 rounded-xl">
-            <div className="text-3xl font-bold text-cyan-700 mb-2">10M+</div>
-            <div className="text-gray-700">Pages sur Missera Market</div>
+            <div className="text-2xl font-bold text-cyan-700 mb-2">10M+</div>
+            <div className="text-gray-700 text-sm">Pages sur Missera Market</div>
           </div>
           <div className="text-center p-6 bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl">
-            <div className="text-3xl font-bold text-purple-700 mb-2">99.9%</div>
-            <div className="text-gray-700">Pages trouvées avec succès</div>
+            <div className="text-2xl font-bold text-purple-700 mb-2">99.9%</div>
+            <div className="text-gray-700 text-sm">Pages trouvées avec succès</div>
           </div>
           <div className="text-center p-6 bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl">
-            <div className="text-3xl font-bold text-green-700 mb-2">
+            <div className="text-2xl font-bold text-green-700 mb-2">
               &lt; 0.1%
             </div>
-            <div className="text-gray-700">Chance de se perdre ici</div>
+            <div className="text-gray-700 text-sm">Chance de se perdre ici</div>
           </div>
         </div>
 
@@ -297,7 +301,7 @@ export default function NotFoundPage() {
       </div>
 
       {/* Decorative Elements */}
-      <div className="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
+      {/* <div className="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
         {[...Array(20)].map((_, i) => (
           <div
             key={i}
@@ -318,7 +322,7 @@ export default function NotFoundPage() {
             }}
           />
         ))}
-      </div>
+      </div> */}
 
       <style jsx>{`
         @keyframes float {

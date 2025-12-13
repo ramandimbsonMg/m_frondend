@@ -143,9 +143,9 @@ export default function NotificationsPage() {
   return (
     <div className="mx-auto max-w-8xl">
       {/* Header */}
-      <div className="bg-white rounded-lg border border-gray-200 px-4 py-3 mb-6">
+      <div className="card mb-4 sticky top-16 z-20">
         <div className="flex justify-between items-center">
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2 sticky top-20">
             <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
               <Bell className="w-5 h-5 text-white" />
             </div>
@@ -176,7 +176,7 @@ export default function NotificationsPage() {
       <div className="grid lg:grid-cols-12 gap-4">
         {/* Sidebar - Filters */}
         <div className="lg:col-span-4">
-          <div className="bg-white rounded-lg border border-gray-200 px-4 py-2">
+          <div className="card-1">
             <h3 className="font-semibold text-gray-900 mb-4">
               Filtrer par type
             </h3>
@@ -242,7 +242,7 @@ export default function NotificationsPage() {
           </div>
 
           {/* Stats */}
-          <div className="bg-white rounded-lg border border-gray-200 p-4 mt-6 sticky top-20">
+          <div className="card mt-6 sticky top-20">
             <h3 className="font-semibold text-gray-900 mb-4">Statistiques</h3>
             <div className="space-y-4">
               <div>
@@ -252,8 +252,8 @@ export default function NotificationsPage() {
                   </span>
                   <span className="font-medium">8</span>
                 </div>
-                <div className="w-full bg-gray-200 rounded-full h-2">
-                  <div className="bg-blue-500 h-2 rounded-full w-3/4"></div>
+                <div className="w-full bg-gray-200 rounded-full h-1.5">
+                  <div className="bg-blue-500 h-1.5 rounded-full w-3/4"></div>
                 </div>
               </div>
               <div>
@@ -263,8 +263,8 @@ export default function NotificationsPage() {
                   </span>
                   <span className="font-medium">85%</span>
                 </div>
-                <div className="w-full bg-gray-200 rounded-full h-2">
-                  <div className="bg-green-500 h-2 rounded-full w-4/5"></div>
+                <div className="w-full bg-gray-200 rounded-full h-1.5">
+                  <div className="bg-accent h-1.5 rounded-full w-4/5"></div>
                 </div>
               </div>
               <div>
@@ -274,8 +274,8 @@ export default function NotificationsPage() {
                   </span>
                   <span className="font-medium">12</span>
                 </div>
-                <div className="w-full bg-gray-200 rounded-full h-2">
-                  <div className="bg-purple-500 h-2 rounded-full w-2/3"></div>
+                <div className="w-full bg-gray-200 rounded-full h-1.5">
+                  <div className="bg-purple-500 h-1.5 rounded-full w-2/3"></div>
                 </div>
               </div>
             </div>
@@ -284,7 +284,7 @@ export default function NotificationsPage() {
 
         {/* Main Content - Notifications List */}
         <div className="lg:col-span-8">
-          <div className="bg-white rounded-lg border border-gray-200">
+          <div className="card">
             {/* Header */}
             <div className="px-4 py-3 border-b border-gray-200">
               <div className="flex justify-between items-center">
@@ -437,7 +437,7 @@ export default function NotificationsPage() {
           </div>
 
           {/* Notification Settings */}
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mt-6">
+          <div className="card mt-4">
             <div className="flex items-center justify-between mb-6">
               <div>
                 <h3 className="text-md font-semibold text-gray-900">
@@ -477,7 +477,7 @@ export default function NotificationsPage() {
                 </div>
               ))}
             </div>
-            <button className="w-full mt-4 py-1.5 bg-primary text-white rounded-full font-medium hover:bg-[#006097]">
+            <button className="w-full mt-4 py-1.5 bg-primary text-white rounded-full font-medium hover:bg-[#006097] cursor-pointer">
               Enregistrer les préférences
             </button>
           </div>

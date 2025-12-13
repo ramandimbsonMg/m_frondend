@@ -149,14 +149,14 @@ export default function ReseauPage() {
                 </span>
                 <span className="text-gray-600 ml-1">contacts</span>
               </div>
-              <div className="text-green-600 font-medium">
+              <div className="text-accent font-medium">
                 <TrendingUp className="w-4 h-4 inline mr-1" />+
                 {networkStats.newThisWeek} cette semaine
               </div>
             </div>
           </div>
           <div className="mt-4 md:mt-0">
-            <button className="flex items-center space-x-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-[#006097] cursor-pointer">
+            <button className="flex items-center space-x-2 px-4 py-2 bg-primary text-white rounded-full hover:bg-primary cursor-pointer">
               <UserPlus className="w-4 h-4" />
               <span>Étendre mon réseau</span>
             </button>
@@ -168,7 +168,7 @@ export default function ReseauPage() {
         {/* Left Sidebar - Filters & Stats */}
         <div className="lg:w-64">
           {/* Search */}
-          <div className="bg-white rounded-lg border border-gray-200 px-4 py-2 mb-6">
+          <div className="card-1 mb-4 sticky top-16">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
               <input
@@ -182,7 +182,7 @@ export default function ReseauPage() {
           </div>
 
           {/* Filters */}
-          <div className="bg-white rounded-lg border border-gray-200 px-4 py-3 mb-6">
+          <div className="card mb-4">
             <div className="flex items-center justify-between mb-4">
               <h3 className="font-semibold text-gray-900">Filtres</h3>
               <Filter className="w-5 h-5 text-gray-600" />
@@ -223,7 +223,7 @@ export default function ReseauPage() {
           </div>
 
           {/* Network Stats */}
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+          <div className="card">
             <h3 className="font-semibold text-gray-900 mb-4">
               Statistiques du réseau
             </h3>
@@ -276,13 +276,13 @@ export default function ReseauPage() {
                   <span className="text-sm text-gray-600">
                     Nouveaux contacts
                   </span>
-                  <span className="text-sm font-bold text-green-600">
+                  <span className="text-sm font-bold text-accent">
                     +{networkStats.newThisWeek}
                   </span>
                 </div>
-                <div className="w-full bg-gray-200 rounded-full h-2">
+                <div className="w-full bg-gray-200 rounded-full h-1.5">
                   <div
-                    className="bg-green-500 h-2 rounded-full"
+                    className="bg-accent h-1.5 rounded-full"
                     style={{
                       width: `${
                         (networkStats.newThisWeek / networkStats.total) * 100
@@ -295,14 +295,14 @@ export default function ReseauPage() {
           </div>
 
           {/* Invite Friends */}
-          <div className="bg-gradient-to-r from-cyan-50 to-blue-50 rounded-xl border border-cyan-100 p-6 mt-6">
+          <div className="bg-gradient-to-r from-cyan-50 to-blue-50 rounded-xl border border-cyan-100 p-[10px] mt-4">
             <h3 className="font-semibold text-gray-900 mb-3">
               Étendez votre réseau
             </h3>
             <p className="text-sm text-gray-600 mb-4">
               Invitez vos contacts à rejoindre Missera Market
             </p>
-            <button className="w-full py-2 border border-primary text-primary rounded-lg font-medium hover:bg-blue-50">
+            <button className="w-full py-1.5 border border-primary text-primary rounded-full font-medium hover:bg-blue-50">
               Inviter des contacts
             </button>
           </div>
@@ -311,14 +311,14 @@ export default function ReseauPage() {
         {/* Main Content */}
         <div className="flex-1">
           {/* Tabs */}
-          <div className="bg-white rounded-lg border border-gray-200 mb-6">
+          <div className="bg-white rounded-lg border border-gray-200 mb-4">
             <div className="flex border-b border-gray-200">
               {["connections", "pending", "suggestions", "groups"].map(
                 (tab) => (
                   <button
                     key={tab}
                     onClick={() => setActiveTab(tab)}
-                    className={`flex-1 px-6 py-4 font-medium border-b-2 ${
+                    className={`flex-1 px-6 py-3 cursor-pointer font-medium border-b-2 ${
                       activeTab === tab
                         ? "border-primary text-primary"
                         : "border-transparent text-gray-600 hover:text-gray-900"
@@ -334,15 +334,15 @@ export default function ReseauPage() {
             </div>
 
             {/* Tab Content */}
-            <div className="p-6">
+            <div className="px-6 py-3">
               {activeTab === "connections" && (
-                <div className="space-y-4">
+                <div className="space-y-3">
                   <div className="flex justify-between items-center mb-6">
                     <h3 className="text-md font-semibold text-gray-900">
                       Tous mes contacts ({connections.length})
                     </h3>
                     <div className="flex items-center space-x-2">
-                      <button className="px-3 py-1 border border-gray-300 rounded-lg text-sm hover:bg-gray-50">
+                      <button className="px-3 py-1 border border-gray-300 rounded-full text-sm hover:bg-gray-50">
                         Trier par: Récent
                       </button>
                       <button className="p-2 text-gray-600 hover:bg-gray-100 rounded-full cursor-pointer">
@@ -356,7 +356,7 @@ export default function ReseauPage() {
                     {connections.map((connection) => (
                       <div
                         key={connection.id}
-                        className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-md transition-shadow"
+                        className="card hover:shadow-sm transition-shadow"
                       >
                         <div className="flex items-start justify-between">
                           {/* Avatar & Info */}
@@ -368,7 +368,7 @@ export default function ReseauPage() {
                                 </span>
                               </div>
                               {connection.status === "active" && (
-                                <div className="absolute bottom-0 right-0 w-4 h-4 bg-green-500 rounded-full border-2 border-white"></div>
+                                <div className="absolute bottom-0 right-0 w-4 h-4 bg-accent rounded-full border-2 border-white"></div>
                               )}
                             </div>
                             <div>
@@ -395,7 +395,7 @@ export default function ReseauPage() {
                               </div>
 
                               <div className="flex items-center mt-2">
-                                <span className="text-xs px-2 py-1 bg-blue-100 text-blue-800 rounded-full mr-2">
+                                <span className="text-xs px-2 py-1 bg-blue-100 text-primary rounded-full mr-2">
                                   {connection.connectionType}°
                                 </span>
                                 <span className="text-xs text-gray-600">
@@ -412,7 +412,7 @@ export default function ReseauPage() {
                             {connection.skills.map((skill, index) => (
                               <span
                                 key={index}
-                                className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm"
+                                className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs"
                               >
                                 {skill}
                               </span>
@@ -426,11 +426,11 @@ export default function ReseauPage() {
                             {connection.lastActive}
                           </div>
                           <div className="flex items-center space-x-2">
-                            <button className="flex items-center space-x-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer">
+                            <button className="flex items-center space-x-2 px-4 py-2 border border-gray-300 rounded-full hover:bg-gray-50 cursor-pointer">
                               <MessageCircle className="w-4 h-4" />
                               <span className="text-sm">Message</span>
                             </button>
-                            <button className="flex items-center space-x-2 px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 cursor-pointer">
+                            <button className="flex items-center h-10 w-10 bg-gray-100 text-gray-700 rounded-full hover:bg-gray-200 cursor-pointer text-center justify-center">
                               <MoreVertical className="w-4 h-4" />
                             </button>
                           </div>
@@ -643,7 +643,7 @@ export default function ReseauPage() {
           {/* Alumni & Events */}
           <div className="grid md:grid-cols-2 gap-4">
             {/* Alumni */}
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
+            <div className="card">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-gray-900">
                   Anciens collaborateurs
@@ -670,9 +670,9 @@ export default function ReseauPage() {
                 ].map((alumni, index) => (
                   <div
                     key={index}
-                    className="flex items-center space-x-3 px-3 py-1.5 hover:bg-gray-50 rounded-lg"
+                    className="flex items-center space-x-3 px-3 py-1.5 hover:bg-gray-50 rounded-lg cursor-pointer"
                   >
-                    <div className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center">
                       <span className="text-white font-bold text-sm">
                         {alumni.name
                           .split(" ")
@@ -700,7 +700,7 @@ export default function ReseauPage() {
             </div>
 
             {/* Network Events */}
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
+            <div className="card">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-gray-900">
                   Événements réseau
@@ -762,7 +762,7 @@ export default function ReseauPage() {
         {/* Right Sidebar - Quick Actions */}
         <div className="lg:w-64">
           {/* Invitations Received */}
-          <div className="bg-white rounded-lg border border-gray-200 px-4 py-3 mb-6">
+          <div className="card mb-6">
             <div className="flex items-center justify-between mb-2">
               <h3 className="font-semibold text-gray-900">
                 Invitations reçues
@@ -806,7 +806,7 @@ export default function ReseauPage() {
           </div>
 
           {/* People Also Viewed */}
-          <div className="bg-white rounded-lg border border-gray-200 px-4 py-3 mb-6">
+          <div className="card mb-4">
             <h3 className="font-semibold text-gray-900 mb-4">
               Les gens consultent aussi
             </h3>
@@ -817,7 +817,7 @@ export default function ReseauPage() {
               ].map((person, index) => (
                 <div
                   key={index}
-                  className="flex items-center space-x-3 px-2 hover:bg-gray-50 rounded-lg"
+                  className="flex items-center space-x-3 px-2 hover:bg-gray-50 rounded-lg cursor-pointer"
                 >
                   <div className="w-10 h-10 rounded-full bg-pink-400 flex items-center justify-center">
                     <span className="text-white font-bold text-sm">
@@ -845,7 +845,7 @@ export default function ReseauPage() {
           </div>
 
           {/* Export Network */}
-          <div className="bg-white rounded-lg border border-gray-200 px-4 py-3">
+          <div className="card">
             <h3 className="font-semibold text-gray-900 mb-4">
               Exporter mon réseau
             </h3>
@@ -853,17 +853,17 @@ export default function ReseauPage() {
               Téléchargez la liste de vos contacts
             </p>
             <div className="space-y-2">
-              <button className="w-full py-1.5 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 cursor-pointer">
+              <button className="w-full py-1.5 border border-gray-300 rounded-full text-gray-700 hover:bg-gray-50 cursor-pointer">
                 Exporter en CSV
               </button>
-              <button className="w-full py-1.5 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 cursor-pointer">
+              <button className="w-full py-1.5 border border-gray-300 rounded-full text-gray-700 hover:bg-gray-50 cursor-pointer">
                 Exporter en PDF
               </button>
             </div>
           </div>
 
           {/* Network Privacy */}
-          <div className="bg-gray-50 rounded-lg border border-gray-200 px-4 py-3 mt-6">
+          <div className="card mt-6">
             <div className="flex items-center space-x-3 mb-4">
               <Globe className="w-5 h-5 text-gray-600" />
               <h4 className="font-medium text-gray-900">

@@ -42,27 +42,27 @@ const CreatePost = () => {
           </button>
 
           {/* Action Buttons */}
-          <div className="flex items-center justify-between mt-4">
-            <div className="flex items-center space-x-4">
-              <button className="flex items-center space-x-2 text-gray-600 hover:text-primary">
-                <ImageIcon className="w-5 h-5" />
-                <span className="text-sm">Photo</span>
-              </button>
-              <button className="flex items-center space-x-2 text-gray-600 hover:text-primary">
-                <Video className="w-5 h-5" />
-                <span className="text-sm">Vidéo</span>
-              </button>
-              <button className="flex items-center space-x-2 text-gray-600 hover:text-primary">
-                <Calendar className="w-5 h-5" />
-                <span className="text-sm">Événement</span>
-              </button>
-              <button className="flex items-center space-x-2 text-gray-600 hover:text-primary">
-                <DollarSign className="w-5 h-5" />
-                <span className="text-sm">Vendre</span>
-              </button>
-            </div>
-            <button className="btn-primary text-sm">Publier</button>
+          <div className="flex items-center justify-between mt-3">
+            <button className="flex items-center space-x-2 text-gray-600 hover:text-primary bg-gray-100 px-4 p-2 rounded-full cursor-pointer">
+              <ImageIcon className="w-5 h-5" />
+              <span className="text-sm">Photo</span>
+            </button>
+            <button className="flex items-center space-x-2 text-gray-600 hover:text-primary bg-gray-100 px-4 p-2 rounded-full cursor-pointer">
+              <Video className="w-5 h-5" />
+              <span className="text-sm">Vidéo</span>
+            </button>
+            <button className="flex items-center space-x-2 text-gray-600 hover:text-primary bg-gray-100 px-4 p-2 rounded-full cursor-pointer">
+              <Calendar className="w-5 h-5" />
+              <span className="text-sm">Événement</span>
+            </button>
+            <button className="flex items-center space-x-2 text-gray-600 hover:text-primary bg-gray-100 px-4 p-2 rounded-full cursor-pointer">
+              <DollarSign className="w-5 h-5" />
+              <span className="text-sm">Vendre</span>
+            </button>
           </div>
+        </div>
+        <div>
+          <button className="btn-primary text-sm cursor-pointer">Publier</button>
         </div>
       </div>
 
