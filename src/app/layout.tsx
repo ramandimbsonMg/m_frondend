@@ -33,9 +33,8 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
-  minimumScale: 1,
-  userScalable: false,
+  // IMPORTANT: Enlever maximumScale et userScalable
+  // pour permettre un affichage normal
   viewportFit: "cover",
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },
@@ -54,6 +53,13 @@ export default function RootLayout({
         <meta charSet="UTF-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
 
+        {/* ESSENTIEL: Meta viewport simple */}
+        {/* Next.js gère déjà via export const viewport, mais pour être sûr */}
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
+
         {/* Favicon */}
         <link rel="icon" href="/favicon_io/favicon.ico" />
         <link rel="apple-touch-icon" href="/favicon_io/apple-touch-icon.png" />
@@ -67,25 +73,21 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Missera Market" />
 
-        {/* Format detection - empêche les numéros de téléphone d'être convertis en liens */}
-        <meta name="format-detection" content="telephone=no" />
+        {/* Format detection */}
+        <meta name="format-detection" content="telephone=no, email=no" />
 
-        {/* Prévention de zoom sur les inputs iOS */}
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no"
-        />
-
-        {/* Pour éviter le "bounce" sur iOS */}
-        <meta name="apple-touch-fullscreen" content="yes" />
+        {/* Empêche le zoom sur iOS */}
         <meta name="apple-mobile-web-app-capable" content="yes" />
       </head>
-      <body className={`${inter.className} bg-[#686b6e12] antialiased`}>
-        <div className="min-h-screen flex flex-col">
-          <Navbar />
-          <main className="flex-1 w-full">
-            <ClientMainLayout>{children}</ClientMainLayout>
-          </main>
+      <body className={`${inter.className} antialiased`}>
+        {/* Conteneur principal avec largeur fixe et prévention du débordement */}
+        <div className="min-h-screen w-full overflow-x-hidden bg-[#686b6e12]">
+          <div className="mx-auto w-full max-w-[100vw]">
+            <Navbar />
+            <main className="w-full">
+              <ClientMainLayout>{children}</ClientMainLayout>
+            </main>
+          </div>
         </div>
       </body>
     </html>
