@@ -36,7 +36,7 @@ const CreatePost = () => {
         <div className="lg:flex-1">
           <button
             onClick={() => setIsExpanded(true)}
-            className="lg:w-full w-40 truncate text-left px-3 py-2 border border-gray-300 rounded-full hover:bg-gray-50 text-gray-600 cursor-text"
+            className="lg:w-full w-46 truncate text-left px-3 py-2 border border-gray-300 rounded-full hover:bg-gray-50 text-gray-600 cursor-text text-sm"
           >
             Commencez un post...
           </button>
@@ -49,23 +49,25 @@ const CreatePost = () => {
       </div>
 
       {/* Action Buttons */}
-      <div className="lg:flex items-center justify-between mt-3 px-16 lg:block hidden">
-        <button className="flex items-center space-x-2 text-gray-600 hover:text-primary bg-gray-100 lg:text-sm text-xs px-4 lg:p-2 p-1 rounded-full cursor-pointer">
-          <ImageIcon className="lg:w-5 lg:h-5 w-4 h-4" />
-          <span className="text-sm">Photo</span>
-        </button>
+      <div className="lg:block hidden">
+        <div className="lg:flex items-center justify-between mt-3 px-16">
+          <button className="flex items-center space-x-2 text-gray-600 hover:text-primary bg-gray-100 lg:text-sm text-xs px-4 lg:p-2 p-1 rounded-full cursor-pointer">
+            <ImageIcon className="lg:w-5 lg:h-5 w-4 h-4" />
+            <span className="text-sm">Photo</span>
+          </button>
           <button className="flex items-center space-x-2 text-gray-600 hover:text-primary bg-gray-100 lg:text-sm text-xs px-4 lg:p-2 p-1 rounded-full cursor-pointer">
             <Video className="lg:w-5 lg:h-5 w-4 h-4" />
             <span className="text-sm">Vidéo</span>
           </button>
-        <button className="flex items-center space-x-2 text-gray-600 hover:text-primary bg-gray-100 lg:text-sm text-xs px-4 lg:p-2 p-1 rounded-full cursor-pointer">
-          <Calendar className="lg:w-5 lg:h-5 w-4 h-4" />
-          <span className="text-sm">Événement</span>
-        </button>
-        <button className="flex items-center space-x-2 text-gray-600 hover:text-primary bg-gray-100 lg:text-sm text-xs px-4 lg:p-2 p-1 rounded-full cursor-pointer">
-          <DollarSign className="lg:w-5 lg:h-5 w-4 h-4" />
-          <span className="text-sm">Vendre</span>
-        </button>
+          <button className="flex items-center space-x-2 text-gray-600 hover:text-primary bg-gray-100 lg:text-sm text-xs px-4 lg:p-2 p-1 rounded-full cursor-pointer">
+            <Calendar className="lg:w-5 lg:h-5 w-4 h-4" />
+            <span className="text-sm">Événement</span>
+          </button>
+          <button className="flex items-center space-x-2 text-gray-600 hover:text-primary bg-gray-100 lg:text-sm text-xs px-4 lg:p-2 p-1 rounded-full cursor-pointer">
+            <DollarSign className="lg:w-5 lg:h-5 w-4 h-4" />
+            <span className="text-sm">Vendre</span>
+          </button>
+        </div>
       </div>
 
       {/* Expanded Post Modal */}

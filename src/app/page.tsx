@@ -28,66 +28,69 @@ export default function Home() {
 
   return (
     <div className="lg:space-y-4 space-y-2">
-      {/* Profile Completion Alert */}
       <ProfileCompletionAlert
         completion={profileCompletion}
         onCompletionUpdate={setProfileCompletion}
       />
-      {/* Feed Tabs */}
+
+      {/* Feed Tabs - Caché sur mobile sauf quand isSticky est vrai */}
       <div
-        className={`flex lg:space-x-4 border-b pt-2 border-gray-200 bg-white z-50 rounded-b  ${
-          isSticky ? "sticky top-16 border-t" : ""
+        className={`flex lg:space-x-4 border-b pt-2 border-gray-200 bg-white z-50 rounded-b text-sm justify-between ${
+          isSticky ? "sticky top-16 border-t" : "lg:flex hidden"
         }`}
       >
-        <button
-          className={`pb-3 lg:px-4 px-2 font-medium cursor-pointer ${
-            activeTab === "feed"
-              ? "text-primary border-b-2 border-primary"
-              : "text-gray-600 hover:text-gray-900"
-          }`}
-          onClick={() => setActiveTab("feed")}
-        >
-          <div className="flex items-center space-x-2">
-            <div className="flex">
-              <span className="lg:block hidden">Fil d'</span> actualité
+        <div className="flex">
+          <button
+            className={`pb-3 lg:px-4 px-2 font-medium cursor-pointer ${
+              activeTab === "feed"
+                ? "text-primary border-b-2 border-primary"
+                : "text-gray-600 hover:text-gray-900"
+            }`}
+            onClick={() => setActiveTab("feed")}
+          >
+            <div className="flex items-center space-x-2">
+              <div className="flex">
+                <span className="lg:block hidden">Fil d'</span> actualité
+              </div>
+              <div className="bg-accent text-xs lg:px-2 px-1 py-1 lg:py-0 -mx-2.5 mb-2 rounded-full text-white">
+                <span className="lg:block hidden">+10</span>
+              </div>
             </div>
-            <div className="bg-accent text-xs lg:px-2 px-1 py-1 lg:py-0 -mx-2.5 mb-2 rounded-full text-white">
-              <span className="lg:block hidden">+10</span>
+          </button>
+          <button
+            className={`pb-3 px-4 font-medium cursor-pointer ${
+              activeTab === "market"
+                ? "text-primary border-b-2 border-primary"
+                : "text-gray-600 hover:text-gray-900"
+            }`}
+            onClick={() => setActiveTab("market")}
+          >
+            <div className="flex items-center space-x-2">
+              <ShoppingBag className="w-4 h-4" />
+              <span>Marché</span>
             </div>
-          </div>
-        </button>
-        <button
-          className={`pb-3 px-4 font-medium cursor-pointer ${
-            activeTab === "market"
-              ? "text-primary border-b-2 border-primary"
-              : "text-gray-600 hover:text-gray-900"
-          }`}
-          onClick={() => setActiveTab("market")}
-        >
-          <div className="flex items-center space-x-2">
-            <ShoppingBag className="w-4 h-4" />
-            <span>Marché</span>
-          </div>
-        </button>
-        <button
-          className={`pb-3 px-4 font-medium cursor-pointer ${
-            activeTab === "network"
-              ? "text-primary border-b-2 border-primary"
-              : "text-gray-600 hover:text-gray-900"
-          }`}
-          onClick={() => setActiveTab("network")}
-        >
-          <div className="flex items-center space-x-2">
-            <TrendingUp className="w-4 h-4" />
-            <span>Tendances</span>
-          </div>
-        </button>
+          </button>
+          <button
+            className={`pb-3 px-4 font-medium cursor-pointer ${
+              activeTab === "network"
+                ? "text-primary border-b-2 border-primary"
+                : "text-gray-600 hover:text-gray-900"
+            }`}
+            onClick={() => setActiveTab("network")}
+          >
+            <div className="flex items-center space-x-2">
+              <TrendingUp className="w-4 h-4" />
+              <span>Tendances</span>
+            </div>
+          </button>
+        </div>
+        <div className="mx-4 w-8 h-8 rounded-full text-center flex justify-center hover:bg-gray-300 cursor-pointer">
+          ...
+        </div>
       </div>
 
-      {/* Create Post */}
       <CreatePost />
 
-      {/* Trending Products Section */}
       <div className="card">
         <div className="flex items-center justify-between mb-4">
           <h2 className="font-semibold text-gray-900 flex items-center">
@@ -105,14 +108,12 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Posts Feed */}
       <div className="space-y-4">
         {posts.map((post) => (
           <PostCard key={post.id} post={post} />
         ))}
       </div>
 
-      {/* Stats Widget */}
       <div className="card-1">
         <div className="flex items-center justify-between mb-4">
           <h2 className="font-semibold text-gray-900">
