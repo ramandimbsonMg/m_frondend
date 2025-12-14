@@ -83,7 +83,7 @@ export default function RootLayout({
       <body className={`${inter.className} bg-[#686b6e12] antialiased`}>
         <div className="min-h-screen flex flex-col">
           <Navbar />
-          <main className="lg:flex-1 w-full">
+          <main className="flex-1 w-full">
             <ClientMainLayout>{children}</ClientMainLayout>
           </main>
         </div>
