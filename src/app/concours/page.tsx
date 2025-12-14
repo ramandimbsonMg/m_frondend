@@ -83,42 +83,42 @@ export default function ContestsPage() {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto">
+    <div className="max-w-5xl px-4 mx-auto">
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-8 text-white mb-8">
+      <div className="bg-gradient-to-r from-purple-600/50 to-pink-600/50 rounded-lg px-6 py-2 text-white mb-4">
         <div className="flex flex-col md:flex-row md:items-center justify-between">
           <div>
-            <h1 className="text-4xl font-bold mb-2">Concours & Challenges</h1>
-            <p className="text-lg opacity-90">
+            <h1 className="text-2xl font-bold mb-2">Concours & Challenges</h1>
+            <p className="text-md text-gray-100 opacity-80">
               Participez à nos concours, gagnez des prix et boostez votre
               visibilité
             </p>
             <div className="flex items-center space-x-6 mt-6">
               <div className="flex items-center">
-                <Trophy className="w-6 h-6 mr-2" />
+                <Trophy className="w-6 h-6 mr-2 text-accent" />
                 <div>
-                  <div className="text-2xl font-bold">24</div>
-                  <div className="text-sm opacity-90">Concours actifs</div>
+                  <div className="text-lg font-bold">24</div>
+                  <div className="text-xs opacity-90">Concours actifs</div>
                 </div>
               </div>
               <div className="flex items-center">
-                <Users className="w-6 h-6 mr-2" />
+                <Users className="w-6 h-6 mr-2 text-accent" />
                 <div>
-                  <div className="text-2xl font-bold">1,245</div>
-                  <div className="text-sm opacity-90">Participants</div>
+                  <div className="text-lg font-bold">1,245</div>
+                  <div className="text-xs opacity-90">Participants</div>
                 </div>
               </div>
               <div className="flex items-center">
-                <DollarSign className="w-6 h-6 mr-2" />
+                <DollarSign className="w-6 h-6 mr-2 text-accent" />
                 <div>
-                  <div className="text-2xl font-bold">5M FCFA</div>
-                  <div className="text-sm opacity-90">À gagner</div>
+                  <div className="text-lg font-bold">5M FCFA</div>
+                  <div className="text-xs opacity-90">À gagner</div>
                 </div>
               </div>
             </div>
           </div>
           <div className="mt-6 md:mt-0">
-            <button className="px-6 py-3 bg-white text-purple-600 font-bold rounded-lg hover:bg-gray-100">
+            <button className="px-6 py-2 bg-white text-purple-600 font-bold rounded-full hover:bg-gray-100 cursor-pointer">
               Créer un concours
             </button>
           </div>
@@ -126,14 +126,14 @@ export default function ContestsPage() {
       </div>
 
       {/* Filters & Search */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-8">
+      <div className="card-1 mb-4 top-16 sticky">
         <div className="flex flex-col md:flex-row md:items-center justify-between space-y-4 md:space-y-0">
-          <div className="flex items-center space-x-2 overflow-x-auto">
+          <div className="flex items-center space-x-1 overflow-x-auto">
             {filters.map((filter) => (
               <button
                 key={filter.id}
                 onClick={() => setActiveFilter(filter.id)}
-                className={`px-4 py-2 rounded-full whitespace-nowrap ${
+                className={`px-2 py-1.5 rounded-full whitespace-nowrap cursor-pointer text-sm ${
                   activeFilter === filter.id
                     ? "bg-purple-100 text-purple-700 font-medium"
                     : "text-gray-600 hover:bg-gray-100"
@@ -143,16 +143,16 @@ export default function ContestsPage() {
               </button>
             ))}
           </div>
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-2">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
               <input
                 type="text"
                 placeholder="Rechercher un concours..."
-                className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                className="pl-10 pr-4 py-1.5 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-primary lg:w-60"
               />
             </div>
-            <button className="flex items-center space-x-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">
+            <button className="flex items-center space-x-2 px-4 py-1.5 border border-gray-300 rounded-full hover:bg-gray-50 cursor-pointer">
               <Filter className="w-5 h-5" />
               <span>Filtrer</span>
             </button>
@@ -161,14 +161,14 @@ export default function ContestsPage() {
       </div>
 
       {/* Contest Grid */}
-      <div className="grid md:grid-cols-2 gap-6 mb-8">
+      <div className="grid md:grid-cols-2 gap-6 mb-4">
         {contests.map((contest) => (
           <div
             key={contest.id}
-            className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow"
+            className="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-sm transition-shadow"
           >
             {/* Header */}
-            <div className="p-6 border-b border-gray-200">
+            <div className="px-6 py-3 border-b border-gray-200">
               <div className="flex justify-between items-start mb-4">
                 <div>
                   <div className="flex items-center space-x-2 mb-2">
@@ -188,7 +188,7 @@ export default function ContestsPage() {
                     <span
                       className={`px-2 py-1 rounded-full text-xs font-medium ${
                         contest.difficulty === "easy"
-                          ? "bg-blue-100 text-blue-800"
+                          ? "bg-blue-100 text-primary"
                           : contest.difficulty === "medium"
                           ? "bg-yellow-100 text-yellow-800"
                           : "bg-red-100 text-red-800"
@@ -201,7 +201,7 @@ export default function ContestsPage() {
                         : "Difficile"}
                     </span>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">
                     {contest.title}
                   </h3>
                   <p className="text-gray-600">{contest.description}</p>
@@ -218,13 +218,13 @@ export default function ContestsPage() {
                     <Trophy className="w-4 h-4 mr-2" />
                     Prix à gagner
                   </div>
-                  <div className="text-2xl font-bold text-gray-900">
+                  <div className="text-xl font-bold text-gray-900">
                     {contest.prize}
                   </div>
                 </div>
                 <div className="text-right">
-                  <div className="text-sm text-gray-600 mb-1">Sponsor</div>
-                  <div className="font-medium text-gray-900">
+                  <div className="text-xs text-gray-600 mb-1">Sponsor</div>
+                  <div className="font-medium text-sm text-gray-900">
                     {contest.sponsor}
                   </div>
                 </div>
@@ -232,7 +232,7 @@ export default function ContestsPage() {
             </div>
 
             {/* Stats */}
-            <div className="p-6">
+            <div className="px-6 py-3">
               <div className="grid grid-cols-3 gap-4 mb-6">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-gray-900">
@@ -274,10 +274,10 @@ export default function ContestsPage() {
 
               {/* Actions */}
               <div className="flex space-x-3">
-                <button className="flex-1 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg font-medium hover:opacity-90">
+                <button className="flex-1 py-2 bg-purple-600  text-white rounded-full font-medium hover:opacity-90 cursor-pointer">
                   Participer maintenant
                 </button>
-                <button className="px-4 py-3 border border-gray-300 rounded-lg hover:bg-gray-50">
+                <button className="px-2 py-2 border border-gray-300 rounded-full hover:bg-gray-50 cursor-pointer">
                   <ChevronRight className="w-5 h-5" />
                 </button>
               </div>
@@ -287,8 +287,8 @@ export default function ContestsPage() {
       </div>
 
       {/* How It Works */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8 mb-8">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">
+      <div className="card mb-4">
+        <h2 className="text-lg font-bold text-gray-900 mb-4">
           Comment ça marche ?
         </h2>
         <div className="grid md:grid-cols-4 gap-6">
@@ -326,12 +326,12 @@ export default function ContestsPage() {
       </div>
 
       {/* Leaderboard Preview */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold text-gray-900">
+      <div className="card">
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-lg font-bold text-gray-900">
             Classement actuel
           </h2>
-          <button className="text-primary hover:underline font-medium">
+          <button className="text-primary hover:underline font-medium text-sm cursor-pointer">
             Voir le classement complet
           </button>
         </div>
@@ -339,19 +339,19 @@ export default function ContestsPage() {
           <table className="w-full">
             <thead>
               <tr className="border-b border-gray-200">
-                <th className="py-3 text-left text-sm font-medium text-gray-600">
+                <th className="py-2 text-left text-sm font-medium text-gray-600">
                   Position
                 </th>
-                <th className="py-3 text-left text-sm font-medium text-gray-600">
+                <th className="py-2 text-left text-sm font-medium text-gray-600">
                   Participant
                 </th>
-                <th className="py-3 text-left text-sm font-medium text-gray-600">
+                <th className="py-2 text-left text-sm font-medium text-gray-600">
                   Score
                 </th>
-                <th className="py-3 text-left text-sm font-medium text-gray-600">
+                <th className="py-2 text-left text-sm font-medium text-gray-600">
                   Projets
                 </th>
-                <th className="py-3 text-left text-sm font-medium text-gray-600">
+                <th className="py-2 text-left text-sm font-medium text-gray-600">
                   Badges
                 </th>
               </tr>
@@ -362,7 +362,7 @@ export default function ContestsPage() {
                   key={position}
                   className="border-b border-gray-100 hover:bg-gray-50"
                 >
-                  <td className="py-4">
+                  <td className="py-2">
                     <div
                       className={`w-8 h-8 rounded-full flex items-center justify-center ${
                         position === 1
@@ -379,22 +379,22 @@ export default function ContestsPage() {
                   </td>
                   <td className="py-4">
                     <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 flex items-center justify-center">
+                      <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
                         <span className="text-white font-bold">
                           U{position}
                         </span>
                       </div>
                       <div>
-                        <div className="font-medium text-gray-900">
+                        <div className="font-medium text-gray-900 text-sm">
                           Participant {position}
                         </div>
                         <div className="text-sm text-gray-600">
-                          Madagascar, Sénégal
+                          Madagascar, Ampasapito
                         </div>
                       </div>
                     </div>
                   </td>
-                  <td className="py-4">
+                  <td className="py-2">
                     <div className="flex items-center">
                       <Star className="w-4 h-4 text-yellow-400 fill-yellow-400 mr-1" />
                       <span className="font-bold">{4.9 - position * 0.1}</span>
@@ -408,7 +408,7 @@ export default function ContestsPage() {
                       {[1, 2, 3].slice(0, position).map((badge) => (
                         <div
                           key={badge}
-                          className="w-6 h-6 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full"
+                          className="w-4 h-4 bg-purple-400 rounded-full"
                         ></div>
                       ))}
                     </div>

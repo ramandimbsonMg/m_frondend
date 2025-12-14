@@ -46,14 +46,14 @@ const Sidebar = () => {
                 </div>
               </div>
             </div>
-            <div className="pt-8 text-center">
+            <div className="pt-3 text-center">
               <h3 className="font-semibold text-gray-900 mt-2">John Doe</h3>
-              <p className="text-sm text-gray-600 mt-1 flex items-center gap-2">
+              <p className="text-sm text-gray-600 mt-1 flex items-center gap-2 text-center justify-center">
                 Vendeur Pro
                 <hr className="h-6 w-1 border-l border-t-0 border-gray-200" />
                 Madagascar
               </p>
-              <div className="flex items-center justify-center space-x-4 mt-3">
+              <div className="flex items-center text-center justify-center space-x-4 mt-3">
                 <div className="text-center">
                   <div className="font-bold text-gray-900">24</div>
                   <div className="text-xs text-gray-500">Ventes</div>
@@ -96,7 +96,7 @@ const Sidebar = () => {
 
         {/* Stats & Analytics */}
         <div className="card-1 mt-4">
-          <div className="space-y-2">
+          <div className="space-y-3">
             <div className="flex items-center justify-between mb-3">
               <h4 className="font-semibold text-gray-900">Statistiques</h4>
               <TrendingUp className="w-5 h-5 text-accent" />
@@ -130,8 +130,8 @@ const Sidebar = () => {
 
         {/* Quick Actions */}
         <div className="card-1 mt-4">
-          <h4 className="font-semibold text-gray-900 mb-3">Actions rapides</h4>
-          <div className="space-y-2">
+          <h4 className="font-semibold text-gray-900 mb-4">Actions rapides</h4>
+          <div className="space-y-3">
             <button className="w-full flex items-center justify-center space-x-2 bg-primary text-white py-2 px-4 rounded-full hover:bg-[#006097] transition-colors cursor-pointer">
               <Zap className="w-4 h-4" />
               <span className="text-sm">Publier un produit</span>
