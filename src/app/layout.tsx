@@ -13,6 +13,16 @@ export const metadata: Metadata = {
   keywords: ["e-commerce", "réseau social", "vente", "Afrique", "jeunes"],
   authors: [{ name: "Missera Market" }],
   robots: "index, follow",
+
+  // PWA metadata
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    title: "Missera Market",
+    statusBarStyle: "default",
+  },
+  applicationName: "Missera Market",
+
   openGraph: {
     type: "website",
     locale: "fr_FR",
@@ -33,13 +43,9 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  // IMPORTANT: Enlever maximumScale et userScalable
-  // pour permettre un affichage normal
+  maximumScale: 1,
+  themeColor: "#4b6fc9",
   viewportFit: "cover",
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#1a1a1a" },
-  ],
 };
 
 export default function RootLayout({
@@ -53,41 +59,109 @@ export default function RootLayout({
         <meta charSet="UTF-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
 
-        {/* ESSENTIEL: Meta viewport simple */}
-        {/* Next.js gère déjà via export const viewport, mais pour être sûr */}
+        {/* Viewport pour PWA */}
         <meta
           name="viewport"
-          content="width=device-width, initial-scale=1, viewport-fit=cover"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
         />
 
         {/* Favicon */}
         <link rel="icon" href="/favicon_io/favicon.ico" />
         <link rel="apple-touch-icon" href="/favicon_io/apple-touch-icon.png" />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon_io/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon_io/favicon-16x16.png"
+        />
 
-        {/* PWA manifest */}
-        <link rel="manifest" href="/manifest.json" />
+        {/* PWA manifest - ESSENTIEL pour l'installation */}
+        <link
+          rel="manifest"
+          href="/manifest.json"
+          crossOrigin="use-credentials"
+        />
 
-        {/* Mobile app specific */}
-        <meta name="mobile-web-app-capable" content="yes" />
+        {/* Thème couleur pour les navigateurs */}
+        <meta name="theme-color" content="#4b6fc9" />
+        <meta name="msapplication-TileColor" content="#4b6fc9" />
+
+        {/* iOS specific */}
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Missera Market" />
+        <link
+          rel="apple-touch-startup-image"
+          href="/favicon_io/apple-touch-icon.png"
+        />
+
+        {/* Windows specific */}
+        <meta
+          name="msapplication-TileImage"
+          content="/favicon_io/mstile-144x144.png"
+        />
+        <meta name="msapplication-config" content="/browserconfig.xml" />
 
         {/* Format detection */}
-        <meta name="format-detection" content="telephone=no, email=no" />
-
-        {/* Empêche le zoom sur iOS */}
-        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta
+          name="format-detection"
+          content="telephone=no, email=no, address=no"
+        />
       </head>
-      <body className={`${inter.className} antialiased`}>
-        {/* Conteneur principal avec largeur fixe et prévention du débordement */}
-        <div className="min-h-screen w-full overflow-x-hidden bg-[#686b6e12]">
-          <div className="mx-auto w-full max-w-[100vw]">
-            <Navbar />
-            <main className="w-full">
-              <ClientMainLayout>{children}</ClientMainLayout>
-            </main>
-          </div>
+      <body className={`${inter.className} bg-[#686b6e12] antialiased`}>
+        {/* Service Worker Registration */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function() {
+                  navigator.serviceWorker.register('/sw.js').then(
+                    function(registration) {
+                      console.log('Service Worker registered with scope:', registration.scope);
+                    },
+                    function(err) {
+                      console.log('Service Worker registration failed:', err);
+                    }
+                  );
+                });
+              }
+              
+              // Détection d'installation PWA
+              let deferredPrompt;
+              window.addEventListener('beforeinstallprompt', (e) => {
+                e.preventDefault();
+                deferredPrompt = e;
+                
+                // Afficher un bouton d'installation
+                const installButton = document.createElement('button');
+                installButton.textContent = 'Installer l\'app';
+                installButton.className = 'fixed bottom-4 right-4 bg-primary text-white px-4 py-2 rounded-lg shadow-lg z-50';
+                installButton.onclick = () => {
+                  deferredPrompt.prompt();
+                  deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                      console.log('User accepted the install prompt');
+                    }
+                    deferredPrompt = null;
+                  });
+                };
+                document.body.appendChild(installButton);
+              });
+            `,
+          }}
+        />
+
+        <div className="min-h-screen flex flex-col">
+          <Navbar />
+          <main className="flex-1 w-full">
+            <ClientMainLayout>{children}</ClientMainLayout>
+          </main>
         </div>
       </body>
     </html>

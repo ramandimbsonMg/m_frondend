@@ -1,0 +1,82 @@
+{
+  "name": "Missera Market",
+  "short_name": "Missera Market",
+  "description": "Le premier réseau social de vente et collaboration pour les jeunes africains",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4b6fc9",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "fr",
+  "dir": "ltr",
+  "categories": ["business", "social", "shopping"],
+  "icons": [
+    {
+      "src": "/favicon_io/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon_io/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon_io/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon_io/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Créer un post",
+      "short_name": "Créer",
+      "description": "Créer un nouveau post",
+      "url": "/create",
+      "icons": [
+        {
+          "src": "/favicon_io/apple-touch-icon.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Mes messages",
+      "short_name": "Messages",
+      "description": "Voir mes messages",
+      "url": "/messages",
+      "icons": [
+        {
+          "src": "/favicon_io/apple-touch-icon.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/desktop.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Missera Market sur desktop"
+    },
+    {
+      "src": "/screenshots/mobile.png",
+      "sizes": "750x1334",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Missera Market sur mobile"
+    }
+  ]
+}
