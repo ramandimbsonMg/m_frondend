@@ -141,7 +141,7 @@ export default function NotificationsPage() {
   });
 
   return (
-    <div className="mx-auto max-w-8xl">
+    <div className="mx-auto max-w-7xl">
       {/* Header */}
       <div className="card mb-4 sticky top-16 z-20">
         <div className="flex justify-between items-center">

@@ -2,6 +2,21 @@
 
 import { usePathname } from "next/navigation";
 
+// Même fonction utilitaire que dans ConditionalSidebar
+const isRouteMatch = (pathname: string, routePattern: string): boolean => {
+  if (routePattern.includes("[") && routePattern.includes("]")) {
+    const baseRoute = routePattern.split("[")[0];
+    const expectedSegments = routePattern.split("/").length;
+    const actualSegments = pathname.split("/").length;
+
+    return (
+      pathname.startsWith(baseRoute) && actualSegments === expectedSegments
+    );
+  }
+
+  return pathname === routePattern || pathname.startsWith(`${routePattern}/`);
+};
+
 export default function ConditionalMainWrapper({
   children,
 }: {
@@ -14,11 +29,15 @@ export default function ConditionalMainWrapper({
     "/emplois",
     "/reseau",
     "/profile",
+    "/profile/[id]",
     "/messages",
     "/boutique",
+    "/concours",
+    "/concours/[id]", 
   ];
+
   const isSpecialRoute = specialRoutes.some((route) =>
-    pathname.startsWith(route)
+    isRouteMatch(pathname, route)
   );
 
   const containerClass = isSpecialRoute ? "max-w-4xl" : "max-w-2xl";
@@ -33,7 +52,6 @@ export default function ConditionalMainWrapper({
 // -----------------------
 // VERSION SANS RIGHT SIDEBAR
 // -----------------------
-
 export const ConditionalMainWrapperNoRight = ({
   children,
 }: {
@@ -47,9 +65,13 @@ export const ConditionalMainWrapperNoRight = ({
     "/reseau",
     "/messages",
     "/boutique",
+    "/concours",
+    "/concours/[id]",
+    "/profile/[id]",
   ];
+
   const isSpecialRoute = specialRoutes.some((route) =>
-    pathname.startsWith(route)
+    isRouteMatch(pathname, route)
   );
 
   const containerClass = isSpecialRoute ? "max-w-8xl" : "max-w-2xl";
