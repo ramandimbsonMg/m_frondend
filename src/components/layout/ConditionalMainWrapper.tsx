@@ -40,7 +40,7 @@ export default function ConditionalMainWrapper({
     isRouteMatch(pathname, route)
   );
 
-  const containerClass = isSpecialRoute ? "max-w-4xl" : "max-w-2xl";
+  const containerClass = isSpecialRoute ? "lg:max-w-4xl" : "lg:max-w-2xl";
 
   return (
     <div className={`flex-1 ${containerClass} mx-auto px-4 py-6`}>
@@ -74,10 +74,10 @@ export const ConditionalMainWrapperNoRight = ({
     isRouteMatch(pathname, route)
   );
 
-  const containerClass = isSpecialRoute ? "max-w-8xl" : "max-w-2xl";
+  const containerClass = isSpecialRoute ? "lg:max-w-8xl" : "lg:max-w-2xl";
 
   return (
-    <div className={`flex-1 ${containerClass} mx-auto px-4 py-6`}>
+    <div className={`lg:flex-1 ${containerClass} mx-auto lg:px-4 py-6`}>
       {children}
     </div>
   );

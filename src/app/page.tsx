@@ -27,7 +27,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="space-y-4">
+    <div className="lg:space-y-4 space-y-2">
       {/* Profile Completion Alert */}
       <ProfileCompletionAlert
         completion={profileCompletion}
@@ -35,12 +35,12 @@ export default function Home() {
       />
       {/* Feed Tabs */}
       <div
-        className={`flex space-x-4 border-b pt-2 border-gray-200 bg-white z-50 rounded-b  ${
+        className={`flex lg:space-x-4 border-b pt-2 border-gray-200 bg-white z-50 rounded-b  ${
           isSticky ? "sticky top-16 border-t" : ""
         }`}
       >
         <button
-          className={`pb-3 px-4 font-medium cursor-pointer ${
+          className={`pb-3 lg:px-4 px-2 font-medium cursor-pointer ${
             activeTab === "feed"
               ? "text-primary border-b-2 border-primary"
               : "text-gray-600 hover:text-gray-900"
@@ -48,10 +48,12 @@ export default function Home() {
           onClick={() => setActiveTab("feed")}
         >
           <div className="flex items-center space-x-2">
-            <span>Fil d'actualité</span>
-            <span className="bg-accent text-xs px-2 py-0.5 rounded-full text-white">
-              128
-            </span>
+            <div className="flex">
+              <span className="lg:block hidden">Fil d'</span> actualité
+            </div>
+            <div className="bg-accent text-xs lg:px-2 px-1 py-1 lg:py-0 -mx-2.5 mb-2 rounded-full text-white">
+              <span className="lg:block hidden">+10</span>
+            </div>
           </div>
         </button>
         <button

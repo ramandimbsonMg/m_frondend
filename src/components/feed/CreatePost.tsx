@@ -25,45 +25,49 @@ const CreatePost = () => {
   };
 
   return (
-    <div className="card">
-      <div className="flex items-start space-x-3">
+    <div className="card-1 relative">
+      <div className="flex items-start justify-between space-x-3">
         {/* Avatar */}
         <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
           <span className="text-white font-bold">JD</span>
         </div>
 
         {/* Input Area */}
-        <div className="flex-1">
+        <div className="lg:flex-1">
           <button
             onClick={() => setIsExpanded(true)}
-            className="w-full text-left px-3 py-2 border border-gray-300 rounded-full hover:bg-gray-50 text-gray-600 cursor-text"
+            className="lg:w-full text-left px-3 py-2 border border-gray-300 rounded-full hover:bg-gray-50 text-gray-600 cursor-text"
           >
             Commencez un post...
           </button>
-
-          {/* Action Buttons */}
-          <div className="flex items-center justify-between mt-3">
-            <button className="flex items-center space-x-2 text-gray-600 hover:text-primary bg-gray-100 px-4 p-2 rounded-full cursor-pointer">
-              <ImageIcon className="w-5 h-5" />
-              <span className="text-sm">Photo</span>
-            </button>
-            <button className="flex items-center space-x-2 text-gray-600 hover:text-primary bg-gray-100 px-4 p-2 rounded-full cursor-pointer">
-              <Video className="w-5 h-5" />
-              <span className="text-sm">Vidéo</span>
-            </button>
-            <button className="flex items-center space-x-2 text-gray-600 hover:text-primary bg-gray-100 px-4 p-2 rounded-full cursor-pointer">
-              <Calendar className="w-5 h-5" />
-              <span className="text-sm">Événement</span>
-            </button>
-            <button className="flex items-center space-x-2 text-gray-600 hover:text-primary bg-gray-100 px-4 p-2 rounded-full cursor-pointer">
-              <DollarSign className="w-5 h-5" />
-              <span className="text-sm">Vendre</span>
-            </button>
-          </div>
         </div>
         <div>
-          <button className="btn-primary text-sm cursor-pointer">Publier</button>
+          <button className="btn-primary text-sm cursor-pointer">
+            Publier
+          </button>
         </div>
+      </div>
+
+      {/* Action Buttons */}
+      <div className="flex items-center lg:justify-between mt-3 lg:px-16 px-2 gap-2 lg:gap-0">
+        <button className="flex items-center space-x-2 text-gray-600 hover:text-primary bg-gray-100 lg:text-sm text-xs px-4 lg:p-2 p-1 rounded-full cursor-pointer">
+          <ImageIcon className="lg:w-5 lg:h-5 w-4 h-4" />
+          <span className="text-sm">Photo</span>
+        </button>
+        <div className="hidden lg:block">
+          <button className="flex items-center space-x-2 text-gray-600 hover:text-primary bg-gray-100 lg:text-sm text-xs px-4 lg:p-2 p-1 rounded-full cursor-pointer">
+            <Video className="lg:w-5 lg:h-5 w-4 h-4" />
+            <span className="text-sm">Vidéo</span>
+          </button>
+        </div>
+        <button className="flex items-center space-x-2 text-gray-600 hover:text-primary bg-gray-100 lg:text-sm text-xs px-4 lg:p-2 p-1 rounded-full cursor-pointer">
+          <Calendar className="lg:w-5 lg:h-5 w-4 h-4" />
+          <span className="text-sm">Événement</span>
+        </button>
+        <button className="flex items-center space-x-2 text-gray-600 hover:text-primary bg-gray-100 lg:text-sm text-xs px-4 lg:p-2 p-1 rounded-full cursor-pointer">
+          <DollarSign className="lg:w-5 lg:h-5 w-4 h-4" />
+          <span className="text-sm">Vendre</span>
+        </button>
       </div>
 
       {/* Expanded Post Modal */}

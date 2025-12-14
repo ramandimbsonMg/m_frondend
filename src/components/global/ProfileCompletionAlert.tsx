@@ -194,7 +194,7 @@ export default function ProfileCompletionAlert({
 
   return (
     <>
-      <div className={`card ${getColorClasses()}`}>
+      <div className={`card ${getColorClasses()} lg:block hidden`}>
         <div className="flex items-start justify-between">
           <div className="flex items-start gap-3 flex-1">
             <div className="mt-0.5">
