@@ -5,17 +5,19 @@ const urlsToCache = [
   '/manifest.json',
   '/favicon_io/favicon.ico'
 ];
-
-self.addEventListener('install', event => {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(urlsToCache))
-  );
+// Service Worker minimal mais efficace
+self.addEventListener('install', function(event) {
+  console.log('[Service Worker] Installation');
+  event.waitUntil(self.skipWaiting());
 });
 
-self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request)
-      .then(response => response || fetch(event.request))
-  );
+self.addEventListener('activate', function(event) {
+  console.log('[Service Worker] Activation');
+  event.waitUntil(self.clients.claim());
+});
+
+// Optionnel : stratégie de cache
+self.addEventListener('fetch', function(event) {
+  // Laisser passer toutes les requêtes
+  event.respondWith(fetch(event.request));
 });
