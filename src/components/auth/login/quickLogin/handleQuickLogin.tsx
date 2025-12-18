@@ -2,11 +2,9 @@
 
 import { useState, useEffect } from "react";
 import clsx from "clsx";
-import { Typography } from "@/ui/design-systeme/typography/typography";
-import { Input } from "@/ui/design-systeme/input/input";
-import { HiDotsVertical } from "react-icons/hi";
-import { AiOutlineDelete } from "react-icons/ai";
-import { Button } from "@/ui/design-systeme/button/button"; // Utilisation du composant Button
+import { DeleteIcon, DotSquare } from "lucide-react";
+import { Input } from "@/components/ui/input/input";
+import { Button } from "@/components/ui/button/button";
 
 interface User {
   id: number;
@@ -107,15 +105,15 @@ export const QuickLoginUsers = () => {
 
   return (
     <div className="mt-4 space-y-6">
-      <Typography variant="large" weight="bold" className="text-gray-900">
+      <h3 className="text-gray-900 text-lg font-medium">
         Connexion rapide sur cet appareil
-      </Typography>
+      </h3>
 
       <div className="grid grid-cols-3 gap-4">
         {users.length === 0 && (
-          <Typography className="col-span-3 text-center text-gray-500 p-4 border rounded-lg">
+          <p className="col-span-3 text-center text-gray-500 p-4 border rounded-lg">
             Aucun utilisateur local enregistré.
-          </Typography>
+          </p>
         )}
 
         {users.map((user) => {
@@ -169,19 +167,18 @@ export const QuickLoginUsers = () => {
                   className="absolute top-0 right-0 p-1 bg-white rounded-full border border-gray-300 shadow hover:bg-gray-100"
                   aria-label={`Options pour ${fullName}`}
                 >
-                  <HiDotsVertical size={12} className="text-gray-600" />
+                  <DotSquare size={12} className="text-gray-600" />
                 </button>
               </div>
 
-              <Typography
-                weight="bold"
-                className="text-center text-gray-900 truncate w-full"
+              <h4
+                className="text-center font-bold text-gray-900 truncate w-full"
               >
                 {fullName}
-              </Typography>
-              <Typography variant="small" className="text-gray-500">
+              </h4>
+              <p className="text-gray-500 text-sm">
                 {user.fonction || "Membre"}
-              </Typography>
+              </p>
 
               {/* Menu contextuel de suppression */}
               {openMenu === user.id && (
@@ -193,7 +190,7 @@ export const QuickLoginUsers = () => {
                     }}
                     className="px-4 py-2 text-sm text-red-600 hover:bg-red-50 cursor-pointer flex items-center gap-2 transition-colors"
                   >
-                    <AiOutlineDelete size={16} /> Supprimer
+                    <DeleteIcon size={16} /> Supprimer
                   </div>
                 </div>
               )}
@@ -205,12 +202,12 @@ export const QuickLoginUsers = () => {
       {/* --- Formulaire de Connexion Rapide (Password) --- */}
       {selectedReconnect && (
         <div className="px-5 py-2 rounded-xl border-2 border-primary-100/50 bg-white shadow-inner space-y-3 transition-all duration-300">
-          <Typography className="font-medium text-gray-800">
+          <p className="font-medium text-gray-800">
             Connexion rapide pour{" "}
             <span className="text-primary-600 font-bold">
               {selectedReconnect.name}
             </span>
-          </Typography>
+          </p>
 
           <div className="flex flex-col sm:flex-row items-end gap-4">
             <div className="flex-grow w-full sm:w-auto">
@@ -232,11 +229,11 @@ export const QuickLoginUsers = () => {
                 // Si votre Input gère mieux les erreurs, ajustez l'utilisation de errorMg/errors.
               />
               {errorMessage && (
-                <Typography
+                <p
                   className="text-red-500 mt-1 block"
                 >
                   {errorMessage}
-                </Typography>
+                </p>
               )}
             </div>
 
