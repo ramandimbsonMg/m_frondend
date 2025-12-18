@@ -1,7 +1,7 @@
 "use client";
 
-import { LinkType, LinkTypes } from "@/lib/link-type";
 import { IconProps } from "@/types/iconProps";
+import { LinkType, LinkTypes } from "@/types/link-type";
 import clsx from "clsx";
 import Link from "next/link";
 

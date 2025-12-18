@@ -5,13 +5,12 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { RiGoogleFill } from "react-icons/ri";
-import { Input } from "@/ui/design-systeme/input/input";
-import { Typography } from "@/ui/design-systeme/typography/typography";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import toast from "react-hot-toast";
 import Link from "next/link";
-import { Button } from "@/ui/design-systeme/button/button";
+import { Button } from "@/components/ui/button/button";
+import { Input } from "@/components/ui/input/input";
 
 export interface PhoneRegisterInputs {
   phone: string;
@@ -231,9 +230,9 @@ export const RegisterPhoneFirstForm = () => {
         className="w-full border border-gray-300 hover:bg-gray-100 text-gray-700 py-2 rounded-lg flex items-center justify-center gap-2"
       >
         <RiGoogleFill className="w-5 h-5" />
-        <Typography weight="medium">S'inscrire avec Google</Typography>
+        <p className="font-medium">S'inscrire avec Google</p>
       </Button>
-      <Typography className="text-center text-sm text-gray-700">
+      <p className="text-center text-sm text-gray-700">
         Déjà un compte ?{" "}
         <Link
           href="/connexion"
@@ -241,7 +240,7 @@ export const RegisterPhoneFirstForm = () => {
         >
           Connecte-toi ici
         </Link>
-      </Typography>
+      </p>
     </form>
   );
 };

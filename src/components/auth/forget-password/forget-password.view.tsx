@@ -1,16 +1,14 @@
 "use client";
 
-import { Box } from "@/ui/design-systeme/box/box";
-import { Typography } from "@/ui/design-systeme/typography/typography";
 import Link from "next/link";
-import { LogoSite } from "@/ui/components/logo/logo";
 import clsx from "clsx";
 import { useEffect, useState } from "react";
-import Modal from "@/ui/design-systeme/modal/modal";
-import { AiOutlineClose } from "react-icons/ai";
 import { ForgetPasswordForm } from "./forget-password.form";
 import { LeftColumnLogin } from "../login/quickLogin/LeftColumnLogin";
 import { FaUserCircle } from "react-icons/fa";
+import { Box } from "@/components/ui/box/box";
+import Modal from "@/components/ui/modal/modal";
+import { AiOutlineClose } from "react-icons/ai";
 
 interface Props {
   className?: string;
@@ -73,13 +71,13 @@ export const ForgetPasswordView = ({ className }: Props) => {
             padding_x="px-5"
             className="space-y-2   rounded shadow-md bg-white py-4"
           >
-            <LogoSite />
-            <Typography className="mb-4">
+            <h2>Logo</h2>
+            <p className="mb-4">
               En continuant, vous acceptez{" "}
               <Link href="#" className="text-primary hover:underline">
                 les conditions de service et Avis de confidentialité.
               </Link>
-            </Typography>
+            </p>
             <ForgetPasswordForm />
             {showLogoutModal && (
               <Modal
@@ -105,9 +103,9 @@ export const ForgetPasswordView = ({ className }: Props) => {
               </button>
 
               <div className="space-y-3">
-                <Typography className="font-medium text-center">
+                <p className="font-medium text-center">
                   Utilisateurs enregistrés
-                </Typography>
+                </p>
                 {star.map((user) => (
                   <button
                     key={user.id}
@@ -144,9 +142,9 @@ export const ForgetPasswordView = ({ className }: Props) => {
                         "
                   >
                     <FaUserCircle className="w-5 h-5 mr-3 text-primary-500" />
-                    <Typography component="span" variant="medium" weight="bold">
+                    <p className="font-medium">
                       Se connecter avec un compte local
-                    </Typography>
+                    </p>
                   </button>
               </div>
       </div>

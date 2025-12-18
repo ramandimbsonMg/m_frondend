@@ -1,11 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { Input } from "@/ui/design-systeme/input/input";
-import { Typography } from "@/ui/design-systeme/typography/typography";
 import Link from "next/link";
 import { AiFillMail } from "react-icons/ai";
 import toast from "react-hot-toast";
+import { Input } from "@/components/ui/input/input";
 
 export const ForgetPasswordForm = () => {
   const [step, setStep] = useState(1);
@@ -73,9 +72,9 @@ export const ForgetPasswordForm = () => {
 
   return (
     <div className="p-4 space-y-6 max-w-md mx-auto">
-      <Typography variant="medium" weight="bold" className="text-center">
+      <h3 className="text-center font-bold">
         Réinitialiser le mot de passe
-      </Typography>
+      </h3>
 
       {errorMsg && (
         <p className="text-red-600 text-sm text-center">{errorMsg}</p>
@@ -109,9 +108,9 @@ export const ForgetPasswordForm = () => {
       {/* Étape 2 : sélection compte */}
       {step === 2 && (
         <div className="space-y-4">
-          <Typography className="text-center font-medium">
+          <p className="text-center font-medium">
             Sélectionnez votre compte
-          </Typography>
+          </p>
           {multipleUsers.map((u) => (
             <button
               key={u.id}
@@ -167,7 +166,7 @@ export const ForgetPasswordForm = () => {
         </p>
       )}
 
-      <Typography className="text-center text-sm text-gray-700">
+      <p className="text-center text-sm text-gray-700">
         Déjà un compte ?{" "}
         <Link
           href="/connexion"
@@ -175,7 +174,7 @@ export const ForgetPasswordForm = () => {
         >
           Connecte-toi ici
         </Link>
-      </Typography>
+      </p>
     </div>
   );
 };

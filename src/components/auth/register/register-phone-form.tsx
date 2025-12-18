@@ -4,8 +4,8 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { AiFillPhone } from "react-icons/ai";
-import { Input } from "@/ui/design-systeme/input/input";
 import toast from "react-hot-toast";
+import { Input } from "@/components/ui/input/input";
 
 interface PhoneRegisterInputs {
   phone: string;

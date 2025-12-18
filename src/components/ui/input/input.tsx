@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import { Typography } from "../typography/typography";
 import { IconProps } from "@/types/iconProps";
 
 interface Props {
@@ -93,9 +92,9 @@ export const Input = ({
 
             {/* Affichage du message d'erreur si une erreur est présente */}
             {errors?.[id]?.message && (
-                <Typography variant="small" theme="gray">
+                <p className="text-gray-300 text-xs">
                     {errors[id].message}
-                </Typography>
+                </p>
             )}
         </div>
     );

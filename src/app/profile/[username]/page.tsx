@@ -17,8 +17,8 @@ import {
 
 } from "lucide-react";
 import { useParams } from "next/navigation";
-import PostCard from "@/components/cards/PostCard";
 import Link from "next/link";
+import PostCard from "@/components/ui/cards/PostCard";
 
 export default function PublicProfilePage() {
   const params = useParams();

@@ -8,10 +8,10 @@ import {
   TrendingUp,
 } from "lucide-react";
 import CreatePost from "@/components/feed/CreatePost";
-import PostCard from "@/components/cards/PostCard";
-import ProductCard from "@/components/cards/ProductCard";
 import ProfileCompletionAlert from "@/components/global/ProfileCompletionAlert";
 import { posts, trendingProducts } from "@/data/post";
+import PostCard from "@/components/ui/cards/PostCard";
+import ProductCard from "@/components/ui/cards/ProductCard";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("feed");

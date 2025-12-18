@@ -18,8 +18,8 @@ import {
   Award,
 } from "lucide-react";
 import { useParams } from "next/navigation";
-import ProductCard from "@/components/cards/ProductCard";
 import { shopData } from "@/data/shop";
+import ProductCard from "@/components/ui/cards/ProductCard";
 
 export default function ShopPage() {
   const params = useParams();
