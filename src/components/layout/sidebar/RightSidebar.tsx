@@ -53,7 +53,7 @@ const RightSidebar = () => {
         <div className="mb-4 card-1">
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-semibold text-gray-900 flex items-center">
-              <TrendingUp className="w-5 h-5 mr-2 text-accent" />
+              <TrendingUp className="w-5 h-5 mr-2 text-secondary" />
               Tendances du marché
             </h3>
             <button className="text-sm text-primary hover:underline cursor-pointer">

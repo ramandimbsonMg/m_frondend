@@ -149,7 +149,7 @@ export default function ReseauPage() {
                 </span>
                 <span className="text-gray-600 ml-1">contacts</span>
               </div>
-              <div className="text-accent font-medium">
+              <div className="text-secondary font-medium">
                 <TrendingUp className="w-4 h-4 inline mr-1" />+
                 {networkStats.newThisWeek} cette semaine
               </div>
@@ -276,13 +276,13 @@ export default function ReseauPage() {
                   <span className="text-sm text-gray-600">
                     Nouveaux contacts
                   </span>
-                  <span className="text-sm font-bold text-accent">
+                  <span className="text-sm font-bold text-secondary">
                     +{networkStats.newThisWeek}
                   </span>
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-1.5">
                   <div
-                    className="bg-accent h-1.5 rounded-full"
+                    className="bg-secondary h-1.5 rounded-full"
                     style={{
                       width: `${
                         (networkStats.newThisWeek / networkStats.total) * 100
@@ -368,7 +368,7 @@ export default function ReseauPage() {
                                 </span>
                               </div>
                               {connection.status === "active" && (
-                                <div className="absolute bottom-0 right-0 w-4 h-4 bg-accent rounded-full border-2 border-white"></div>
+                                <div className="absolute bottom-0 right-0 w-4 h-4 bg-secondary rounded-full border-2 border-white"></div>
                               )}
                             </div>
                             <div>
@@ -672,7 +672,7 @@ export default function ReseauPage() {
                     key={index}
                     className="flex items-center space-x-3 px-3 py-1.5 hover:bg-gray-50 rounded-lg cursor-pointer"
                   >
-                    <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center">
                       <span className="text-white font-bold text-sm">
                         {alumni.name
                           .split(" ")

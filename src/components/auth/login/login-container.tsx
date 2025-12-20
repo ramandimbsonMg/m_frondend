@@ -1,5 +1,5 @@
 import { FormsType } from "@/types/formsProps";
-import { LoginView } from "./login.view"
+import { LoginView } from "./login-view"
 import clsx from "clsx";
 interface Props {
     form: FormsType;

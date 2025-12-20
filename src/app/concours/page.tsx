@@ -95,21 +95,21 @@ export default function ContestsPage() {
             </p>
             <div className="flex items-center space-x-6 mt-6">
               <div className="flex items-center">
-                <Trophy className="w-6 h-6 mr-2 text-accent" />
+                <Trophy className="w-6 h-6 mr-2 text-secondary" />
                 <div>
                   <div className="text-lg font-bold">24</div>
                   <div className="text-xs opacity-90">Concours actifs</div>
                 </div>
               </div>
               <div className="flex items-center">
-                <Users className="w-6 h-6 mr-2 text-accent" />
+                <Users className="w-6 h-6 mr-2 text-secondary" />
                 <div>
                   <div className="text-lg font-bold">1,245</div>
                   <div className="text-xs opacity-90">Participants</div>
                 </div>
               </div>
               <div className="flex items-center">
-                <DollarSign className="w-6 h-6 mr-2 text-accent" />
+                <DollarSign className="w-6 h-6 mr-2 text-secondary" />
                 <div>
                   <div className="text-lg font-bold">5M FCFA</div>
                   <div className="text-xs opacity-90">À gagner</div>

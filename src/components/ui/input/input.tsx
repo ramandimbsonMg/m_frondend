@@ -4,7 +4,7 @@ import { IconProps } from "@/types/iconProps";
 interface Props {
     type?: "text" | "email" | "password" | "date" | "number" | "color" | "button" | "submit" | "search" | "tel" | "file" | "textarea"; // Champ optionnel avec "text" par défaut
     register?: any; // Pour les formulaires utilisant React Hook Form
-    iconSize?: "small" | "medium" | "large";
+    iconSize?: "sm" | "md" | "lg";
     id: string; // Identifiant unique pour l'input
     errors?: any; // Erreurs associées à cet input
     errorMg?: string; // Message d'erreur personnalisé
@@ -19,83 +19,75 @@ interface Props {
 }
 
 export const Input = ({
-    type = "text", // Par défaut, le type est "text"
-    register,
-    id,
-    errors,
-    errorMg = "Ce champ est requis",
-    className,
-    placeholder,
-    icon,
-    value,
-    iconSize = "medium",
-    required = false,
-    isLoading = false,
-    onChange,
-    isAutocompleted = false,
+  type = "text",
+  register,
+  id,
+  errors,
+  errorMg = "Ce champ est requis",
+  className,
+  placeholder,
+  icon,
+  value,
+  iconSize = "md",
+  required = false,
+  isLoading = false,
+  onChange,
+  isAutocompleted = false,
 }: Props) => {
-    let variantStyles: string = "";
+  let iconStyles = "";
+  switch (iconSize) {
+    case "sm":
+      iconStyles = "w-3 h-3";
+      break;
+    case "md":
+      iconStyles = "w-4 h-4";
+      break;
+    case "lg":
+      iconStyles = "w-5 h-5";
+      break;
+  }
 
-    switch (iconSize) {
-        case "small":
-            variantStyles ="w-3 h-3"
-            break;
-        case "medium":
-            variantStyles ="w-4 h-4"
-            break;
-        case "large":
-            variantStyles ="w-6 h-6"
-            break;
-    }
-    return (
-        <div>
-            {/* Conteneur principal de l'input */}
-            <div className="relative h-full">
-                {/* Champ input avec gestion des erreurs et état */}
-                <input
-                    type={type}
-                    id={id}
-                    placeholder={placeholder}
-                    disabled={isLoading}
-                    value={value}
-                    onChange={onChange}
-                    autoComplete={isAutocompleted ? "on" : "off"}
-                    className={clsx(
-                        "h-full w-full rounded-full border border-primary/40 py-3 pb-3 pl-4 text-sm font-medium focus:outline-none",
-                        errors?.[id]
-                            ? "placeholder-alert-danger text-alert-danger focus:ring-alert-danger"
-                            : "placeholder-gray-400 focus:ring-gray text-red",
-                        isLoading && "cursor-not-allowed",
-                        className
-                    )}
-                    {...(register &&
-                        register(id, {
-                            required: required && {
-                                value: true,
-                                message: errorMg,
-                            },
-                        }))}
-                />
-                {/* Bouton contenant une icône si elle est définie */}
-                {icon && (
-                    <div className="absolute inset-y-0 right-0 flex items-center pr-3">
-                        <button
-                            type="button"
-                            disabled={isLoading}
-                            className={clsx("focus:outline-none flex items-center text-primary text-xl", variantStyles)}
-                        >
-                            <icon.icon /> {/* Affiche l'icône */}
-                        </button>
-                    </div>
-                )}
-            </div>
+  return (
+    <div className="w-full">
+      <div className="relative w-full">
+        <input
+          type={type}
+          id={id}
+          placeholder={placeholder}
+          disabled={isLoading}
+          value={value}
+          onChange={onChange}
+          autoComplete={isAutocompleted ? "on" : "off"}
+          className={clsx(
+            "w-full border py-3 pl-4 h-10 pr-10 text-sm font-medium rounded-full focus:outline-none focus:ring-2",
+            errors?.[id]
+              ? "border-alert-danger placeholder-alert-danger text-alert-danger focus:ring-alert-danger"
+              : "border-gray-200 placeholder-gray-400 focus:ring-primary",
+            isLoading && "cursor-not-allowed",
+            className
+          )}
+          {...(register &&
+            register(id, {
+              required: required && { value: true, message: errorMg },
+            }))}
+        />
 
-            {/* Affichage du message d'erreur si une erreur est présente */}
-            {errors?.[id]?.message && (
-                <p className="text-gray-300 text-xs">
-                    {errors[id].message}
-                </p>
-            )}
-        </div>
-    );
+        {icon && (
+          <div className="absolute inset-y-0 right-0 flex items-center pr-3">
+            <button
+              type="button"
+              disabled={isLoading}
+              className={clsx("flex items-center text-primary", iconStyles)}
+            >
+              <icon.icon />
+            </button>
+          </div>
+        )}
+      </div>
+
+      {errors?.[id]?.message && (
+        <p className="text-xs text-alert-danger mt-1">{errors[id].message}</p>
+      )}
+    </div>
+  );
 };

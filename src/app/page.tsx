@@ -52,7 +52,7 @@ export default function Home() {
               <div className="flex">
                 <span className="lg:block hidden">Fil d'</span> actualité
               </div>
-              <div className="bg-accent text-xs lg:px-2 px-1 py-1 lg:py-0 -mx-2.5 mb-2 rounded-full text-white">
+              <div className="bg-secondary text-xs lg:px-2 px-1 py-1 lg:py-0 -mx-2.5 mb-2 rounded-full text-white">
                 <span className="lg:block hidden">+10</span>
               </div>
             </div>
@@ -94,7 +94,7 @@ export default function Home() {
       <div className="card">
         <div className="flex items-center justify-between mb-4">
           <h2 className="font-semibold text-gray-900 flex items-center">
-            <ShoppingBag className="w-5 h-5 mr-2 text-accent" />
+            <ShoppingBag className="w-5 h-5 mr-2 text-secondary" />
             Produits tendances
           </h2>
           <button className="text-sm text-primary hover:underline cursor-pointer">

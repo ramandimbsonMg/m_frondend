@@ -1,11 +1,11 @@
 "use client";
 
 import { useForm } from "react-hook-form";
-import { useRouter } from "next/router";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { AiFillPhone } from "react-icons/ai";
 import toast from "react-hot-toast";
 import { Input } from "@/components/ui/input/input";
+import { Button } from "@/components/ui/button/button";
 
 interface PhoneRegisterInputs {
   phone: string;
@@ -20,27 +20,20 @@ export const RegisterPhoneForm = () => {
   } = useForm<PhoneRegisterInputs>();
 
   const router = useRouter();
-  const email = router.query.email as string;
-  const password = router.query.password as string;
 
   const onSubmit = async (data: PhoneRegisterInputs) => {
     try {
-      // Simuler un délai
+      // Simulation d'envoi / vérification
       await new Promise((res) => setTimeout(res, 1000));
 
-      // Vérification simple mock
       if (!data.phone.match(/^\+?\d{9,15}$/)) {
-        setError("phone", {
-          type: "manual",
-          message: "Numéro invalide",
-        });
+        setError("phone", { type: "manual", message: "Numéro invalide" });
         toast.error("Numéro invalide");
         return;
       }
 
-      // Succès simulé
       toast.success("Inscription terminée !");
-      router.push("/connexion"); // Redirection fictive
+      router.push("/connexion"); // Redirection
     } catch (error) {
       setError("phone", {
         type: "manual",
@@ -63,17 +56,18 @@ export const RegisterPhoneForm = () => {
         errors={errors}
         errorMg={errors.phone?.message || "Ce champ est requis"}
         isLoading={isSubmitting}
-        isAutocompleted
         icon={{ icon: AiFillPhone }}
+        className="border-gray-200 focus:ring-primary-500 rounded-full transition-all"
         required
       />
-      <button
+
+      <Button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-gray-800 hover:bg-gray-900 text-white font-semibold py-2 rounded-lg transition disabled:opacity-50"
+        className="w-full rounded-full bg-gray-900 text-white font-bold shadow-lg shadow-gray-200 hover:shadow-primary-100 transition-all"
       >
         {isSubmitting ? "Enregistrement..." : "Terminer l’inscription"}
-      </button>
+      </Button>
     </form>
   );
 };

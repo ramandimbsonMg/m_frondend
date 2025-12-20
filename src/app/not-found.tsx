@@ -176,7 +176,7 @@ export default function NotFoundPage() {
                     Pages tendances
                   </h3>
                 </div>
-                <Sparkles className="w-5 h-5 text-accent" />
+                <Sparkles className="w-5 h-5 text-secondary" />
               </div>
               <div className="space-y-4">
                 {trendingPages.map((page, index) => (
@@ -244,7 +244,7 @@ export default function NotFoundPage() {
               retrouver votre chemin sur Missera Market.
             </p>
             <div className="flex flex-wrap justify-center gap-6">
-              <button className="px-6 py-1.5 bg-accent text-white rounded-full hover:opacity-90 cursor-pointer">
+              <button className="px-6 py-1.5 bg-secondary text-white rounded-full hover:opacity-90 cursor-pointer">
                 Contacter le support
               </button>
               <button className="px-6 py-1.5 border border-gray-300 text-gray-700 rounded-full hover:bg-gray-50 cursor-pointer">

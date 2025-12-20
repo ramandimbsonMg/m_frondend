@@ -11,6 +11,7 @@ import {
   Shield,
 } from "lucide-react";
 import Link from "next/link";
+import Logo from "@/components/global/Logo";
 
 export default function ErrorPage({
   error,
@@ -37,12 +38,7 @@ export default function ErrorPage({
         {/* Header */}
         <div className="flex justify-between items-center mb-12">
           <Link href="/" className="flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 flex items-center justify-center">
-              <span className="text-white font-bold text-xl">MM</span>
-            </div>
-            <span className="text-2xl font-bold text-gray-900">
-              Missera Market
-            </span>
+            <Logo />
           </Link>
           <div className="text-sm text-gray-600">
             Erreur ID:{" "}

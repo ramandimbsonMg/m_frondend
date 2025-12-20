@@ -48,11 +48,11 @@ const Sidebar = () => {
             </div>
             <div className="pt-3 text-center">
               <h3 className="font-semibold text-gray-900 mt-2">John Doe</h3>
-              <p className="text-sm text-gray-600 mt-1 flex items-center gap-2 text-center justify-center">
+              <div className="text-sm text-gray-600 mt-1 flex items-center gap-2 text-center justify-center">
                 Vendeur Pro
                 <hr className="h-6 w-1 border-l border-t-0 border-gray-200" />
                 Madagascar
-              </p>
+              </div>
               <div className="flex items-center text-center justify-center space-x-4 mt-3">
                 <div className="text-center">
                   <div className="font-bold text-gray-900">24</div>
@@ -99,7 +99,7 @@ const Sidebar = () => {
           <div className="space-y-3">
             <div className="flex items-center justify-between mb-3">
               <h4 className="font-semibold text-gray-900">Statistiques</h4>
-              <TrendingUp className="w-5 h-5 text-accent" />
+              <TrendingUp className="w-5 h-5 text-secondary" />
             </div>
             <div className="space-y-4">
               <div>
@@ -108,7 +108,7 @@ const Sidebar = () => {
                   <span className="font-medium">+12%</span>
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-1.5">
-                  <div className="bg-accent h-1.5 rounded-full w-3/4"></div>
+                  <div className="bg-secondary h-1.5 rounded-full w-3/4"></div>
                 </div>
               </div>
               <div>
@@ -122,7 +122,7 @@ const Sidebar = () => {
               </div>
             </div>
             <hr className="border-gray-200" />
-            <button className="w-full mt-4 text-sm font-medium text-accent hover:text-accent cursor-pointer">
+            <button className="w-full mt-4 text-sm font-medium text-secondary hover:text-secondary cursor-pointer">
               Voir détails →
             </button>
           </div>

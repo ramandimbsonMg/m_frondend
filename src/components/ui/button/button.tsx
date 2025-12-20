@@ -21,10 +21,9 @@ interface Props {
   type?: "button" | "submit" | "reset";
   title?: string;
 
-  // --- NOUVEAU: personnalisation complète ---
-  bgColor?: string; // background
-  textColor?: string; // couleur du texte
-  borderColor?: string; // couleur de la bordure
+  bgColor?: string;
+  textColor?: string;
+  borderColor?: string;
 }
 
 export const Button = ({
@@ -46,11 +45,10 @@ export const Button = ({
   textColor,
   borderColor,
 }: Props) => {
-  // --- LOGIQUE VARIANT + THEME PAR DEFAUT ---
   const getVariantStyles = () => {
     switch (variant) {
       case "accent":
-        return "bg-primary hover:bg-primary-400 text-white rounded-full font-medium";
+        return "bg-primary hover:bg-primary-600 text-white rounded-full font-medium";
       case "secondary":
         return "bg-primary-100/50 hover:bg-primary-200 text-primary rounded-full";
       case "outline":
@@ -109,7 +107,7 @@ export const Button = ({
       break;
     case "medium":
       sizeStyles = `text-sm ${
-        variant === "ico" ? "w-[40px] h-[40px]" : "px-8 py-2 h-[40px]"
+        variant === "ico" ? "w-[40px] h-[40px]" : "px-8 py-2.5 h-[40x]"
       }`;
       icoSize = 20;
       break;

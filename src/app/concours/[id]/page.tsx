@@ -258,7 +258,7 @@ export default function ContestDetailPage() {
                           key={index}
                           className="flex items-start space-x-3 px-4 py-2 bg-gray-50 rounded-lg"
                         >
-                          <CheckCircle className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                          <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
                           <span className="text-gray-700">{req}</span>
                         </div>
                       ))}
@@ -305,10 +305,10 @@ export default function ContestDetailPage() {
                           <div
                             className={`w-10 h-10 rounded-full flex items-center justify-center ${
                               prize.position === 1
-                                ? "bg-accent text-white"
+                                ? "bg-secondary text-white"
                                 : prize.position === 2
                                 ? "bg-gradient-to-r from-gray-400 to-gray-600 text-white"
-                                : "bg-accent text-white"
+                                : "bg-secondary text-white"
                             }`}
                           >
                             <Trophy className="w-6 h-6" />
@@ -556,7 +556,7 @@ export default function ContestDetailPage() {
                 <div className="mt-4 md:mt-0">
                   <button
                     onClick={() => setIsRegistered(true)}
-                    className="px-8 py-2 bg-accent text-white rounded-lg font-bold hover:opacity-90 cursor-pointer"
+                    className="px-8 py-2 bg-secondary text-white rounded-lg font-bold hover:opacity-90 cursor-pointer"
                   >
                     S'inscrire maintenant
                   </button>
@@ -660,7 +660,7 @@ export default function ContestDetailPage() {
                   <span className="font-medium">4.8/5</span>
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-1.5">
-                  <div className="bg-accent h-1.5 rounded-full w-4/5"></div>
+                  <div className="bg-secondary h-1.5 rounded-full w-4/5"></div>
                 </div>
               </div>
               <div>

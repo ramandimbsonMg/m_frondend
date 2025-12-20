@@ -1,8 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/layout/navigations/Navbar";
-import ClientMainLayout from "@/components/layout/ClientMainLayout";
+import ConditionLayout from "@/components/layout/ConditionLayout";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -41,10 +40,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} bg-[#686b6e12]`}>
         <div className="min-h-screen flex flex-col">
-          <Navbar />
-          <main className="flex-1 w-full max-w-none">
-            <ClientMainLayout>{children}</ClientMainLayout>
-          </main>
+          <ConditionLayout>{children}</ConditionLayout>
         </div>
       </body>
     </html>

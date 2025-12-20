@@ -31,7 +31,6 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 bg-white border-b border-gray-200 z-50">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center w-full h-14">
             <img src="/logo-mis.png" alt="logo-missera.com" className="w-full h-full object-cover"  />

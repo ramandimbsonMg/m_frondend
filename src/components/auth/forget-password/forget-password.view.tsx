@@ -4,11 +4,11 @@ import Link from "next/link";
 import clsx from "clsx";
 import { useEffect, useState } from "react";
 import { ForgetPasswordForm } from "./forget-password.form";
-import { LeftColumnLogin } from "../login/quickLogin/LeftColumnLogin";
 import { FaUserCircle } from "react-icons/fa";
 import { Box } from "@/components/ui/box/box";
 import Modal from "@/components/ui/modal/modal";
 import { AiOutlineClose } from "react-icons/ai";
+import { LeftColumnLogin } from "../login/quickLogin/Left-column-login";
 
 interface Props {
   className?: string;

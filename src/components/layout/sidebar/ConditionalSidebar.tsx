@@ -4,11 +4,8 @@ import { usePathname } from "next/navigation";
 import Sidebar from "./Sidebar";
 import RightSidebar from "./RightSidebar";
 
-// Fonction utilitaire pour vérifier les routes
 const isRouteMatch = (pathname: string, routePattern: string): boolean => {
-  // Si c'est une route dynamique avec [param]
   if (routePattern.includes("[") && routePattern.includes("]")) {
-    // Extraire la partie avant [param]
     const baseRoute = routePattern.split("[")[0];
     // Vérifier si le pathname commence par cette base route
     // et a le bon nombre de segments
@@ -24,9 +21,7 @@ const isRouteMatch = (pathname: string, routePattern: string): boolean => {
   return pathname === routePattern || pathname.startsWith(`${routePattern}/`);
 };
 
-// -----------------
 // SIDEBAR GAUCHE
-// -----------------
 export default function ConditionalSidebar() {
   const pathname = usePathname();
 
@@ -46,9 +41,7 @@ export default function ConditionalSidebar() {
   return <Sidebar />;
 }
 
-// -----------------
 // SIDEBAR DROITE
-// -----------------
 export function ConditionalSidebarRight() {
   const pathname = usePathname();
 
