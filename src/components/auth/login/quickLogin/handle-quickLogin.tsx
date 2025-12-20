@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import clsx from "clsx";
 import { ChevronLeft, EyeIcon, EyeOff, Lock, Trash, X } from "lucide-react";
 import { Input } from "@/components/ui/input/input";
 import { Button } from "@/components/ui/button/button";

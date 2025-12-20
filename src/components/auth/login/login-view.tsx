@@ -8,7 +8,6 @@ import { LeftColumnLogin } from "./quickLogin/Left-column-login";
 import { UserCircle, X } from "lucide-react";
 import { Button } from "@/components/ui/button/button";
 import { User } from "@/types/types";
-import Modal from "@/components/ui/modal/modal";
 import Logo from "@/components/global/Logo";
 import { mockUsers } from "@/data/user";
 import { QuickLoginUsersMobile } from "./quickLogin/handle-quickLogin";
