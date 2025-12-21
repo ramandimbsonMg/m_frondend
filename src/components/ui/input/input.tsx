@@ -62,7 +62,7 @@ export const Input = ({
             "w-full border py-3 pl-4 h-10 pr-10 text-sm font-medium rounded-full focus:outline-none focus:ring-2",
             errors?.[id]
               ? "border-alert-danger placeholder-alert-danger text-alert-danger focus:ring-alert-danger"
-              : "border-gray-200 placeholder-gray-400 focus:ring-primary",
+              : "border-gray-200 placeholder-gray-400 focus:ring-gray-200",
             isLoading && "cursor-not-allowed",
             className
           )}

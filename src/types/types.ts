@@ -1,5 +1,9 @@
 import { FormsType } from "./formsProps";
 
+export interface Props {
+  className?: string;
+}
+
 export interface PropsLogin {
     form: FormsType
 }

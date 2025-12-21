@@ -19,7 +19,6 @@ interface Props {
 
 export const RegisterView = ({ className }: Props) => {
   const [star, setStar] = useState<User[]>([]);
-  const [showQuickLoginMobile, setShowQuickLoginMobile] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const [showMobileLogin, setShowMobileLogin] = useState(false);
 
@@ -41,14 +40,9 @@ export const RegisterView = ({ className }: Props) => {
   }, []);
 
   return (
-    <div className="flex items-center justify-center h-screen">
-      {/* LEFT COLUMN */}
-      <div className="lg:w-1/2 hidden lg:block">
-        <LeftColumnLogin />
-      </div>
-      {/* RIGHT COLUMN — FORMULAIRE D'INSCRIPTION */}
-      <div className={clsx(className, "w-full max-w-sm mx-auto")}>
-        <div className="max-w-sm w-full mx-auto space-y-4 bg-white px-6 py-6 rounded-xl">
+    <>
+      <div className="flex-1 flex flex-col justify-center px-8 py-8 lg:px-16">
+        <div className="max-w-sm lg:max-w-[305px] w-full mx-auto space-y-4 bg-white px-6 py-6 rounded-xl">
           <div className="">
             <Logo size="lg" className="items-start" />
             {/* <p className="text-gray-500 mt-2 text-xs text-primary-900 font-bold items-end opacity-50">
@@ -74,21 +68,6 @@ export const RegisterView = ({ className }: Props) => {
           )}
         </div>
       </div>
-      <div className="fixed bottom-6 lg:hidden w-full px-2">
-        <Button
-          onClick={() => setShowMobileLogin(true)}
-          className="px-4 py-2 bg-primary text-white"
-        >
-          <UserCircle className="text-primary-500" />
-          Autre Comptes
-        </Button>
-
-        {/* Composant mobile */}
-        <QuickLoginUsersMobile
-          showModal={showMobileLogin}
-          onClose={() => setShowMobileLogin(false)}
-        />
-      </div>
-    </div>
+    </>
   );
 };

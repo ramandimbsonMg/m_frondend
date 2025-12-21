@@ -1,14 +1,12 @@
 import { FormsType } from "@/types/formsProps";
 import { LoginView } from "./login-view"
 import clsx from "clsx";
-interface Props {
-    form: FormsType;
-    className?: string;
-}
-export const LoginContainer = ({form, className}:Props) => {
+import { Props } from "@/types/types";
+
+export const LoginContainer = ({className}:Props) => {
     return ( 
         <>
-            <LoginView form={form} className={clsx(className)} />
+            <LoginView className={clsx(className)} />
         </>
      )
 }

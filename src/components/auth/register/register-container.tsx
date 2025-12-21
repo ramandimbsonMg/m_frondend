@@ -1,11 +1,15 @@
 "use client";
 
+import clsx from "clsx";
 import { RegisterView } from "./register-view";
 
-export const RegisterContainer = () => {
+interface Props {
+    className?: string;
+}
+export const RegisterContainer = ({className}:Props) => {
   return (
     <>
-      <RegisterView />
+      <RegisterView className={clsx(className)} />
     </>
   );
 };

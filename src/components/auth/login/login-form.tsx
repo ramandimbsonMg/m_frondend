@@ -6,7 +6,6 @@ import { useState } from "react";
 import { EyeIcon, EyeOff, MailIcon } from "lucide-react";
 import { Input } from "@/components/ui/input/input";
 import { Button } from "@/components/ui/button/button";
-import { BsFacebook, BsGoogle, BsLinkedin } from "react-icons/bs";
 
 export const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -30,10 +29,10 @@ export const LoginForm = () => {
           placeholder="email@exemple.com"
           register={register}
           errors={errors}
-          className="border-gray-200 focus:ring-primary-500 rounded-full transition-all"
+          className="border-gray-200 rounded-full transition-all"
           icon={{ icon: MailIcon }}
           required
-          iconSize="lg"
+          iconSize="sm"
         />
       </div>
 
@@ -43,7 +42,7 @@ export const LoginForm = () => {
             Mot de passe
           </label>
           <Link
-            href="/forgot"
+            href="/forgot-password"
             className="text-xs text-primary-600 hover:text-primary-700 hover:underline font-medium"
           >
             Oublié ?
@@ -56,15 +55,15 @@ export const LoginForm = () => {
             placeholder="••••••••"
             register={register}
             errors={errors}
-            className="border-gray-200 focus:ring-primary-500 placeholder:text-sm rounded-full transition-all"
+            className="border-gray-200 placeholder:text-sm rounded-full transition-all"
             required
           />
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-primary-500 transition-colors"
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-primary-500 transition-colors cursor-pointer"
           >
-            {showPassword ? <EyeOff size={20} className="text-primary" /> : <EyeIcon size={20} className="text-primary" />}
+            {showPassword ? <EyeOff size={14} /> : <EyeIcon size={14} />}
           </button>
         </div>
       </div>

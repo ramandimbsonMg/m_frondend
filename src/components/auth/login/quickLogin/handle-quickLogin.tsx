@@ -172,8 +172,8 @@ export const QuickLoginUsersMobile = ({ showModal, onClose }: Props) => {
   return (
     <>
       {showModal && (
-        <Modal onClose={onClose} title="">
-          <div className="relative h-min-screen flex flex-col">
+        <Modal onClose={onClose} showButton={false} title="">
+          <div className="relative  max-h-full flex flex-col">
             {/* Header avec bouton retour si étape 2 */}
             <div className="flex items-center justify-between mb-6">
               {step === 2 ? (
@@ -181,7 +181,7 @@ export const QuickLoginUsersMobile = ({ showModal, onClose }: Props) => {
                   onClick={handleBack}
                   className="p-2 -ml-2 hover:bg-gray-100 rounded-full transition-colors"
                 >
-                  <ChevronLeft className="w-6 h-6 text-gray-600" />
+                  <ChevronLeft className="w-6 h-6 text-gray-600 cursor-pointer" />
                 </button>
               ) : (
                 <h3 className="text-xl font-bold text-gray-900">
@@ -192,11 +192,11 @@ export const QuickLoginUsersMobile = ({ showModal, onClose }: Props) => {
                 onClick={onClose}
                 className="p-2 hover:bg-gray-100 rounded-full transition-colors"
               >
-                <X className="w-5 h-5 text-gray-500" />
+                <X className="w-5 h-5 text-gray-500 cursor-pointer" />
               </button>
             </div>
 
-            {/* ÉTAPE 1 : GRILLE DES UTILISATEURS */}
+            {/* Etape 1 : Grille des utilisateurs */}
             {step === 1 && (
               <div className="flex-1">
                 <p className="text-sm text-gray-500 mb-6 text-center lg:text-left">
@@ -208,7 +208,7 @@ export const QuickLoginUsersMobile = ({ showModal, onClose }: Props) => {
                     <button
                       key={user.id}
                       onClick={() => handleSelectUser(user)}
-                      className="group flex flex-col items-center px-4 py-2 rounded-lg border border-gray-100 bg-gray-50/50 hover:bg-white hover:border-primary-200 hover:shadow-xl transition-all duration-300"
+                      className="group flex flex-col items-center px-4 py-2 rounded-lg border border-gray-100 bg-gray-50/50 hover:bg-white hover:border-primary-200 hover:shadow-xl transition-all duration-300 cursor-pointer"
                     >
                       <div className="relative mb-3">
                         <div className="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold shadow-md group-hover:scale-110 transition-transform">
@@ -268,7 +268,7 @@ export const QuickLoginUsersMobile = ({ showModal, onClose }: Props) => {
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-primary-500 transition-colors"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-primary-500 transition-colors cursor-pointer"
                     >
                       {showPassword ? (
                         <EyeOff size={20} />
@@ -280,7 +280,7 @@ export const QuickLoginUsersMobile = ({ showModal, onClose }: Props) => {
 
                   <Button
                     type="submit"
-                    className="w-full h-14 rounded-2xl text-lg font-bold shadow-lg shadow-primary-100"
+                    className="w-full rounded-2xl text-lg font-bold shadow-lg shadow-primary-100"
                   >
                     Se connecter
                   </Button>
@@ -288,7 +288,7 @@ export const QuickLoginUsersMobile = ({ showModal, onClose }: Props) => {
                   <button
                     type="button"
                     onClick={handleBack}
-                    className="w-full text-sm text-gray-500 hover:text-gray-700 font-medium py-2"
+                    className="w-full text-sm text-gray-500 hover:text-gray-700 font-medium py-2 cursor-pointer"
                   >
                     Ce n'est pas vous ?
                   </button>

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { AiFillMail } from "react-icons/ai";
 import toast from "react-hot-toast";
 import { Input } from "@/components/ui/input/input";
+import { Button } from "@/components/ui/button/button";
 
 export const ForgetPasswordForm = () => {
   const [step, setStep] = useState(1);
@@ -72,8 +73,8 @@ export const ForgetPasswordForm = () => {
 
   return (
     <div className="p-4 space-y-6 max-w-md mx-auto">
-      <h3 className="text-center font-bold">
-        Réinitialiser le mot de passe
+      <h3 className="text-center text-gray-500 text-sm">
+        Réinitialiser le mot de passe ?
       </h3>
 
       {errorMsg && (
@@ -95,22 +96,23 @@ export const ForgetPasswordForm = () => {
             icon={{ icon: AiFillMail }}
             required
           />
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-gray-800 hover:bg-gray-900 text-white font-semibold py-2 rounded-lg transition"
-          >
-            {loading ? "Traitement..." : "Rechercher mon compte"}
-          </button>
+          <div className="flex justify-end">
+            <Button
+              type="submit"
+              className="w-full shadow-lg shadow-gray-200 hover:shadow-primary-100 transition-all rounded-full font-bold text-md bg-gray-900"
+              bgColor="bg-gray-900"
+              disabled={loading}
+            >
+              {loading ? "Traitement..." : "Rechercher mon compte"}
+            </Button>
+          </div>
         </form>
       )}
 
       {/* Étape 2 : sélection compte */}
       {step === 2 && (
         <div className="space-y-4">
-          <p className="text-center font-medium">
-            Sélectionnez votre compte
-          </p>
+          <p className="text-center font-medium">Sélectionnez votre compte</p>
           {multipleUsers.map((u) => (
             <button
               key={u.id}
@@ -148,20 +150,21 @@ export const ForgetPasswordForm = () => {
             id="newPassword"
             required
           />
-          <button
+          <Button
             type="submit"
-            className="w-full bg-gray-800 hover:bg-gray-900 text-white font-semibold py-2 rounded-lg transition"
+            className="w-full shadow-lg shadow-gray-200 hover:shadow-primary-100 transition-all rounded-full font-bold text-md bg-gray-900"
+            bgColor="bg-gray-900"
             disabled={loading}
           >
             {loading ? "En cours..." : "Réinitialiser le mot de passe"}
-          </button>
+          </Button>
         </form>
       )}
 
       {/* Étape 4 : succès */}
       {step === 4 && (
         <p className="text-center text-green-600 font-medium">
-          ✅ Votre mot de passe a été changé avec succès. Vous pouvez maintenant
+          Votre mot de passe a été changé avec succès. Vous pouvez maintenant
           vous connecter.
         </p>
       )}
@@ -169,7 +172,7 @@ export const ForgetPasswordForm = () => {
       <p className="text-center text-sm text-gray-700">
         Déjà un compte ?{" "}
         <Link
-          href="/connexion"
+          href="/login"
           className="text-gray-900 font-semibold hover:underline"
         >
           Connecte-toi ici

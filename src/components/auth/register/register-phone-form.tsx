@@ -33,7 +33,7 @@ export const RegisterPhoneForm = () => {
       }
 
       toast.success("Inscription terminée !");
-      router.push("/connexion"); // Redirection
+      router.push("/login"); // Redirection
     } catch (error) {
       setError("phone", {
         type: "manual",

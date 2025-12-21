@@ -100,7 +100,7 @@ export const RegisterPhoneFirstForm = () => {
   return (
     <form
       onSubmit={handleSubmit(step === "phone" ? handleSendCode : onSubmit)}
-      className="space-y-4 max-w-md mx-auto"
+      className="space-y-4"
     >
       {step === "phone" && (
         <div className="space-y-3">
@@ -164,21 +164,20 @@ export const RegisterPhoneFirstForm = () => {
             value={smsCode}
             onChange={(e) => setSmsCode(e.target.value)}
             placeholder="Code SMS reçu"
-            className="border-gray-200 focus:ring-primary-200 rounded-full transition-all w-full"
+            className="border-gray-200 rounded-full transition-all w-full"
           />
           <div className="flex justify-between text-sm">
             <span className="text-gray-500">
               {canResend ? "Pas reçu le code ?" : `Renvoyer dans ${countdown}s`}
             </span>
-            <Button
+            <button
               type="button"
               onClick={handleSendCode}
               disabled={!canResend}
               className="font-medium underline text-white disabled:text-gray-400 disabled:cursor-not-allowed"
-              bgColor="bg-gray-900"
             >
               Renvoyer
-            </Button>
+            </button>
           </div>
 
           <Input
@@ -188,7 +187,7 @@ export const RegisterPhoneFirstForm = () => {
             register={register}
             errors={errors}
             errorMg={errors.email?.message}
-            className="border-gray-200 focus:ring-primary-300 rounded-full transition-all"
+            className="border-gray-200 rounded-full transition-all"
           />
 
           <div className="relative">
@@ -199,12 +198,12 @@ export const RegisterPhoneFirstForm = () => {
               register={register}
               errors={errors}
               errorMg={errors.password?.message || "Mot de passe requis"}
-              className="border-gray-200 focus:ring-primary-500 placeholder:text-sm rounded-full transition-all w-full"
+              className="border-gray-200 placeholder:text-sm rounded-full transition-all w-full"
             />
             <button
               type="button"
               onClick={togglePasswordVisibility}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-primary-500 transition-colors"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-primary-500 transition-colors cursor-pointer"
             >
               {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
             </button>
@@ -220,12 +219,12 @@ export const RegisterPhoneFirstForm = () => {
               errorMg={
                 errors.confirmPassword?.message || "Confirmation requise"
               }
-              className="border-gray-200 focus:ring-primary-500 placeholder:text-sm rounded-full transition-all w-full"
+              className="border-gray-200 placeholder:text-sm rounded-full transition-all w-full"
             />
             <button
               type="button"
               onClick={togglePasswordVisibility}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-primary-500 transition-colors"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-primary-500 transition-colors cursor-pointer text-md"
             >
               {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
             </button>
@@ -310,10 +309,10 @@ export const RegisterPhoneFirstForm = () => {
         </div>
       </div>
 
-      <p className="text-center text-sm text-gray-700">
+      <p className="text-center text-sm text-gray-700 pt-4">
         Déjà un compte ?{" "}
         <Link
-          href="/connexion"
+          href="/login"
           className="text-gray-900 font-semibold hover:underline"
         >
           Connecte-toi ici
