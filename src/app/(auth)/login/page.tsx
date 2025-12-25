@@ -1,6 +1,9 @@
 import { LoginContainer } from "@/components/auth/login/login-container";
-import { PropsLogin } from "@/types/types";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Bonjour",
+};
 export default function () {
     return (
         <>

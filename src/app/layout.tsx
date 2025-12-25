@@ -6,7 +6,11 @@ import ConditionLayout from "@/components/layout/ConditionLayout";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Missera Market - Crée. Vends. Inspire.",
+  title: {
+    absolute: "",
+    default: "Missera Market",
+    template: " %s | Crée. Vends. Inspire.",
+  },
   description:
     "Le premier réseau social de vente et collaboration pour les jeunes africains",
   manifest: "/manifest.json",

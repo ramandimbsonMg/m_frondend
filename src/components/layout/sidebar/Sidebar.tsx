@@ -40,7 +40,7 @@ const Sidebar = () => {
         <div className="mb-4">
           <div className="relative card-1">
             <div className="bg-gray-300 h-20 rounded-tl">
-              <div className="absolute top-0 left-10 transform -translate-x-1/2">
+              <div className="absolute top-2.5 left-12 transform -translate-x-1/2">
                 <div className="w-18 h-18 rounded-full border-4 border-white bg-primary flex items-center justify-center">
                   <span className="text-white font-bold text-xl">JD</span>
                 </div>
@@ -95,7 +95,7 @@ const Sidebar = () => {
         </nav>
 
         {/* Stats & Analytics */}
-        <div className="card-1 mt-4">
+        <div className="card mt-4">
           <div className="space-y-3">
             <div className="flex items-center justify-between mb-3">
               <h4 className="font-semibold text-gray-900">Statistiques</h4>
@@ -129,7 +129,7 @@ const Sidebar = () => {
         </div>
 
         {/* Quick Actions */}
-        <div className="card-1 mt-4">
+        <div className="card mt-4">
           <h4 className="font-semibold text-gray-900 mb-4">Actions rapides</h4>
           <div className="space-y-3">
             <button className="w-full flex items-center justify-center space-x-2 bg-primary text-white py-2 px-4 rounded-full hover:bg-[#006097] transition-colors cursor-pointer">
@@ -144,7 +144,7 @@ const Sidebar = () => {
         </div>
 
         {/* Shortcuts */}
-        <div className="card-1 mt-4">
+        <div className="card mt-4">
           <div className="flex justify-between items-center mb-3">
             <h4 className="font-semibold text-gray-900">Vos raccourcis</h4>
             <button className="text-sm text-primary hover:underline cursor-pointer">

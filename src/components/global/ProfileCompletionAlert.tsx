@@ -204,13 +204,11 @@ export default function ProfileCompletionAlert({
             <div className="flex-1">
               <div className="flex items-center gap-2">
                 <h4 className="font-semibold">Profil à compléter</h4>
-                <span className="text-xs font-bold px-2 py-0.5 bg-white/50 rounded-full text-primary">
+                <span className="text-xs font-bold px-2 py-0.5 bg-white/50 rounded-full">
                   {completion}%
                 </span>
               </div>
-
-              <p className="text-sm mb-2">{getMessage()}</p>
-
+              <p className="text-sm mb-2 text-gray-500">{getMessage()}</p>
               <div className="flex items-center gap-4">
                 {/* Barre de progression */}
                 <div className="flex-1">
@@ -265,7 +263,11 @@ export default function ProfileCompletionAlert({
             <span>3x plus de contacts</span>
           </div>
           <div className="flex items-center gap-2 text-xs">
-            <svg className="w-3 h-3 text-secondary" fill="currentColor" viewBox="0 0 20 20">
+            <svg
+              className="w-3 h-3 text-secondary"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
               <path
                 fillRule="evenodd"
                 d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"

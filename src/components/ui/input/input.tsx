@@ -2,20 +2,33 @@ import clsx from "clsx";
 import { IconProps } from "@/types/iconProps";
 
 interface Props {
-    type?: "text" | "email" | "password" | "date" | "number" | "color" | "button" | "submit" | "search" | "tel" | "file" | "textarea"; // Champ optionnel avec "text" par défaut
-    register?: any; // Pour les formulaires utilisant React Hook Form
-    iconSize?: "sm" | "md" | "lg";
-    id: string; // Identifiant unique pour l'input
-    errors?: any; // Erreurs associées à cet input
-    errorMg?: string; // Message d'erreur personnalisé
-    className?: string; // Classes CSS supplémentaires
-    placeholder?: string; // Texte de remplacement dans l'input
-    icon?: IconProps; // Propriété pour ajouter une icône
-    value?: string;
-    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    required?: boolean; // Indique si le champ est requis
-    isLoading?: boolean; // Désactiver l'input si en cours de chargement
-    isAutocompleted?: boolean; // Activer/désactiver l'auto-complétion
+  type?:
+    | "text"
+    | "email"
+    | "password"
+    | "date"
+    | "number"
+    | "color"
+    | "button"
+    | "submit"
+    | "search"
+    | "tel"
+    | "file"
+    | "checkbox"
+    | "textarea"; // Champ optionnel avec "text" par défaut
+  register?: any; // Pour les formulaires utilisant React Hook Form
+  iconSize?: "sm" | "md" | "lg";
+  id: string; // Identifiant unique pour l'input
+  errors?: any; // Erreurs associées à cet input
+  errorMg?: string; // Message d'erreur personnalisé
+  className?: string; // Classes CSS supplémentaires
+  placeholder?: string; // Texte de remplacement dans l'input
+  icon?: IconProps; // Propriété pour ajouter une icône
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  required?: boolean; // Indique si le champ est requis
+  isLoading?: boolean; // Désactiver l'input si en cours de chargement
+  isAutocompleted?: boolean; // Activer/désactiver l'auto-complétion
 }
 
 export const Input = ({

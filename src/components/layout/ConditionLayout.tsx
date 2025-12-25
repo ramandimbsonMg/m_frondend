@@ -15,7 +15,9 @@ export default function ConditionLayout({
     pathname === "/login" ||
     pathname === "/register" ||
     pathname === "/forgot-password" ||
-    pathname === "/not-found";
+    pathname === "/not-found"||
+    pathname === "/error"
+
   if (isAuthPage) {
     return <>{children}</>;
   }

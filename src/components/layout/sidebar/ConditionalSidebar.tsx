@@ -29,10 +29,10 @@ export default function ConditionalSidebar() {
     "/notifications",
     "/emplois",
     "/reseau",
-    "/profile", // Cache /profile ET /profile/[id]
-    "/profile/[id]", // Alternative spécifique
+    "/profile",
+    "/profile/[id]",
     "/boutique",
-    "/messages", // Ajouté pour cohérence
+    "/messages",
   ];
 
   const hide = hiddenRoutes.some((route) => isRouteMatch(pathname, route));

@@ -166,19 +166,15 @@ export default function ReseauPage() {
 
       <div className="flex flex-col lg:flex-row gap-6">
         {/* Left Sidebar - Filters & Stats */}
-        <div className="lg:w-64">
+        <div className="lg:w-64 card">
           {/* Search */}
-          <div className="card-1 mb-4 sticky top-16">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Rechercher dans mon réseau..."
-                className="w-full pl-10 pr-4 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary placeholder:text-sm"
-              />
-            </div>
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 cursor-pointer" />
+            <input
+              type="text"
+              placeholder="Rechercher des produits, posts, personnes..."
+              className="w-full placeholder:text-sm pl-10 pr-4 py-2 bg-gray-100/50 rounded-full border border-gray-200 focus:outline-none focus:ring-0 focus:ring-cyan-500 focus:bg-white focus:border-cyan-500"
+            />
           </div>
 
           {/* Filters */}
@@ -205,7 +201,7 @@ export default function ReseauPage() {
                         );
                       }
                     }}
-                    className="rounded text-primary"
+                    className="rounded text-primary focus:ring-1 focus:ring-gray-200"
                   />
                   <filter.icon className="w-4 h-4 text-gray-600" />
                   <span className="text-sm text-gray-700">{filter.label}</span>
@@ -356,7 +352,7 @@ export default function ReseauPage() {
                     {connections.map((connection) => (
                       <div
                         key={connection.id}
-                        className="card hover:shadow-sm transition-shadow"
+                        className="card shadow-sm transition-shadow"
                       >
                         <div className="flex items-start justify-between">
                           {/* Avatar & Info */}

@@ -15,63 +15,12 @@ import {
   DollarSign,
   Target,
 } from "lucide-react";
+import { Button } from "@/components/ui/button/button";
+import Image from "next/image";
+import { contests } from "@/data/concours";
 
 export default function ContestsPage() {
   const [activeFilter, setActiveFilter] = useState("all");
-
-  const contests = [
-    {
-      id: 1,
-      title: "Meilleur vendeur du mois",
-      description:
-        "Concours mensuel récompensant les vendeurs avec les meilleures performances",
-      prize: "500.000 FCFA + Badge Top Seller",
-      participants: 245,
-      daysLeft: 7,
-      status: "active",
-      category: "sales",
-      difficulty: "medium",
-      sponsor: "Missera Market",
-    },
-    {
-      id: 2,
-      title: "Défi innovation produit",
-      description:
-        "Créez un produit innovant à partir de matériaux locaux et gagnez un financement",
-      prize: "1.000.000 FCFA + Accélérateur",
-      participants: 89,
-      daysLeft: 14,
-      status: "active",
-      category: "innovation",
-      difficulty: "hard",
-      sponsor: "Banque UEMOA",
-    },
-    {
-      id: 3,
-      title: "Challenge marketing digital",
-      description:
-        "Développez la meilleure stratégie marketing pour une marque africaine",
-      prize: "300.000 FCFA + Formation certifiée",
-      participants: 156,
-      daysLeft: 3,
-      status: "ending",
-      category: "marketing",
-      difficulty: "easy",
-      sponsor: "Google Africa",
-    },
-    {
-      id: 4,
-      title: "Concours mode durable",
-      description: "Designer une collection de mode éco-responsable",
-      prize: "750.000 FCFA + Exposition",
-      participants: 78,
-      daysLeft: 21,
-      status: "active",
-      category: "fashion",
-      difficulty: "medium",
-      sponsor: "LVMH Africa",
-    },
-  ];
 
   const filters = [
     { id: "all", label: "Tous les concours" },
@@ -85,42 +34,42 @@ export default function ContestsPage() {
   return (
     <div className="max-w-5xl px-4 mx-auto">
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-purple-600/50 to-pink-600/50 rounded-lg px-6 py-2 text-white mb-4">
+      <div className="bg-white rounded-lg px-6 py-2 text-primary-800 mb-4">
         <div className="flex flex-col md:flex-row md:items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold mb-2">Concours & Challenges</h1>
-            <p className="text-md text-gray-100 opacity-80">
+            <h1 className="text-xl font-bold mb-1">Concours & Challenges</h1>
+            <p className="text-sm text-gray-600 opacity-80">
               Participez à nos concours, gagnez des prix et boostez votre
               visibilité
             </p>
-            <div className="flex items-center space-x-6 mt-6">
+            <div className="flex items-center space-x-6 mt-4">
               <div className="flex items-center">
-                <Trophy className="w-6 h-6 mr-2 text-secondary" />
+                <Trophy className="w-5 h-5 mr-2 text-secondary" />
                 <div>
-                  <div className="text-lg font-bold">24</div>
+                  <div className="text-md font-bold">24</div>
                   <div className="text-xs opacity-90">Concours actifs</div>
                 </div>
               </div>
               <div className="flex items-center">
-                <Users className="w-6 h-6 mr-2 text-secondary" />
+                <Users className="w-5 h-5 mr-2 text-secondary" />
                 <div>
-                  <div className="text-lg font-bold">1,245</div>
+                  <div className="text-md font-bold">1,245</div>
                   <div className="text-xs opacity-90">Participants</div>
                 </div>
               </div>
               <div className="flex items-center">
-                <DollarSign className="w-6 h-6 mr-2 text-secondary" />
+                <DollarSign className="w-5 h-5 mr-2 text-secondary" />
                 <div>
-                  <div className="text-lg font-bold">5M FCFA</div>
+                  <div className="text-md font-bold">5M FCFA</div>
                   <div className="text-xs opacity-90">À gagner</div>
                 </div>
               </div>
             </div>
           </div>
           <div className="mt-6 md:mt-0">
-            <button className="px-6 py-2 bg-white text-purple-600 font-bold rounded-full hover:bg-gray-100 cursor-pointer">
+            <Button variant="outline" size="small">
               Créer un concours
-            </button>
+            </Button>
           </div>
         </div>
       </div>
@@ -133,10 +82,10 @@ export default function ContestsPage() {
               <button
                 key={filter.id}
                 onClick={() => setActiveFilter(filter.id)}
-                className={`px-2 py-1.5 rounded-full whitespace-nowrap cursor-pointer text-sm ${
+                className={`px-2 py-1.5 rounded-full whitespace-nowrap cursor-pointer text-xs font-medium  ${
                   activeFilter === filter.id
-                    ? "bg-purple-100 text-purple-700 font-medium"
-                    : "text-gray-600 hover:bg-gray-100"
+                    ? "bg-purple-100 text-purple-700 font-bold"
+                    : "text-gray-500 hover:bg-gray-100"
                 }`}
               >
                 {filter.label}
@@ -149,11 +98,11 @@ export default function ContestsPage() {
               <input
                 type="text"
                 placeholder="Rechercher un concours..."
-                className="pl-10 pr-4 py-1.5 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-primary lg:w-60"
+                className="pl-10 pr-4 py-1.5 placeholder:text-sm border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-primary lg:w-60"
               />
             </div>
-            <button className="flex items-center space-x-2 px-4 py-1.5 border border-gray-300 rounded-full hover:bg-gray-50 cursor-pointer">
-              <Filter className="w-5 h-5" />
+            <button className="flex items-center space-x-2 px-4 py-1.5 border border-gray-300 rounded-full hover:bg-gray-50 cursor-pointer text-sm">
+              <Filter className="w-4 h-4" />
               <span>Filtrer</span>
             </button>
           </div>
@@ -201,10 +150,24 @@ export default function ContestsPage() {
                         : "Difficile"}
                     </span>
                   </div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">
-                    {contest.title}
-                  </h3>
-                  <p className="text-gray-600">{contest.description}</p>
+                  <div className="flex gap-1">
+                      <Image
+                        src={contest.image}
+                        alt={contest.title}
+                        width={50}
+                        height={50}
+                        loading="eager"
+                        className="object-cover"
+                      />
+                    <div>
+                      <h3 className="text-md font-bold text-gray-900 mb-2">
+                        {contest.title}
+                      </h3>
+                      <p className="text-gray-500 text-sm">
+                        {contest.description}
+                      </p>
+                    </div>
+                  </div>
                 </div>
                 <Award className="w-8 h-8 text-purple-600" />
               </div>
@@ -218,7 +181,7 @@ export default function ContestsPage() {
                     <Trophy className="w-4 h-4 mr-2" />
                     Prix à gagner
                   </div>
-                  <div className="text-xl font-bold text-gray-900">
+                  <div className="text-sm w-60 font-bold text-gray-900">
                     {contest.prize}
                   </div>
                 </div>
@@ -235,20 +198,20 @@ export default function ContestsPage() {
             <div className="px-6 py-3">
               <div className="grid grid-cols-3 gap-4 mb-6">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-gray-900">
+                  <div className="text-xl font-bold text-gray-900">
                     {contest.participants}
                   </div>
-                  <div className="text-sm text-gray-600">Participants</div>
+                  <div className="text-xs text-gray-600">Participants</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-gray-900">
+                  <div className="text-xl font-bold text-gray-900">
                     {contest.daysLeft}
                   </div>
-                  <div className="text-sm text-gray-600">Jours restants</div>
+                  <div className="text-xs text-gray-600">Jours restants</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-gray-900">24</div>
-                  <div className="text-sm text-gray-600">Projets</div>
+                  <div className="text-xl font-bold text-gray-900">24</div>
+                  <div className="text-xs text-gray-600">Projets</div>
                 </div>
               </div>
 
@@ -260,9 +223,9 @@ export default function ContestsPage() {
                     {Math.round(((21 - contest.daysLeft) / 21) * 100)}%
                   </span>
                 </div>
-                <div className="w-full bg-gray-200 rounded-full h-2">
+                <div className="w-full bg-gray-200 rounded-full h-1.5">
                   <div
-                    className="bg-gradient-to-r from-purple-600 to-pink-600 h-2 rounded-full"
+                    className="bg-gradient-to-r from-purple-600 to-pink-600 h-1.5 rounded-full"
                     style={{
                       width: `${Math.round(
                         ((21 - contest.daysLeft) / 21) * 100
@@ -274,7 +237,7 @@ export default function ContestsPage() {
 
               {/* Actions */}
               <div className="flex space-x-3">
-                <button className="flex-1 py-2 bg-purple-600  text-white rounded-full font-medium hover:opacity-90 cursor-pointer">
+                <button className="flex-1 py-1.5 bg-purple-600 text-sm text-white rounded-full font-medium hover:opacity-90 cursor-pointer w-80">
                   Participer maintenant
                 </button>
                 <button className="px-2 py-2 border border-gray-300 rounded-full hover:bg-gray-50 cursor-pointer">
@@ -328,9 +291,7 @@ export default function ContestsPage() {
       {/* Leaderboard Preview */}
       <div className="card">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-lg font-bold text-gray-900">
-            Classement actuel
-          </h2>
+          <h2 className="text-lg font-bold text-gray-900">Classement actuel</h2>
           <button className="text-primary hover:underline font-medium text-sm cursor-pointer">
             Voir le classement complet
           </button>
