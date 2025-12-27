@@ -141,7 +141,7 @@ export default function ReseauPage() {
         <div className="flex flex-col md:flex-row md:items-center justify-between">
           <div>
             <h1 className="text-xl font-bold text-gray-900">Mon réseau</h1>
-            <div className="flex items-center space-x-4 mt-2">
+            <div className="flex items-center space-x-4 mt-2 text-sm">
               <div className="flex items-center">
                 <Users className="w-5 h-5 text-primary mr-2" />
                 <span className="text-lg font-semibold text-gray-900">
@@ -149,14 +149,14 @@ export default function ReseauPage() {
                 </span>
                 <span className="text-gray-600 ml-1">contacts</span>
               </div>
-              <div className="text-secondary font-medium">
+              <div className="text-secondary font-medium text-sm">
                 <TrendingUp className="w-4 h-4 inline mr-1" />+
                 {networkStats.newThisWeek} cette semaine
               </div>
             </div>
           </div>
           <div className="mt-4 md:mt-0">
-            <button className="flex items-center space-x-2 px-4 py-2 bg-primary text-white rounded-full hover:bg-primary cursor-pointer">
+            <button className="flex items-center space-x-2 px-4 py-2 bg-gray-100 text-sm rounded-full hover:bg-gray-200 cursor-pointer">
               <UserPlus className="w-4 h-4" />
               <span>Étendre mon réseau</span>
             </button>

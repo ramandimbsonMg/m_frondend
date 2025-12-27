@@ -8,14 +8,12 @@ import {
   TrendingUp,
 } from "lucide-react";
 import CreatePost from "@/components/feed/CreatePost";
-import ProfileCompletionAlert from "@/components/global/ProfileCompletionAlert";
 import { posts, trendingProducts } from "@/data/post";
 import PostCard from "@/components/ui/cards/PostCard";
 import ProductCard from "@/components/ui/cards/ProductCard";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("feed");
-  const [profileCompletion, setProfileCompletion] = useState(65);
   const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {
@@ -27,15 +25,9 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="lg:space-y-4 space-y-2">
-      <ProfileCompletionAlert
-        completion={profileCompletion}
-        onCompletionUpdate={setProfileCompletion}
-      />
-
-      {/* Feed Tabs - Caché sur mobile sauf quand isSticky est vrai */}
-      <div
-        className={`flex lg:space-x-4 border-b pt-2 border-gray-200 bg-white z-50 rounded-b text-sm justify-between ${
+    <div className="lg:space-y-3 space-y-2">
+      {/* <div
+        className={`flex lg:space-x-4 border-b rounded-lg pt-2 border-gray-200 bg-white z-50 text-sm justify-between ${
           isSticky ? "sticky top-16 border-t" : "lg:flex hidden"
         }`}
       >
@@ -87,10 +79,15 @@ export default function Home() {
         <div className="mx-4 w-8 h-8 rounded-full text-center flex justify-center hover:bg-gray-300 cursor-pointer">
           ...
         </div>
-      </div>
+      </div> */}
 
       <CreatePost />
 
+      <div className="space-y-4">
+        {posts.map((post) => (
+          <PostCard key={post.id} post={post} />
+        ))}
+      </div>
       <div className="card">
         <div className="flex items-center justify-between mb-4">
           <h2 className="font-semibold text-gray-900 flex items-center">
@@ -107,13 +104,6 @@ export default function Home() {
           ))}
         </div>
       </div>
-
-      <div className="space-y-4">
-        {posts.map((post) => (
-          <PostCard key={post.id} post={post} />
-        ))}
-      </div>
-
       <div className="card-1">
         <div className="flex items-center justify-between mb-4">
           <h2 className="font-semibold text-gray-900">

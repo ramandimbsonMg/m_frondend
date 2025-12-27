@@ -2,183 +2,185 @@
 
 import { useState } from "react";
 import {
-  Edit3,
   Image as ImageIcon,
   Video,
   Calendar,
   X,
   Smile,
-  DollarSign,
+  Coins,
   Tag,
 } from "lucide-react";
+import { Button } from "../ui/button/button";
+import EmojiPickerUI from "../ui/emoji/emoji-picker-ui";
 
-const CreatePost = () => {
-  const [postContent, setPostContent] = useState("");
-  const [isExpanded, setIsExpanded] = useState(false);
+export default function CreatePost() {
+  const [content, setContent] = useState("");
+  const [open, setOpen] = useState(false);
+  const [showEmoji, setShowEmoji] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const submit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle post creation
-    console.log("Creating post:", postContent);
-    setPostContent("");
-    setIsExpanded(false);
+    if (!content.trim()) return;
+    console.log("Post:", content);
+    setContent("");
+    setOpen(false);
+    setShowEmoji(false);
   };
 
   return (
-    <div className="card-1 relative">
-      <div className="flex items-start justify-between lg:space-x-3">
-        {/* Avatar */}
-        <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-          <span className="text-white font-bold">JD</span>
-        </div>
+    <>
+      <div className="card border border-gray-200">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold">
+            JD
+          </div>
 
-        {/* Input Area */}
-        <div className="lg:flex-1">
           <button
-            onClick={() => setIsExpanded(true)}
-            className="lg:w-full w-46 truncate text-left px-3 py-2 border border-gray-300 rounded-full hover:bg-gray-50 text-gray-600 cursor-text text-sm"
+            onClick={() => setOpen(true)}
+            className="flex-1 text-left px-4 py-2 border border-gray-200 rounded-full text-sm text-gray-500 hover:bg-gray-50 cursor-text"
           >
             Commencez un post...
           </button>
+
+          <Button>Publier</Button>
         </div>
-        <div>
-          <button className="btn-primary text-sm cursor-pointer">
-            Publier
-          </button>
+
+        <div className="hidden lg:flex justify-between mt-4 px-10">
+          {[
+            { icon: ImageIcon, label: "Photo" },
+            { icon: Video, label: "Vidéo" },
+            { icon: Calendar, label: "Événement" },
+            { icon: Coins, label: "Vendre" },
+          ].map(({ icon: Icon, label }) => (
+            <button
+              key={label}
+              className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 text-sm text-gray-600 hover:text-primary"
+            >
+              <Icon className="w-4 h-4" />
+              {label}
+            </button>
+          ))}
         </div>
       </div>
 
-      {/* Action Buttons */}
-      <div className="lg:block hidden">
-        <div className="lg:flex items-center justify-between mt-3 px-16">
-          <button className="flex items-center space-x-2 text-gray-600 hover:text-primary bg-gray-100 lg:text-sm text-xs px-4 lg:p-2 p-1 rounded-full cursor-pointer">
-            <ImageIcon className="lg:w-5 lg:h-5 w-4 h-4" />
-            <span className="text-sm">Photo</span>
-          </button>
-          <button className="flex items-center space-x-2 text-gray-600 hover:text-primary bg-gray-100 lg:text-sm text-xs px-4 lg:p-2 p-1 rounded-full cursor-pointer">
-            <Video className="lg:w-5 lg:h-5 w-4 h-4" />
-            <span className="text-sm">Vidéo</span>
-          </button>
-          <button className="flex items-center space-x-2 text-gray-600 hover:text-primary bg-gray-100 lg:text-sm text-xs px-4 lg:p-2 p-1 rounded-full cursor-pointer">
-            <Calendar className="lg:w-5 lg:h-5 w-4 h-4" />
-            <span className="text-sm">Événement</span>
-          </button>
-          <button className="flex items-center space-x-2 text-gray-600 hover:text-primary bg-gray-100 lg:text-sm text-xs px-4 lg:p-2 p-1 rounded-full cursor-pointer">
-            <DollarSign className="lg:w-5 lg:h-5 w-4 h-4" />
-            <span className="text-sm">Vendre</span>
-          </button>
-        </div>
-      </div>
-
-      {/* Expanded Post Modal */}
-      {isExpanded && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-            {/* Header */}
-            <div className="flex items-center justify-between py-2 px-6 border-b border-gray-200">
-              <h3 className="font-semibold text-lg">Créer une publication</h3>
+      {open && (
+        <div className="fixed inset-0 z-50 bg-black/40 flex items-center justify-center p-4">
+          <div className="bg-white w-full max-w-xl rounded-xl border border-gray-200 overflow-hidden">
+            <div className="flex items-center justify-between px-6 py-3 border-b border-gray-200">
+              <h3 className="font-semibold">Créer une publication</h3>
               <button
-                onClick={() => setIsExpanded(false)}
-                className="p-2 hover:bg-gray-100 rounded-full cursor-pointer"
+                onClick={() => setOpen(false)}
+                className="p-2 rounded-full hover:bg-gray-100 cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            {/* Author */}
-            <div className="py-2 px-6 border-b border-gray-200">
-              <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-                  <span className="text-white font-bold">JD</span>
-                </div>
-                <div>
-                  <div className="font-medium">John Doe</div>
-                  <div className="text-sm text-gray-600">Public</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Content */}
-            <form onSubmit={handleSubmit} className="p-4">
+            <form onSubmit={submit} className="p-6 space-y-4 relative">
               <textarea
-                value={postContent}
-                onChange={(e) => setPostContent(e.target.value)}
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
                 placeholder="De quoi voulez-vous parler ?"
-                className="w-full h-30 p-3 border-none focus:outline-none text-lg resize-none"
+                className="w-full min-h-[120px] resize-none text-sm focus:outline-none"
                 autoFocus
               />
 
-              {/* Add Tags */}
-              <div className="flex items-center space-x-2 mt-2 px-4">
+              <div className="flex items-center gap-2">
                 <Tag className="w-4 h-4 text-primary" />
                 <input
-                  type="text"
                   placeholder="Ajouter des hashtags..."
-                  className="flex-1 border-none focus:outline-none text-sm"
+                  className="flex-1 text-sm focus:outline-none"
                 />
               </div>
 
-              {/* Features */}
-              <div className="mt-4 py-2 px-6 bg-gray-50 rounded-lg">
-                <h4 className="font-medium mb-3">
+              <div className="bg-gray-50 rounded-lg p-4 border border-gray-200 relative">
+                <p className="text-sm font-medium mb-3">
                   Ajouter à votre publication
-                </h4>
-                <div className="grid grid-cols-4 gap-2">
-                  <button className="flex flex-col items-center border-gray-200 py-1 px-3 bg-white rounded-lg border hover:border-primary cursor-pointer">
-                    <ImageIcon className="w-5 h-5 text-gray-600" />
-                    <span className="text-xs mt-1">Photo</span>
+                </p>
+
+                <div className="grid grid-cols-4 gap-3">
+                  <button
+                    type="button"
+                    className="border border-gray-200 px-3 flex gap-2 items-center cursor-pointer rounded-full py-1.5 text-cyan-500 hover:bg-cyan-100"
+                  >
+                    <ImageIcon className="w-5 h-5" />
+                    Photo
                   </button>
-                  <button className="flex flex-col items-center border-gray-200 py-1 px-3 bg-white rounded-lg border hover:border-primary cursor-pointer">
-                    <Video className="w-5 h-5 text-gray-600" />
-                    <span className="text-xs mt-1">Vidéo</span>
+
+                  <button
+                    type="button"
+                    className="border border-gray-200 px-3 flex gap-2 items-center cursor-pointer rounded-full py-1.5 text-rose-500 hover:bg-rose-50"
+                  >
+                    <Video className="w-5 h-5" />
+                    Vidéo
                   </button>
-                  <button className="flex flex-col items-center border-gray-200 py-1 px-3 bg-white rounded-lg border hover:border-primary cursor-pointer">
-                    <DollarSign className="w-5 h-5 text-gray-600" />
-                    <span className="text-xs mt-1">Prix</span>
+
+                  <button
+                    type="button"
+                    className="border border-gray-200 px-3 flex gap-2 items-center cursor-pointer rounded-full py-1.5 text-gray-500 hover:bg-gray-50"
+                  >
+                    <Coins className="w-5 h-5" />
+                    Prix
                   </button>
-                  <button className="flex flex-col items-center border-gray-200 py-1 px-3 bg-white rounded-lg border hover:border-primary cursor-pointer">
-                    <Smile className="w-5 h-5 text-gray-600" />
-                    <span className="text-xs mt-1">Émoticône</span>
+
+                  <button
+                    type="button"
+                    onClick={() => setShowEmoji((v) => !v)}
+                    className="border border-gray-200 px-3 flex gap-2 items-center cursor-pointer rounded-full py-1.5 text-secondary hover:bg-secondary-50"
+                  >
+                    <Smile className="w-5 h-5" />
+                    Emoji
                   </button>
                 </div>
+
+                {showEmoji && (
+                  <div className="absolute bottom-4 w-[50vh] left-1 right-4 z-50">
+                    <EmojiPickerUI
+                      onSelect={(emoji) => {
+                        setContent((v) => v + emoji);
+                        setShowEmoji(false);
+                      }}
+                    />
+                  </div>
+                )}
               </div>
 
-              {/* Post Options */}
-              <div className="mt-6 space-y-4 px-4">
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-600">Audience</span>
-                  <select className="border rounded-full px-3 py-1 text-sm border-gray-200 hover:ring-0">
-                    <option>Public</option>
-                    <option>Abonnés seulement</option>
-                    <option>Personnalisé</option>
-                  </select>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-600">Commentaires</span>
-                  <select className="border rounded-full px-3 py-1 text-sm border-gray-200 hover:ring-0">
-                    <option>Tout le monde</option>
-                    <option>Abonnés seulement</option>
-                    <option>Désactivé</option>
-                  </select>
-                </div>
-              </div>
-
-              {/* Submit */}
-              <div className="mt-6 pt-4 border-t border-gray-200">
-                <button
+              <div className="flex justify-end">
+                <Button
                   type="submit"
-                  disabled={!postContent.trim()}
-                  className="w-40 btn-primary py-2 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                  disabled={!content.trim()}
+                  className="w-40 btn-primary disabled:opacity-50"
                 >
                   Publier
-                </button>
+                </Button>
               </div>
             </form>
           </div>
         </div>
       )}
-    </div>
-  );
-};
 
-export default CreatePost;
+      <style jsx>{`
+        .action-btn {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 4px;
+          border: 1px solid #e5e7eb;
+          border-radius: 0.75rem;
+          padding: 0.6rem;
+          font-size: 0.75rem;
+          color: #4b5563;
+          background: white;
+        }
+        .action-btn:hover {
+          border-color: var(--primary);
+          color: var(--primary);
+        }
+        .action-btn svg {
+          width: 20px;
+          height: 20px;
+        }
+      `}</style>
+    </>
+  );
+}
