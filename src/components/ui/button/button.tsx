@@ -7,7 +7,7 @@ import Link from "next/link";
 
 interface Props {
   size?: "very-small" | "small" | "medium" | "large" | "xlarge";
-  variant?: "accent" | "secondary" | "outline" | "disable" | "ico" | "red";
+  variant?: "accent" | "secondary" | "outline" | "disable" | "ico" | "red" | "all-button";
   icon?: IconProps & { size?: number };
   iconTheme?: "accent" | "secondary" | "gray";
   iconPosition?: "left" | "right";
@@ -57,6 +57,8 @@ export const Button = ({
         return "bg-white border border-gray-300 text-gray-500 rounded-full font-semibold hover:bg-gray-100";
       case "disable":
         return "bg-gray-200 border text-gray-900 rounded-full cursor-not-allowed";
+      case "all-button":
+        return " rounded-full cursor-pointer";
       case "ico":
         if (iconTheme === "accent")
           return "bg-primary hover:bg-primary-400 text-white rounded-full";
