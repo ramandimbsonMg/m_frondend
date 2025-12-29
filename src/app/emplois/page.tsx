@@ -6,7 +6,7 @@ import {
   Filter,
   MapPin,
   Briefcase,
-  DollarSign,
+  Coins,
   Clock,
   TrendingUp,
   Bookmark,
@@ -18,7 +18,12 @@ import {
   Target,
   ChevronRight,
   Star,
+  ChevronDown,
 } from "lucide-react";
+import Card from "@/components/ui/cards/Card";
+import * as Select from "@radix-ui/react-select";
+import { ChevronDownIcon } from "@radix-ui/react-icons";
+import { Button } from "@/components/ui/button/button";
 
 export default function JobsPage() {
   const [activeTab, setActiveTab] = useState("recommended");
@@ -107,100 +112,227 @@ export default function JobsPage() {
 
   return (
     <div className="max-w-7xl mx-auto">
-      {/* Hero Section */}
-      <div className="card mb-4">
+      <div className="bg-white rounded-xl border border-gray-200 px-4 py-2 mb-2">
         <div className="flex flex-col md:flex-row md:items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold mb-2">
+            <h1 className="text-xl font-bold text-gray-900">
               Trouvez le job de vos rêves
             </h1>
-            <p className="text-md opacity-90">
+            <p className="text-sm opacity-90">
               Des opportunités professionnelles adaptées aux talents africains
             </p>
             <div className="flex items-center space-x-3 mt-2">
               <div className="flex items-center">
                 <Briefcase className="w-5 h-5 mr-2" />
                 <div>
-                  <div className="text-lg font-bold">1,245</div>
+                  <div className="text-sm font-bold">1,245</div>
                   <div className="text-xs opacity-90">Offres actives</div>
                 </div>
               </div>
               <div className="flex items-center">
                 <Users className="w-5 h-5 mr-2" />
                 <div>
-                  <div className="text-lg font-bold">4,562</div>
+                  <div className="text-sm font-bold">4,562</div>
                   <div className="text-xs opacity-90">Candidats actifs</div>
                 </div>
               </div>
               <div className="flex items-center">
                 <Target className="w-5 h-5 mr-2" />
                 <div>
-                  <div className="text-lg font-bold">89%</div>
+                  <div className="text-sm font-bold">89%</div>
                   <div className="text-xs opacity-90">Taux de matching</div>
                 </div>
               </div>
             </div>
           </div>
           <div className="mt-6 md:mt-0">
-            <button className="px-6 py-3 bg-white text-primary font-bold rounded-lg hover:bg-gray-100 cursor-pointer">
+            <Button variant="outline" className="px-6 py-2 bg-white text-primary font-bold hover:bg-gray-100 cursor-pointer">
               Poster une offre
-            </button>
+            </Button>
           </div>
         </div>
       </div>
+      <hr className="pt-1 pb-1 border-gray-200" />
 
       {/* Search Bar */}
-      <div className="card mb-6 sticky top-16">
-        <div className="relative mb-4">
+      <Card
+        className="mb-4 sticky top-14 flex items-center justify-between"
+        hoverable={false}
+      >
+        <div className="relative">
           <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Rechercher un poste, une compétence ou une entreprise..."
-            className="w-full pl-12 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary"
+            className=" w-60 pl-10 placeholder:text-sm px-4 py-3 bg-white border border-gray-300 rounded-full hover:border-primary transition-colors focus:outline-none focus:ring-0 focus:ring-primary focus:ring-opacity-30 h-10"
           />
         </div>
-        <div className="grid md:grid-cols-4 gap-4">
-          <div className="relative">
-            <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-            <select className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary">
-              <option>Localisation</option>
-              <option>Madagascar</option>
-              <option>France</option>
-              <option>Chine</option>
-              <option>Remote</option>
-            </select>
-          </div>
-          <div className="relative">
-            <Briefcase className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-            <select className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary">
-              <option>Type d'emploi</option>
-              <option>Temps plein</option>
-              <option>Contrat</option>
-              <option>Stage</option>
-              <option>Freelance</option>
-            </select>
-          </div>
-          <div className="relative">
-            <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-            <select className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary">
-              <option>Salaire</option>
-              <option>200K - 400K Ar</option>
-              <option>400K - 600K Ar</option>
-              <option>600K+ Ar</option>
-            </select>
-          </div>
-          <button className="bg-primary text-white cursor-pointer rounded-full">
-            <Search className="w-4 h-4 inline mr-2" />
-            Rechercher
-          </button>
+        <div className="grid md:grid-cols-4 mt-2 gap-3 md:gap-4">
+          <Select.Root>
+            <Select.Trigger className="flex items-center justify-between w-full px-4 py-1.5 bg-white border border-gray-300 rounded-full hover:border-primary transition-colors focus:outline-none focus:ring-0 focus:ring-primary focus:ring-opacity-30 h-10 cursor-pointer">
+              <div className="flex items-center gap-3 text-sm">
+                <MapPin className="w-4 h-4 text-gray-400" />
+                <Select.Value placeholder="Localisation" />
+              </div>
+              <Select.Icon>
+                <ChevronDown className="w-4 h-4 text-gray-400" />
+              </Select.Icon>
+            </Select.Trigger>
+
+            <Select.Portal>
+              <Select.Content
+                className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden z-50"
+                position="popper"
+                sideOffset={5}
+              >
+                <Select.Viewport className="p-2">
+                  <Select.Group>
+                    <Select.Label className="px-3 py-1.5 text-xs font-medium text-gray-500 uppercase">
+                      Choisir une localisation
+                    </Select.Label>
+                    <Select.Item
+                      value="madagascar"
+                      className="px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 focus:outline-none focus:bg-gray-100 cursor-pointer flex items-center gap-2"
+                    >
+                      <Select.ItemText className="cursor-pointer">
+                        Madagascar
+                      </Select.ItemText>
+                    </Select.Item>
+                    <Select.Item
+                      value="france"
+                      className="px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 focus:outline-none focus:bg-gray-100 cursor-pointer flex items-center gap-2"
+                    >
+                      <Select.ItemText>France</Select.ItemText>
+                    </Select.Item>
+                    <Select.Item
+                      value="chine"
+                      className="px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 focus:outline-none focus:bg-gray-100 cursor-pointer flex items-center gap-2"
+                    >
+                      <Select.ItemText>Chine</Select.ItemText>
+                    </Select.Item>
+                    <Select.Item
+                      value="remote"
+                      className="px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 focus:outline-none focus:bg-gray-100 cursor-pointer flex items-center gap-2"
+                    >
+                      <Select.ItemText>Remote</Select.ItemText>
+                    </Select.Item>
+                  </Select.Group>
+                </Select.Viewport>
+              </Select.Content>
+            </Select.Portal>
+          </Select.Root>
+
+          <Select.Root>
+            <Select.Trigger className="flex items-center justify-between w-full px-4 py-3 bg-white border border-gray-300 rounded-full hover:border-primary transition-colors focus:outline-none focus:ring-0 focus:ring-primary focus:ring-opacity-30 h-10 cursor-pointer">
+              <div className="flex items-center gap-3 text-sm">
+                <Briefcase className="w-4 h-4 text-gray-400" />
+                <Select.Value placeholder="Type d'emploi" />
+              </div>
+              <Select.Icon>
+                <ChevronDownIcon className="w-4 h-4 text-gray-400" />
+              </Select.Icon>
+            </Select.Trigger>
+
+            <Select.Portal>
+              <Select.Content
+                className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden z-50"
+                position="popper"
+                sideOffset={5}
+              >
+                <Select.Viewport className="p-2">
+                  <Select.Group>
+                    <Select.Label className="px-3 py-2 text-xs font-medium text-gray-500 uppercase">
+                      Type de contrat
+                    </Select.Label>
+                    <Select.Item
+                      value="fulltime"
+                      className="px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 focus:outline-none focus:bg-gray-100 cursor-pointer"
+                    >
+                      <Select.ItemText>Temps plein</Select.ItemText>
+                    </Select.Item>
+                    <Select.Item
+                      value="contract"
+                      className="px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 focus:outline-none focus:bg-gray-100 cursor-pointer"
+                    >
+                      <Select.ItemText>Contrat</Select.ItemText>
+                    </Select.Item>
+                    <Select.Item
+                      value="internship"
+                      className="px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 focus:outline-none focus:bg-gray-100 cursor-pointer"
+                    >
+                      <Select.ItemText>Stage</Select.ItemText>
+                    </Select.Item>
+                    <Select.Item
+                      value="freelance"
+                      className="px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 focus:outline-none focus:bg-gray-100 cursor-pointer"
+                    >
+                      <Select.ItemText>Freelance</Select.ItemText>
+                    </Select.Item>
+                  </Select.Group>
+                </Select.Viewport>
+              </Select.Content>
+            </Select.Portal>
+          </Select.Root>
+
+          <Select.Root>
+            <Select.Trigger className="flex items-center justify-between w-full px-4 py-3 bg-white border border-gray-300 rounded-full hover:border-primary transition-colors focus:outline-none focus:ring-0 focus:ring-primary focus:ring-opacity-30 h-10 cursor-pointer">
+              <div className="flex items-center gap-3 text-sm">
+                <Coins className="w-4 h-4 text-gray-400" />
+                <Select.Value placeholder="Salaire" />
+              </div>
+              <Select.Icon>
+                <ChevronDown className="w-4 h-4 text-gray-400" />
+              </Select.Icon>
+            </Select.Trigger>
+
+            <Select.Portal>
+              <Select.Content
+                className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden z-50"
+                position="popper"
+                sideOffset={5}
+              >
+                <Select.Viewport className="p-2">
+                  <Select.Group>
+                    <Select.Label className="px-3 py-2 text-xs font-medium text-gray-500 uppercase">
+                      Fourchette salariale
+                    </Select.Label>
+                    <Select.Item
+                      value="200k-400k"
+                      className="px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 focus:outline-none focus:bg-gray-100 cursor-pointer"
+                    >
+                      <Select.ItemText>200K - 400K Ar</Select.ItemText>
+                    </Select.Item>
+                    <Select.Item
+                      value="400k-600k"
+                      className="px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 focus:outline-none focus:bg-gray-100 cursor-pointer"
+                    >
+                      <Select.ItemText>400K - 600K Ar</Select.ItemText>
+                    </Select.Item>
+                    <Select.Item
+                      value="600k-plus"
+                      className="px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 focus:outline-none focus:bg-gray-100 cursor-pointer"
+                    >
+                      <Select.ItemText>600K+ Ar</Select.ItemText>
+                    </Select.Item>
+                  </Select.Group>
+                </Select.Viewport>
+              </Select.Content>
+            </Select.Portal>
+          </Select.Root>
+
+          {/* Bouton Rechercher */}
+          <Button size="small" className="flex">
+            <Search className="w-4 h-4" />
+            <span className="text-sm">Rechercher</span>
+          </Button>
         </div>
-      </div>
+      </Card>
 
       <div className="flex flex-col lg:flex-row gap-6">
         {/* Left Sidebar */}
-        <div className="lg:w-64">
+        <div className="lg:w-64 lg:block hidden">
           {/* Quick Apply Profile */}
           <div className="card mb-4">
             <div className="flex items-center space-x-3 mb-4">
@@ -214,16 +346,16 @@ export default function JobsPage() {
             </div>
             <div className="mb-4">
               <div className="flex justify-between text-sm mb-1">
-                <span className="text-gray-600">Profil complet</span>
-                <span className="font-medium">85%</span>
+                <span className="text-gray-600 text-sm">Profil complet</span>
+                <span className="font-medium">65%</span>
               </div>
               <div className="w-full bg-gray-200 rounded-full h-1.5">
                 <div className="bg-accent h-1.5 rounded-full w-4/5"></div>
               </div>
             </div>
-            <button className="w-full py-2 bg-primary text-white rounded-full font-medium hover:bg-primary cursor-pointer">
+            <Button className="w-full bg-primary text-white rounded-full font-medium hover:bg-primary cursor-pointer text-sm">
               Compléter mon profil
-            </button>
+            </Button>
           </div>
 
           {/* Job Alerts */}
@@ -238,7 +370,7 @@ export default function JobsPage() {
                   key={index}
                   className="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg"
                 >
-                  <span className="font-medium text-gray-900">
+                  <span className="font-medium text-gray-900 text-sm">
                     {alert.keyword}
                   </span>
                   <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">
@@ -247,13 +379,13 @@ export default function JobsPage() {
                 </div>
               ))}
             </div>
-            <button className="w-full mt-4 py-2 text-sm text-primary hover:underline">
-              + Ajouter une alerte
+            <button className="w-full mt-4 py-2 text-sm text-primary hover:underline cursor-pointer">
+              Ajouter une alerte
             </button>
           </div>
 
           {/* Top Companies */}
-          <div className="card sticky top-52 ">
+          <Card className="sticky top-34">
             <h3 className="font-semibold text-gray-900 mb-4">
               Entreprises phares
             </h3>
@@ -271,7 +403,7 @@ export default function JobsPage() {
                     <Building className="w-5 h-5 text-white" />
                   </div>
                   <div className="flex-1">
-                    <div className="font-medium text-gray-900">
+                    <div className="font-medium text-sm text-gray-900">
                       {company.name}
                     </div>
                     <div className="text-sm text-gray-600">
@@ -289,7 +421,7 @@ export default function JobsPage() {
             <button className="w-full mt-4 py-2 text-sm text-primary cursor-pointer hover:underline">
               Voir toutes les entreprises
             </button>
-          </div>
+          </Card>
         </div>
 
         {/* Main Content */}
@@ -301,13 +433,13 @@ export default function JobsPage() {
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`flex-1 px-4 py-2 font-medium border-b-2 ${
+                  className={`flex-1 px-4 py-2 font-medium border-b-2 text-sm cursor-pointer ${
                     activeTab === tab
                       ? "border-primary text-primary"
                       : "border-transparent text-gray-600 hover:text-gray-900"
                   }`}
                 >
-                  {tab === "recommended" && "Recommandés pour vous"}
+                  {tab === "recommended" && "Pour vous"}
                   {tab === "recent" && "Récents"}
                   {tab === "remote" && "Remote"}
                   {tab === "saved" && "Sauvegardés (12)"}
@@ -316,7 +448,7 @@ export default function JobsPage() {
             </div>
 
             {/* Job Listings */}
-            <div className="p-6">
+            <div className="px-4 py-3">
               <div className="space-y-6">
                 {jobListings.map((job) => (
                   <div
@@ -365,21 +497,21 @@ export default function JobsPage() {
 
                         {/* Job Details */}
                         <div className="mt-4">
-                          <p className="text-gray-700 mb-4">
+                          <p className="text-gray-700 mb-4 text-sm">
                             {job.description}
                           </p>
 
                           {/* Salary & Type */}
                           <div className="flex flex-wrap items-center gap-4 mb-4">
-                            <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">
-                              <DollarSign className="w-3 h-3 inline mr-1" />
+                            <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs">
+                              <Coins className="w-3 h-3 inline mr-1" />
                               {job.salary}
                             </span>
-                            <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
+                            <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">
                               {job.type}
                             </span>
                             {job.remote && (
-                              <span className="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">
+                              <span className="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-xs">
                                 Remote possible
                               </span>
                             )}
@@ -409,12 +541,12 @@ export default function JobsPage() {
                               <span className="font-bold">{job.match}%</span>
                             </div>
                             <div className="flex items-center space-x-3">
-                              <button className="px-4 py-2 border border-gray-300 rounded-full text-gray-700 hover:bg-gray-50 cursor-pointer">
+                              <Button variant="outline" className="px-4 py-2 border border-gray-300 rounded-full text-gray-700 hover:bg-gray-50 cursor-pointer">
                                 Voir détails
-                              </button>
-                              <button className="px-4 py-2 bg-primary text-white rounded-full hover:bg-primary cursor-pointer">
+                              </Button>
+                              <Button className="px-4 py-2 bg-primary text-white rounded-full hover:bg-primary cursor-pointer">
                                 Postuler maintenant
-                              </button>
+                              </Button>
                             </div>
                           </div>
                         </div>
@@ -440,11 +572,11 @@ export default function JobsPage() {
               {recommendedJobs.map((job) => (
                 <div
                   key={job.id}
-                  className="border border-gray-200 rounded-lg p-4 hover:border-primary"
+                  className="border border-gray-200 rounded-lg px-4 py-3 hover:border-primary"
                 >
                   <div className="flex justify-between items-start">
                     <div>
-                      <h4 className="font-bold text-gray-900">{job.title}</h4>
+                      <h4 className="font-bold text-gray-900 text-sm">{job.title}</h4>
                       <div className="text-sm text-gray-600 mt-1">
                         {job.company} • {job.location}
                       </div>
@@ -480,19 +612,19 @@ export default function JobsPage() {
                   Ressources pour améliorer votre employabilité
                 </p>
                 <div className="flex flex-wrap gap-3">
-                  <button className="px-4 py-2 bg-white text-gray-700 rounded-full cursor-pointer border hover:border-purple-300">
+                  <Button variant="outline" className="">
                     CV Builder
-                  </button>
-                  <button className="px-4 py-2 bg-white text-gray-700 rounded-full cursor-pointer border hover:border-purple-300">
+                  </Button>
+                  <Button variant="outline" className=" bg-white text-gray-700 rounded-full cursor-pointer border hover:border-purple-300">
                     Interview Prep
-                  </button>
-                  <button className="px-4 py-2 bg-white text-gray-700 rounded-full cursor-pointer border hover:border-purple-300">
+                  </Button>
+                  <Button variant="outline" className=" bg-white text-gray-700 rounded-full cursor-pointer border hover:border-purple-300">
                     Salary Insights
-                  </button>
+                  </Button>
                 </div>
               </div>
               <div className="mt-4 md:mt-0">
-                <button className="flex items-center space-x-2 px-6 py-3 bg-purple-600 text-white rounded-lg cursor-pointer hover:bg-purple-700">
+                <button className="flex items-center space-x-2 px-6 py-3 bg-purple-600 text-white rounded-lg cursor-pointer hover:bg-purple-700 text-sm font-medium">
                   <span>Explorer les ressources</span>
                   <ChevronRight className="w-4 h-4" />
                 </button>
@@ -502,7 +634,7 @@ export default function JobsPage() {
         </div>
 
         {/* Right Sidebar */}
-        <div className="lg:w-64">
+        <div className="lg:w-64 lg:block hidden">
           {/* Application Tracker */}
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-6">
             <div className="flex items-center justify-between mb-4">
@@ -570,7 +702,7 @@ export default function JobsPage() {
               <div>
                 <div className="flex justify-between text-sm mb-1">
                   <span className="text-gray-600">E-commerce Manager</span>
-                  <span className="font-medium">450K FCFA</span>
+                  <span className="font-medium text-xs">450K FCFA</span>
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-1.5">
                   <div className="bg-green-500 h-1.5 rounded-full w-3/4"></div>
@@ -579,7 +711,7 @@ export default function JobsPage() {
               <div>
                 <div className="flex justify-between text-sm mb-1">
                   <span className="text-gray-600">Fullstack Developer</span>
-                  <span className="font-medium">420K FCFA</span>
+                  <span className="font-medium text-xs">420K FCFA</span>
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-1.5">
                   <div className="bg-blue-500 h-1.5 rounded-full w-2/3"></div>
@@ -588,7 +720,7 @@ export default function JobsPage() {
               <div>
                 <div className="flex justify-between text-sm mb-1">
                   <span className="text-gray-600">Product Designer</span>
-                  <span className="font-medium">380K FCFA</span>
+                  <span className="font-medium text-xs">380K FCFA</span>
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-1.5">
                   <div className="bg-purple-500 h-1.5 rounded-full w-1/2"></div>

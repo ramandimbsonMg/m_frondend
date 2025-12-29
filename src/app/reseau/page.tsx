@@ -40,7 +40,7 @@ export default function ReseauPage() {
 
   return (
     <div className="max-w-7xl mx-auto">
-      <div className="bg-white rounded-xl border border-gray-200 px-4 py-2 mb-6">
+      <div className="bg-white rounded-xl border border-gray-200 px-4 py-2 mb-4">
         <div className="flex flex-col md:flex-row md:items-center justify-between">
           <div>
             <h1 className="text-xl font-bold text-gray-900">Mon réseau</h1>
@@ -66,7 +66,7 @@ export default function ReseauPage() {
           </div>
         </div>
       </div>
-
+      <hr className="pt-1 pb-1 border-gray-200" />
       <div className="flex flex-col lg:flex-row gap-6">
         <div className="lg:w-64 lg:block hidden">
           <Card hoverable={false} py={4}>

@@ -65,7 +65,7 @@ export default function ConditionLayout({
         </div>
       )}
 
-      <main className={alertClosed ? "pt-0" : "pt-8"}>
+      <main className={alertClosed ? "pt-0" : "pt-4"}>
         <ClientMainLayout>{children}</ClientMainLayout>
       </main>
     </>
