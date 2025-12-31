@@ -7,19 +7,16 @@ import {
   List,
   Star,
   TrendingUp,
-  Shield,
-  Truck,
-  Headphones,
   Heart,
   Share2,
-  ShoppingBag,
   ChevronDown,
-  Tag,
-  Award,
 } from "lucide-react";
 import { useParams } from "next/navigation";
 import { shopData } from "@/data/shop";
 import ProductCard from "@/components/ui/cards/ProductCard";
+import Avatar from "@/components/global/Avatar";
+import { Button } from "@/components/ui/button/button";
+import Card from "@/components/ui/cards/Card";
 
 export default function ShopPage() {
   const params = useParams();
@@ -31,68 +28,66 @@ export default function ShopPage() {
   return (
     <div className="max-w-7xl mx-auto">
       {/* Shop Header */}
-      <div className="bg-primary rounded-t-xl overflow-hidden">
-        <div className="p-8 text-white">
-          <div className="flex flex-col md:flex-row md:items-start md:justify-between">
-            <div className="flex items-start space-x-6">
-              <div className="w-20 h-20 rounded-full border-4 border-white bg-primary flex items-center justify-center">
-                <span className="text-white text-2xl font-bold w-20 h-20 text-center flex justify-center items-center">AC</span>
-              </div>
-              <div>
-                <h1 className="text-3xl font-bold">{shopData.name}</h1>
-                <p className="text-lg opacity-90 mt-1">
-                  {shopData.description}
-                </p>
-                <div className="flex flex-wrap items-center gap-4 mt-4">
-                  <div className="flex items-center">
-                    <Star className="w-5 h-5 text-yellow-300 fill-yellow-300 mr-1" />
-                    <span className="font-bold">{shopData.rating}</span>
-                    <span className="ml-1 opacity-90">
-                      ({shopData.reviews} avis)
-                    </span>
-                  </div>
-                  <span>•</span>
-                  <span className="flex items-center">
-                    <TrendingUp className="w-4 h-4 mr-1" />
-                    {shopData.stats.totalSales} ventes
+      <div className="bg-primary-100 rounded-t-xl border border-gray-200 px-4 py-2">
+        <div className="flex flex-col md:flex-row md:items-start md:justify-between">
+          <div className="flex items-start space-x-6">
+            <div className="w-18 h-18 rounded-full border-4 border-white bg-primary flex items-center justify-center">
+              <Avatar name={shopData.name} size="lg" />
+            </div>
+            <div>
+              <h1 className="text-xl font-bold text-primary">
+                {shopData.name}
+              </h1>
+              <p className="text-sm opacity-90 mt-1">{shopData.description}</p>
+              <div className="flex flex-wrap items-center gap-4 mt-4 text-sm">
+                <div className="flex items-center">
+                  <Star className="w-4 h-4 text-yellow-300 fill-yellow-300 mr-1" />
+                  <span className="font-bold">{shopData.rating}</span>
+                  <span className="ml-1 opacity-90">
+                    ({shopData.reviews} avis)
                   </span>
-                  <span>•</span>
-                  <span>{shopData.location}</span>
-                  <span>•</span>
-                  <span>Membre depuis {shopData.joined}</span>
                 </div>
+                <span>-</span>
+                <span className="flex items-center">
+                  <TrendingUp className="w-4 h-4 mr-1" />
+                  {shopData.stats.totalSales} ventes
+                </span>
+                <span>-</span>
+                <span>{shopData.location}</span>
+                <span>-</span>
+                <span>Membre depuis {shopData.joined}</span>
               </div>
             </div>
-            <div className="mt-4 md:mt-0 flex space-x-2">
-              <button className="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30">
-                <Heart className="w-5 h-5 inline mr-2" />
-                Suivre
-              </button>
-              <button className="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30">
-                <Share2 className="w-5 h-5 inline mr-2" />
-                Partager
-              </button>
-            </div>
+          </div>
+          <div className="mt-4 md:mt-0 flex space-x-2">
+            <Button variant="outline">
+              <Heart className="w-5 h-5 inline mr-2" />
+              Suivre
+            </Button>
+            <Button variant="outline">
+              <Share2 className="w-5 h-5 inline mr-2" />
+              Partager
+            </Button>
           </div>
         </div>
       </div>
 
       {/* Shop Stats */}
-      <div className="card-1">
+      <Card hoverable={false} className="rounded-t-none">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {Object.entries(shopData.stats).map(([key, value]) => (
             <div key={key} className="text-center">
-              <div className="text-2xl font-bold text-gray-900">{value}</div>
+              <div className="text-xl font-bold text-gray-900">{value}</div>
               <div className="text-sm text-gray-600 capitalize">
                 {key.replace(/([A-Z])/g, " $1").toLowerCase()}
               </div>
             </div>
           ))}
         </div>
-      </div>
+      </Card>
 
       {/* Policies */}
-      <div className="card-1 mt-6">
+      <Card hoverable={false} className="mt-6">
         <div className="grid md:grid-cols-3 gap-6">
           {shopData.policies.map((policy, index) => (
             <div key={index} className="flex items-center space-x-4">
@@ -106,21 +101,24 @@ export default function ShopPage() {
             </div>
           ))}
         </div>
-      </div>
+      </Card>
 
       {/* Filters & Controls */}
       <div className="card-1 mt-6 sticky top-16 z-20">
         <div className="flex flex-col md:flex-row md:items-center justify-between space-y-4 md:space-y-0">
           <div className="flex items-center space-x-4">
-            <button className="flex items-center space-x-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">
+            <Button
+              variant="outline"
+              className="flex items-center space-x-2 border text-sm border-gray-300 hover:bg-gray-50"
+            >
               <Filter className="w-4 h-4" />
               <span>Filtrer</span>
-            </button>
+            </Button>
             <div className="relative">
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="pl-4 pr-10 py-2 border border-gray-300 rounded-lg appearance-none bg-white focus:outline-none focus:ring-2 focus:ring-[#4b6fc9]"
+                className="pl-4 pr-10 py-2 border border-gray-300 rounded-full appearance-none bg-white focus:outline-none focus:ring-2 focus:ring-[#4b6fc9] cursor-pointer text-sm"
               >
                 <option value="popular">Plus populaires</option>
                 <option value="newest">Plus récents</option>
@@ -140,7 +138,7 @@ export default function ShopPage() {
                 onChange={(e) =>
                   setPriceRange([parseInt(e.target.value), priceRange[1]])
                 }
-                className="w-24"
+                className="w-24 cursor-progress"
               />
               <span className="text-sm text-gray-600">à</span>
               <input
@@ -151,7 +149,7 @@ export default function ShopPage() {
                 onChange={(e) =>
                   setPriceRange([priceRange[0], parseInt(e.target.value)])
                 }
-                className="w-24"
+                className="w-24 cursor-progress"
               />
             </div>
           </div>
@@ -182,14 +180,14 @@ export default function ShopPage() {
 
       <div className="flex flex-col md:flex-row gap-6 mt-6">
         {/* Categories Sidebar */}
-        <div className="md:w-64"> 
-          <div className="card"> 
-            <h3 className="font-semibold text-gray-900 mb-4">Catégories</h3>
-            <div className="space-y-2">
+        <div className="md:w-64">
+          <Card hoverable={false} className="">
+            <h3 className="font-semibold text-gray-900 mb-2">Catégories</h3>
+            <div className="space-y-1">
               {shopData.categories.map((category) => (
                 <button
                   key={category.name}
-                  className="flex justify-between items-center w-full p-3 text-left rounded-lg hover:bg-gray-50"
+                  className="flex justify-between items-center w-full px-2 py-1 text-left rounded-full hover:bg-gray-100 text-sm border-none font-medium cursor-pointer"
                 >
                   <span className="text-gray-700">{category.name}</span>
                   <span className="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">
@@ -198,59 +196,63 @@ export default function ShopPage() {
                 </button>
               ))}
             </div>
-
-            {/* Price Filter */}
-            <div className="mt-6 pt-6 border-t border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-4">Prix</h3>
-              <div className="space-y-3">
-                <div className="flex justify-between text-sm">
-                  <span>0 FCFA</span>
-                  <span>100.000 FCFA</span>
-                </div>
-                <input
-                  type="range"
-                  min="0"
-                  max="100000"
-                  value={priceRange[1]}
-                  onChange={(e) =>
-                    setPriceRange([priceRange[0], parseInt(e.target.value)])
-                  }
-                  className="w-full"
-                />
-                <div className="flex justify-between text-sm font-medium">
-                  <span>{priceRange[0].toLocaleString()} FCFA</span>
-                  <span>{priceRange[1].toLocaleString()} FCFA</span>
-                </div>
+          </Card>
+          {/* Price Filter */}
+          <Card
+            hoverable={false}
+            className="mt-3 pt-6 sticky top-34 z-10"
+          >
+            <h3 className="font-semibold text-gray-900 mb-4">Prix</h3>
+            <div className="space-y-3">
+              <div className="flex justify-between text-sm">
+                <span>0 FCFA</span>
+                <span>100.000 FCFA</span>
+              </div>
+              <input
+                type="range"
+                min="0"
+                max="100000"
+                value={priceRange[1]}
+                onChange={(e) =>
+                  setPriceRange([priceRange[0], parseInt(e.target.value)])
+                }
+                className="w-full"
+              />
+              <div className="flex justify-between text-sm font-medium">
+                <span>{priceRange[0].toLocaleString()} FCFA</span>
+                <span>{priceRange[1].toLocaleString()} FCFA</span>
               </div>
             </div>
+          </Card>
 
-            {/* Tags */}
-            <div className="mt-6 pt-6 border-t border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-4">
-                Tags populaires
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {[
-                  "limited",
-                  "premium",
-                  "new",
-                  "best-seller",
-                  "eco-friendly",
-                  "handmade",
-                ].map((tag) => (
-                  <button
-                    key={tag}
-                    className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-gray-200"
-                  >
-                    #{tag}
-                  </button>
-                ))}
-              </div>
+          {/* Tags */}
+          <Card
+            hoverable={false}
+            className="mt-3 pt-6"
+          >
+            <h3 className="font-semibold text-gray-900 mb-4">
+              Tags populaires
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {[
+                "limited",
+                "premium",
+                "new",
+                "best-seller",
+                "eco-friendly",
+                "handmade",
+              ].map((tag) => (
+                <button
+                  key={tag}
+                  className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-gray-200"
+                >
+                  #{tag}
+                </button>
+              ))}
             </div>
-          </div>
-
-          {/* Shop Owner */}
-          <div className="card mt-4">
+          </Card>
+          <Card hoverable={false} className="mt-3">
+            {/* Shop Owner */}
             <h3 className="font-semibold text-gray-900 mb-4">
               À propos du vendeur
             </h3>
@@ -263,10 +265,10 @@ export default function ShopPage() {
                 <p className="text-sm text-gray-600">Propriétaire</p>
               </div>
             </div>
-            <button className="w-full py-1.5 border border-primary text-primary rounded-full hover:bg-blue-50">
+            <Button variant="outline" className="w-full py-1.5 border border-primary text-primary rounded-full hover:bg-blue-50">
               Voir le profil
-            </button>
-          </div>
+            </Button>
+          </Card>
         </div>
 
         {/* Products Grid */}
@@ -299,7 +301,7 @@ export default function ShopPage() {
                             {product.name}
                           </h3>
                           <div className="flex items-center space-x-4 mt-2">
-                            <span className="text-2xl font-bold text-gray-900">
+                            <span className="text-xl font-bold text-gray-900">
                               {product.price}
                             </span>
                             <div className="flex items-center">
@@ -321,13 +323,13 @@ export default function ShopPage() {
                             ))}
                           </div>
                         </div>
-                        <div className="text-right">
-                          <button className="mb-2 p-2 text-gray-600 hover:bg-gray-100 rounded-full">
+                        <div className="text-right flex items-center gap-4">
+                          <Button variant="outline" className="text-gray-600 hover:bg-gray-100 rounded-full">
                             <Heart className="w-5 h-5" />
-                          </button>
-                          <button className="px-4 py-2 bg-[#4b6fc9] text-white rounded-lg hover:bg-[#006097]">
+                          </Button>
+                          <Button  className="px-4 py-2 bg-[#4b6fc9] text-white hover:bg-[#006097]">
                             Acheter
-                          </button>
+                          </Button>
                         </div>
                       </div>
                     </div>
@@ -338,23 +340,23 @@ export default function ShopPage() {
           )}
 
           {/* Pagination */}
-          <div className="flex justify-center items-center space-x-2 mt-8">
-            <button className="px-3 py-2 border border-gray-300 rounded-full hover:bg-gray-50">
+          <div className="flex justify-center items-center space-x-2 mt-8 text-sm">
+            <Button variant="outline" className="px-3 py-2 border border-gray-300 rounded-full hover:bg-gray-50">
               Précédent
-            </button>
+            </Button>
             {[1, 2, 3, 4, 5].map((num) => (
-              <button
+              <Button variant="outline" size="small"
                 key={num}
-                className={`px-3 py-1 rounded-full ${
+                className={`py-1 w-4 rounded-full cursor-pointer font-bold ${
                   num === 1 ? "bg-primary text-white" : "hover:bg-gray-100"
                 }`}
               >
                 {num}
-              </button>
+              </Button>
             ))}
-            <button className="px-3 py-2 border border-gray-300 rounded-full hover:bg-gray-50">
+            <Button variant="outline" className="px-3 py-2 border border-gray-300 rounded-full hover:bg-gray-50">
               Suivant
-            </button>
+            </Button>
           </div>
         </div>
       </div>

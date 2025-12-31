@@ -66,7 +66,7 @@ export default function ConditionLayout({
       )} */}
 
       {/* <main className={alertClosed ? "pt-0" : "pt-4"}> */}
-      <main>
+      <main className="mt-2">
 
         <ClientMainLayout>{children}</ClientMainLayout>
       </main>

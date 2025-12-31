@@ -111,7 +111,7 @@ export const Button = ({
       break;
     case "medium":
       sizeStyles = `text-sm ${
-        variant === "ico" ? "w-[40px] h-[40px]" : "px-8 py-2.5 h-[40x]"
+        variant === "ico" ? "w-[40px] h-[40px]" : "px-6 py-2.5 h-[40x]"
       }`;
       icoSize = 20;
       break;
