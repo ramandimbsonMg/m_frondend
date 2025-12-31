@@ -48,7 +48,7 @@ export default function ConditionLayout({
   return (
     <>
       <Navbar />
-
+{/* 
       {!alertClosed && (
         <div
           className={`fixed top-16 left-0 right-0 z-50 transition-all duration-300 ${
@@ -63,9 +63,11 @@ export default function ConditionLayout({
             onClose={() => setAlertClosed(true)}
           />
         </div>
-      )}
+      )} */}
 
-      <main className={alertClosed ? "pt-0" : "pt-4"}>
+      {/* <main className={alertClosed ? "pt-0" : "pt-4"}> */}
+      <main>
+
         <ClientMainLayout>{children}</ClientMainLayout>
       </main>
     </>

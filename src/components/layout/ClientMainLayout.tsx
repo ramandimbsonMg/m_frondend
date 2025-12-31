@@ -17,7 +17,7 @@ export default function ClientMainLayout({
   const rightSidebarVisible = useRightSidebarVisible();
 
   return (
-    <main className="lg:flex-1 lg:flex pt-16 lg:mx-auto lg:max-w-7xl lg:px-6">
+    <main className="lg:flex-1 lg:flex pt-10 lg:mx-auto lg:max-w-7xl lg:px-6">
       <ConditionalSidebar />
 
       {rightSidebarVisible ? (
