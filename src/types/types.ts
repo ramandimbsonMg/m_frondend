@@ -11,7 +11,7 @@ export interface PropsLogin {
 export interface User {
   id: number;
   email: string;
-  name?: string;
+  name: string;
   firstname?: string;
   fonction?: string;
   phone?: string;

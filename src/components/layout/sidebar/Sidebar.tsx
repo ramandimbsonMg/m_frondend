@@ -14,6 +14,8 @@ import {
   DollarSign,
 } from "lucide-react";
 import { useState } from "react";
+import { UsersP } from "@/data/user";
+import Avatar from "@/components/global/Avatar";
 
 const Sidebar = () => {
   const [activeTab, setActiveTab] = useState("feed");
@@ -37,40 +39,42 @@ const Sidebar = () => {
     <aside className="hidden lg:block w-64 min-h-[calc(100vh-4rem)] pt-6">
       <div className="sticky top-20">
         {/* Profile Card */}
-        <div className="mb-4">
-          <div className="relative card-1">
-            <div className="bg-gray-300 h-20 rounded-tl">
-              <div className="absolute top-2.5 left-12 transform -translate-x-1/2">
-                <div className="w-18 h-18 rounded-full border-4 border-white bg-primary flex items-center justify-center">
-                  <span className="text-white font-bold text-xl">JD</span>
+
+        {UsersP.map((user) => (
+          <div key={user.id} className="mb-4">
+            <div className="relative bg-white rounded overflow-hidden">
+              <div className="bg-gray-300 h-20 rounded-tl">
+                <div className="pt-4 px-2">
+                  <Avatar name={user.name} image={user.photo} size="2xl" />
                 </div>
               </div>
-            </div>
-            <div className="pt-3 text-center">
-              <h3 className="font-semibold text-gray-900 mt-2">John Doe</h3>
-              <div className="text-sm text-gray-600 mt-1 flex items-center gap-2 text-center justify-center">
-                Vendeur Pro
-                <hr className="h-6 w-1 border-l border-t-0 border-gray-200" />
-                Madagascar
-              </div>
-              <div className="flex items-center text-center justify-center space-x-4 mt-3">
-                <div className="text-center">
-                  <div className="font-bold text-gray-900">24</div>
-                  <div className="text-xs text-gray-500">Ventes</div>
+              <div className="py-3 text-center">
+                <h3 className="font-semibold text-gray-900 mt-2">
+                  {user.name} {user.firstname}
+                </h3>
+                <div className="text-sm text-gray-600 mt-1 flex items-center gap-2 text-center justify-center">
+                  {user.fonction}
+                  <hr className="h-6 w-1 border-l border-t-0 border-gray-200" />
+                  Madagascar
                 </div>
-                <div className="text-center">
-                  <div className="font-bold text-gray-900">156</div>
-                  <div className="text-xs text-gray-500">Abonnés</div>
-                </div>
-                <div className="text-center">
-                  <div className="font-bold text-gray-900">4.8</div>
-                  <div className="text-xs text-gray-500">Avis</div>
+                <div className="flex items-center text-center justify-center space-x-4 mt-3">
+                  <div className="text-center">
+                    <div className="font-bold text-gray-900">24</div>
+                    <div className="text-xs text-gray-500">Ventes</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="font-bold text-gray-900">156</div>
+                    <div className="text-xs text-gray-500">Abonnés</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="font-bold text-gray-900">4.8</div>
+                    <div className="text-xs text-gray-500">Avis</div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-
+        ))}
         {/* Navigation */}
         <nav className="card-1">
           <div className="space-y-1">

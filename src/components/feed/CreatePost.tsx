@@ -12,6 +12,8 @@ import {
 } from "lucide-react";
 import { Button } from "../ui/button/button";
 import EmojiPickerUI from "../ui/emoji/emoji-picker-ui";
+import { UsersP } from "@/data/user";
+import Avatar from "../global/Avatar";
 
 export default function CreatePost() {
   const [content, setContent] = useState("");
@@ -31,18 +33,17 @@ export default function CreatePost() {
     <>
       <div className="card border border-gray-200">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold">
-            JD
-          </div>
-
+          {UsersP.map((user) => (
+            <div key={user.id}>
+              <Avatar name={user.name} image={user.photo} size="lg" />
+            </div>
+          ))}
           <button
             onClick={() => setOpen(true)}
-            className="flex-1 text-left px-4 py-2 border border-gray-200 rounded-full text-sm text-gray-500 hover:bg-gray-50 cursor-text"
+            className="flex-1 text-left px-4 py-2 h-12 border border-gray-200 rounded-full text-sm text-gray-500 font-medium hover:bg-gray-50 cursor-text"
           >
             Commencez un post...
           </button>
-
-          <Button>Publier</Button>
         </div>
 
         <div className="hidden lg:flex justify-between mt-4 px-10">

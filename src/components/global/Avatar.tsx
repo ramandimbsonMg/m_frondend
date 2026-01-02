@@ -12,6 +12,7 @@ interface AvatarProps {
   image?: string | null;
   size?: AvatarSize;
   status?: string;
+    className?: string;
 }
 
 
@@ -90,6 +91,7 @@ export default function Avatar({
   image,
   size = "md",
   status,
+  className,
 }: AvatarProps) {
   const bgColor = getGrayColor(name);
   const initial = getInitial(name);
@@ -98,12 +100,12 @@ export default function Avatar({
   const avatarStatus = mapStatus(status);
 
   return (
-    <div className="relative inline-flex">
+    <div className="relative inline-flex border border-white rounded-full">
       <div
         className={clsx(
           "flex items-center justify-center rounded-full overflow-hidden font-semibold text-gray-700 select-none",
           bgColor,
-          config.wrapper
+          config.wrapper, className
         )}
       >
         {image ? (

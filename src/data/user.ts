@@ -25,3 +25,14 @@ export const mockUsers: User[] = [
     fonction: "Utilisateur",
   },
 ];
+
+export const UsersP: User[] = [
+  {
+    id: 1,
+    email: "teresperanto@missera.com",
+    name: "Ter",
+    firstname: "Esperanto",
+    fonction: "Vendeur Pro",
+    avatar: "https://img.daisyui.com/images/profile/john-doe.jpg",
+  },
+];
